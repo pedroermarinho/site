@@ -51,11 +51,11 @@ lightTheme(context) {
         color: Colors.black54,
       ),
       headline2: TextStyle(
-        fontSize: 20,
-        color: Colors.black54,
-        fontWeight: FontWeight.bold
+          fontSize: 20, color: Colors.black54, fontWeight: FontWeight.bold),
+      bodyText1: TextStyle(
+        fontSize: 14,
+        color: Colors.black.withOpacity(0.7),
       ),
-      bodyText1: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.7),),
     ),
     buttonTheme: Theme.of(context).buttonTheme.copyWith(
         colorScheme: ColorScheme.light(),

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:site/app/components/item_information/item_information_widget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:site/app/components/item_project/item_project_widget.dart';
 import 'package:site/app/components/line/line_widget.dart';
 import 'package:site/app/components/text_icon/text_icon_widget.dart';
+
 import 'container4_controller.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Container4Page extends StatefulWidget {
   final String title;
+
   const Container4Page({Key key, this.title = "Container4"}) : super(key: key);
 
   @override
@@ -21,7 +22,7 @@ class _Container4PageState
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: EdgeInsets.all(6),
       child: Container(
         decoration: BoxDecoration(
@@ -98,7 +99,8 @@ class _Container4PageState
               ),
               ItemProjectWidget(
                 titulo: "Markdown Readme Generator",
-                githubUrl: "https://github.com/pedroermarinho/markdown-readme-generator",
+                githubUrl:
+                    "https://github.com/pedroermarinho/markdown-readme-generator",
                 siteUrl: "https://pypi.org/project/markdown-readme-generator",
                 pypiUrl: "https://pypi.org/project/markdown-readme-generator",
               ),

@@ -1,7 +1,5 @@
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:site/app/repositories/shared_preferences/repository/shared_preferences_repository.dart';
-import 'package:site/app/repositories/shared_preferences/repository/shared_preferences_repository_interface.dart';
 
 part 'shared_preferences_repository_controller.g.dart';
 
@@ -9,7 +7,7 @@ class SharedPreferencesRepositoryController = _SharedPreferencesRepositoryContro
     with _$SharedPreferencesRepositoryController;
 
 abstract class _SharedPreferencesRepositoryControllerBase with Store {
-  final _preferencesRepository =SharedPreferencesRepository();
+  final _preferencesRepository = SharedPreferencesRepository();
 
   void saveTheme(String theme) {
     _preferencesRepository.saveTheme(theme);

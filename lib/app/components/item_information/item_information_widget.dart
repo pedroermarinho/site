@@ -12,7 +12,7 @@ class ItemInformationWidget extends StatelessWidget {
 
   Widget atualmente() {
     return Container(
-      padding: EdgeInsets.only(top: 3, bottom: 3, left: 5, right: 5),
+      padding: EdgeInsets.only(top: 1, bottom: 2, left: 5, right: 5),
       child: Text(
         "Atualmente",
         style: TextStyle(color: Colors.white),
@@ -35,7 +35,8 @@ class ItemInformationWidget extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: 10, bottom: 10),
-            child: Row(
+            child: Wrap(
+              direction: Axis.horizontal,
               children: [
                 Icon(Icons.date_range),
                 SizedBox(

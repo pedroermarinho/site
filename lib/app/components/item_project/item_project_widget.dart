@@ -29,8 +29,8 @@ class ItemProjectWidget extends StatelessWidget {
   }
 
   Widget url(String title, IconData icon, String url) {
-    return Padding(
-      padding: EdgeInsets.only(),
+    return Container(
+      constraints: BoxConstraints(maxWidth: 130),
       child: FlatButton(
         onPressed: () => _launchURL(url),
         child: Row(
@@ -60,14 +60,15 @@ class ItemProjectWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.headline2,
             ),
           ),
-          Row(
+          Wrap(
+            direction: Axis.horizontal,
             children: [
               descricao == null
                   ? Container()
                   : Padding(
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                child: Text(descricao),
-              ),
+                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      child: Text(descricao),
+                    ),
               snapUrl == null
                   ? Container()
                   : url("Snap", FontAwesomeIcons.linux, snapUrl),
@@ -79,7 +80,7 @@ class ItemProjectWidget extends StatelessWidget {
                   : url("PyPi", FontAwesomeIcons.python, pypiUrl),
             ],
           ),
-          ],
+        ],
       ),
     );
   }

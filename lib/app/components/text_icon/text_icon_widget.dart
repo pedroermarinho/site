@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class TextIconWidget extends StatelessWidget {
@@ -21,14 +20,19 @@ class TextIconWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(icon,size: sizeIcon,),
+        Icon(
+          icon,
+          size: sizeIcon,
+        ),
         SizedBox(
           width: 15,
         ),
-        Text(
-          "$text",
-          style: style,
-        ),
+        Flexible(
+          child: Text(
+            "$text",
+            style: style,
+          ),
+        )
       ],
     );
   }

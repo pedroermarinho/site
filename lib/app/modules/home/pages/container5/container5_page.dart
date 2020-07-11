@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:site/app/components/item_information/item_information_widget.dart';
-import 'package:site/app/components/text_icon/text_icon_widget.dart';
+import 'package:site/app/components/line/line_widget.dart';
 import 'package:site/app/shared/config/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import 'container5_controller.dart';
 
 class Container5Page extends StatefulWidget {
   final String title;
+
   const Container5Page({Key key, this.title = "Container5"}) : super(key: key);
 
   @override
@@ -26,6 +27,7 @@ class _Container5PageState
       throw 'Could not launch $url';
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,15 +45,44 @@ class _Container5PageState
         ),
         child: Padding(
           padding: EdgeInsets.all(30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: Wrap(
+            direction: Axis.horizontal,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            alignment: WrapAlignment.center,
             children: [
-              IconButton(icon: Icon(FontAwesomeIcons.githubSquare), onPressed: ()=>_launchURL(Constants.PROFILE_GITHUB),iconSize: 100,),
-              IconButton(icon: Icon(FontAwesomeIcons.medium), onPressed: ()=>_launchURL(Constants.PROFILE_MEDIUM),iconSize: 100,),
-              IconButton(icon: Icon(FontAwesomeIcons.instagramSquare), onPressed: ()=>_launchURL(Constants.PROFILE_INSTAGRAM),iconSize: 100,),
-              IconButton(icon: Icon(FontAwesomeIcons.linkedin), onPressed: ()=>_launchURL(Constants.PROFILE_LINKEDIN),iconSize: 100,),
-              IconButton(icon: Icon(FontAwesomeIcons.youtubeSquare), onPressed: ()=>_launchURL(Constants.PROFILE_YOUTUBE),iconSize: 100,),
-              IconButton(icon: Icon(FontAwesomeIcons.twitterSquare), onPressed: ()=>_launchURL(Constants.PROFILE_TWITTER),iconSize: 100,),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.githubSquare),
+                onPressed: () => _launchURL(Constants.PROFILE_GITHUB),
+                iconSize: 100,
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.medium),
+                onPressed: () => _launchURL(Constants.PROFILE_MEDIUM),
+                iconSize: 100,
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.instagramSquare),
+                onPressed: () => _launchURL(Constants.PROFILE_INSTAGRAM),
+                iconSize: 100,
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.linkedin),
+                onPressed: () => _launchURL(Constants.PROFILE_LINKEDIN),
+                iconSize: 100,
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.youtubeSquare),
+                onPressed: () => _launchURL(Constants.PROFILE_YOUTUBE),
+                iconSize: 100,
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.twitterSquare),
+                onPressed: () => _launchURL(Constants.PROFILE_TWITTER),
+                iconSize: 100,
+              ),
+              LineWidget(
+                color: Colors.transparent,
+              )
             ],
           ),
         ),
