@@ -1,15 +1,18 @@
+
 import 'package:flutter/material.dart';
 
 class TextIconWidget extends StatelessWidget {
   final String text;
   final IconData icon;
   final TextStyle style;
+  final double sizeIcon;
 
   const TextIconWidget({
     Key key,
     @required this.text,
     this.icon = Icons.star,
     this.style,
+    this.sizeIcon,
   }) : super(key: key);
 
   @override
@@ -18,7 +21,7 @@ class TextIconWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(icon),
+        Icon(icon,size: sizeIcon,),
         SizedBox(
           width: 15,
         ),

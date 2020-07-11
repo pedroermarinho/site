@@ -7,6 +7,7 @@ class Constants {
   static const PROFILE_FACEBOOK = 'https://www.facebook.com/pedroermarinho';
   static const PROFILE_GITHUB = 'https://github.com/pedroermarinho';
   static const PROFILE_TWITTER = 'https://twitter.com/pedroermarinho';
+  static const PROFILE_YOUTUBE = 'https://www.youtube.com/user/pedro12131451';
   static const PROFILE_INSTAGRAM = 'https://www.instagram.com/pedroermarinho';
   static const RAW_GITHUB = 'https://raw.githubusercontent.com/pedroermarinho';
   static const API_GITHUB = 'https://api.github.com/users/pedroermarinho/repos';

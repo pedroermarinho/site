@@ -17,14 +17,13 @@ class LinkWidget extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _launchURL,
+    return FlatButton(
+      onPressed: _launchURL,
       child: Row(
         children: [
           Icon(Icons.link,color: Colors.grey,size: 15,),
           Text(
             text??url,
-
             style: TextStyle(
               decoration: TextDecoration.underline
             ),

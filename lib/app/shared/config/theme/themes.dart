@@ -46,15 +46,16 @@ lightTheme(context) {
     backgroundColor: Colors.white,
     textTheme: TextTheme(
       headline1: TextStyle(
-        fontSize: 22,
+        fontSize: 30,
         fontWeight: FontWeight.bold,
-        color: Color(0xffE1AA28),
+        color: Colors.black54,
       ),
       headline2: TextStyle(
         fontSize: 20,
-        color: Colors.black87,
+        color: Colors.black54,
+        fontWeight: FontWeight.bold
       ),
-      bodyText1: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.7)),
+      bodyText1: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.7),),
     ),
     buttonTheme: Theme.of(context).buttonTheme.copyWith(
         colorScheme: ColorScheme.light(),

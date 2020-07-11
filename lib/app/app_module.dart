@@ -1,7 +1,10 @@
-import 'components/link/link_controller.dart';
-import 'components/skills/skills_controller.dart';
-import 'components/line/line_controller.dart';
-import 'components/text_icon/text_icon_controller.dart';
+import 'components/item_project/item_project_controller.dart';
+import 'components/item_information/item_information_controller.dart';
+
+import 'package:site/app/components/link/link_controller.dart';
+import 'package:site/app/components/skills/skills_controller.dart';
+import 'package:site/app/components/line/line_controller.dart';
+import 'package:site/app/components/text_icon/text_icon_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:site/app/app_widget.dart';
@@ -20,6 +23,8 @@ import 'package:site/app/pages/splash_screen/splash_screen_controller.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => ItemProjectController()),
+        Bind((i) => ItemInformationController()),
         Bind((i) => LinkController()),
         Bind((i) => SkillsController()),
         Bind((i) => LineController()),
