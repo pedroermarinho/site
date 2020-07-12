@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:site/app/repositories/shared_preferences/repository/shared_preferences_repository.dart';
+import 'package:site/app/shared/config/theme/themes.dart';
 
 part 'shared_preferences_repository_controller.g.dart';
 
@@ -9,11 +10,16 @@ class SharedPreferencesRepositoryController = _SharedPreferencesRepositoryContro
 abstract class _SharedPreferencesRepositoryControllerBase with Store {
   final _preferencesRepository = SharedPreferencesRepository();
 
-  void saveTheme(String theme) {
-    _preferencesRepository.saveTheme(theme);
+  void saveTheme(ThemeOption theme) {
+    _preferencesRepository.saveTheme(theme.toString());
   }
 
-  Future<String> getTheme() {
-    return _preferencesRepository.getTheme();
+  Future<ThemeOption> getTheme()async {
+    String theme = await _preferencesRepository.getTheme();
+    if(theme == ThemeOption.darkTheme.toString()){
+      return ThemeOption.darkTheme;
+    }else{
+      return ThemeOption.lightTheme;
+    }
   }
 }

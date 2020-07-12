@@ -25,11 +25,10 @@ class _Container3PageState
       padding: EdgeInsets.all(6),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).backgroundColor,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey,
-              offset: Offset(0.0, 1.0), //(x,y)
+
               blurRadius: 6.0,
             ),
           ],

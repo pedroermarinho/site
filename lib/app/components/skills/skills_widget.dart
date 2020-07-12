@@ -29,7 +29,7 @@ class SkillsWidget extends StatelessWidget {
       constraints: BoxConstraints(minWidth: 30, maxWidth: 200),
       child: Text(
         "$text",
-        style: style ?? TextStyle(fontSize: 16),
+        style: style ?? Theme.of(context).textTheme.bodyText2,
       ),
       padding: EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
       decoration: BoxDecoration(

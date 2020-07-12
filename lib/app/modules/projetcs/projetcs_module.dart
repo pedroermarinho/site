@@ -1,9 +1,10 @@
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'projetcs_controller.dart';
 import 'projetcs_page.dart';
 
-class ProjetcsModule extends ChildModule {
+class ProjetcsModule extends WidgetModule {
   @override
   List<Bind> get binds => [
         Bind((i) => ProjetcsController()),
@@ -15,4 +16,8 @@ class ProjetcsModule extends ChildModule {
       ];
 
   static Inject get to => Inject<ProjetcsModule>.of();
+
+  @override
+  // TODO: implement view
+  Widget get view => ProjetcsPage();
 }

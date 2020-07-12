@@ -15,7 +15,7 @@ class ItemInformationWidget extends StatelessWidget {
       padding: EdgeInsets.only(top: 1, bottom: 2, left: 5, right: 5),
       child: Text(
         "Atualmente",
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontSize: 15),
       ),
       decoration: BoxDecoration(
           color: Colors.teal, borderRadius: BorderRadius.circular(20)),
@@ -61,7 +61,10 @@ class ItemInformationWidget extends StatelessWidget {
               ],
             ),
           ),
-          Text(descricao ?? ""),
+          Text(
+            descricao ?? "",
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
         ],
       ),
     );

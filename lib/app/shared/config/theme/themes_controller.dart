@@ -14,7 +14,7 @@ abstract class _ThemesControllerBase with Store {
       Modular.get<SharedPreferencesRepositoryController>();
 
   @observable
-  String theme = Constants.lightThemeName;
+  ThemeOption theme = ThemeOption.lightTheme;
 
   BuildContext _context;
 
@@ -36,7 +36,7 @@ abstract class _ThemesControllerBase with Store {
 
   @computed
   ThemeData get themeActual {
-    if (theme == Constants.darkThemeName) {
+    if (theme == ThemeOption.darkTheme) {
       return darkTheme(_context);
     } else {
       return lightTheme(_context);
@@ -45,10 +45,10 @@ abstract class _ThemesControllerBase with Store {
 
   @action
   changeTheme() {
-    if (theme == Constants.lightThemeName) {
-      theme = Constants.darkThemeName;
+    if (theme == ThemeOption.lightTheme) {
+      theme = ThemeOption.darkTheme;
     } else {
-      theme = Constants.lightThemeName;
+      theme = ThemeOption.lightTheme;
     }
     _preferencesRepositoryController.saveTheme(theme);
   }

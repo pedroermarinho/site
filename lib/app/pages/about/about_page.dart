@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:site/app/components/responsive/responsive_widget.dart';
+import 'package:site/app/shared/config/assets.dart';
 
 import 'about_controller.dart';
 
@@ -17,12 +20,72 @@ class _AboutPageState extends ModularState<AboutPage, AboutController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[],
+    return Padding(
+      padding:  EdgeInsets.all(ResponsiveWidget.isPequenoScreen(context) ? 20 : 70),
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).backgroundColor,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 6.0,
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end
+              ,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: controller.closeAbout,
+                ),
+              ],
+            ),
+            Expanded(child: ListView(
+              padding: EdgeInsets.only(top: 20),
+              children: <Widget>[
+                Center(
+                  child: Image.asset(
+                    Assets.icon,
+                    height: 300,
+                  ),
+                ),
+//                Center(
+//                  child: Observer(
+//                    builder: (_) => Text(
+//                      controller.appName,
+//                      style: Theme.of(context).textTheme.headline1,
+//                    ),
+//                  ),
+//                ),
+//                SizedBox(
+//                  height: 10,
+//                ),
+//                Row(
+//                  mainAxisAlignment: MainAxisAlignment.center,
+//                  children: <Widget>[
+//                    Observer(
+//                      builder: (_) => Text(
+//                        "${controller.version}",
+//                        style: Theme.of(context).textTheme.headline2,
+//                      ),
+//                    ),
+//                    Observer(
+//                      builder: (_) => Text(
+//                        " + ${controller.buildNumber}",
+//                        style: Theme.of(context).textTheme.headline2,
+//                      ),
+//                    ),
+//                  ],
+//                ),
+              ],
+            ),),
+          ],
+        ),
       ),
     );
   }

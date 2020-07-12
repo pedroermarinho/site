@@ -20,13 +20,13 @@ mixin _$ThemesController on _ThemesControllerBase, Store {
   final _$themeAtom = Atom(name: '_ThemesControllerBase.theme');
 
   @override
-  String get theme {
+  ThemeOption get theme {
     _$themeAtom.reportRead();
     return super.theme;
   }
 
   @override
-  set theme(String value) {
+  set theme(ThemeOption value) {
     _$themeAtom.reportWrite(value, super.theme, () {
       super.theme = value;
     });

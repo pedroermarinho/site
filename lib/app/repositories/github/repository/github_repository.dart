@@ -4,12 +4,6 @@ import 'package:site/app/shared/config/constants.dart';
 import 'package:site/app/shared/utils/github_utils.dart';
 
 class GithubRepository extends IGithubRepository {
-  Future fetchPost(Dio client) async {
-    final response =
-        await client.get('https://jsonplaceholder.typicode.com/posts/1');
-    return response.data;
-  }
-
   @override
   Future<Response> getDataGitHubRepos(String repository) async {
     try {

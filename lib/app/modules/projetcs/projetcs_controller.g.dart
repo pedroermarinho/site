@@ -9,18 +9,18 @@ part of 'projetcs_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ProjetcsController on _ProjetcsControllerBase, Store {
-  final _$valueAtom = Atom(name: '_ProjetcsControllerBase.value');
+  final _$listProjectsAtom = Atom(name: '_ProjetcsControllerBase.listProjects');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  ObservableList<Widget> get listProjects {
+    _$listProjectsAtom.reportRead();
+    return super.listProjects;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set listProjects(ObservableList<Widget> value) {
+    _$listProjectsAtom.reportWrite(value, super.listProjects, () {
+      super.listProjects = value;
     });
   }
 
@@ -28,11 +28,11 @@ mixin _$ProjetcsController on _ProjetcsControllerBase, Store {
       ActionController(name: '_ProjetcsControllerBase');
 
   @override
-  void increment() {
+  void closeProjects() {
     final _$actionInfo = _$_ProjetcsControllerBaseActionController.startAction(
-        name: '_ProjetcsControllerBase.increment');
+        name: '_ProjetcsControllerBase.closeProjects');
     try {
-      return super.increment();
+      return super.closeProjects();
     } finally {
       _$_ProjetcsControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +41,7 @@ mixin _$ProjetcsController on _ProjetcsControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+listProjects: ${listProjects}
     ''';
   }
 }

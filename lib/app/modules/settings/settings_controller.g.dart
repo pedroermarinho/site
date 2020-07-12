@@ -9,30 +9,45 @@ part of 'settings_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$SettingsController on _SettingsControllerBase, Store {
-  final _$valueAtom = Atom(name: '_SettingsControllerBase.value');
+  Computed<bool> _$isThemeDarkComputed;
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
-  }
-
-  @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
-    });
-  }
+  bool get isThemeDark =>
+      (_$isThemeDarkComputed ??= Computed<bool>(() => super.isThemeDark,
+              name: '_SettingsControllerBase.isThemeDark'))
+          .value;
 
   final _$_SettingsControllerBaseActionController =
       ActionController(name: '_SettingsControllerBase');
 
   @override
-  void increment() {
+  void changeTheme() {
     final _$actionInfo = _$_SettingsControllerBaseActionController.startAction(
-        name: '_SettingsControllerBase.increment');
+        name: '_SettingsControllerBase.changeTheme');
     try {
-      return super.increment();
+      return super.changeTheme();
+    } finally {
+      _$_SettingsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void openProjects() {
+    final _$actionInfo = _$_SettingsControllerBaseActionController.startAction(
+        name: '_SettingsControllerBase.openProjects');
+    try {
+      return super.openProjects();
+    } finally {
+      _$_SettingsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void openAbout() {
+    final _$actionInfo = _$_SettingsControllerBaseActionController.startAction(
+        name: '_SettingsControllerBase.openAbout');
+    try {
+      return super.openAbout();
     } finally {
       _$_SettingsControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +56,7 @@ mixin _$SettingsController on _SettingsControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+isThemeDark: ${isThemeDark}
     ''';
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'settings_controller.dart';
 
@@ -18,12 +20,36 @@ class _SettingsPageState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[],
+    return Container(
+      width: 150,
+      height: 40,
+      decoration: BoxDecoration(
+          color: Colors.black54, borderRadius: BorderRadius.circular(30)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Observer(builder: (_)=>IconButton(
+            icon: Icon(
+              controller.isThemeDark
+                  ? FontAwesomeIcons.solidSun
+                  : FontAwesomeIcons.solidMoon,
+              color: Colors.white,
+            ),
+            onPressed: controller.changeTheme,
+          ),),
+          IconButton(
+              icon: Icon(
+                FontAwesomeIcons.github,
+                color: Colors.white,
+              ),
+              onPressed: controller.openProjects,),
+          IconButton(
+              icon: Icon(
+                FontAwesomeIcons.infoCircle,
+                color: Colors.white,
+              ),
+              onPressed:  controller.openAbout,),
+        ],
       ),
     );
   }

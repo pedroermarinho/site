@@ -1,3 +1,4 @@
+import 'components/projectComponent/project_component_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:site/app/app_controller.dart';
@@ -22,6 +23,7 @@ import 'components/item_project/item_project_controller.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => ProjectComponentController()),
         Bind((i) => ItemProjectController()),
         Bind((i) => ItemInformationController()),
         Bind((i) => LinkController()),

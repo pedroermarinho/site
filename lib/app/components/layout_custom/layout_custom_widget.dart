@@ -13,11 +13,13 @@ class LayoutCustomWidget extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
+            padding: EdgeInsets.only(
+//
+            ),
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).backgroundColor,
-                borderRadius: BorderRadius.circular(10),
+//                borderRadius: BorderRadius.circular(10),
               ),
               child: body,
             ),

@@ -9,18 +9,33 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
-  final _$valueAtom = Atom(name: '_HomeControllerBase.value');
+  final _$projectsAtom = Atom(name: '_HomeControllerBase.projects');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  Widget get projects {
+    _$projectsAtom.reportRead();
+    return super.projects;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set projects(Widget value) {
+    _$projectsAtom.reportWrite(value, super.projects, () {
+      super.projects = value;
+    });
+  }
+
+  final _$aboutAtom = Atom(name: '_HomeControllerBase.about');
+
+  @override
+  Widget get about {
+    _$aboutAtom.reportRead();
+    return super.about;
+  }
+
+  @override
+  set about(Widget value) {
+    _$aboutAtom.reportWrite(value, super.about, () {
+      super.about = value;
     });
   }
 
@@ -28,11 +43,44 @@ mixin _$HomeController on _HomeControllerBase, Store {
       ActionController(name: '_HomeControllerBase');
 
   @override
-  void increment() {
+  void openProjects() {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.increment');
+        name: '_HomeControllerBase.openProjects');
     try {
-      return super.increment();
+      return super.openProjects();
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void closeProjects() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.closeProjects');
+    try {
+      return super.closeProjects();
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void openAbout() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.openAbout');
+    try {
+      return super.openAbout();
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void closeAbout() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.closeAbout');
+    try {
+      return super.closeAbout();
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +89,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+projects: ${projects},
+about: ${about}
     ''';
   }
 }

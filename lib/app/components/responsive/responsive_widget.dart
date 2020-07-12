@@ -5,6 +5,19 @@ class ResponsiveWidget extends StatelessWidget {
   final Widget medioScreen;
   final Widget grandeScreen;
 
+  static bool isPequenoScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width < 765;
+  }
+
+  static bool isMedioScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width < 1000 &&
+        MediaQuery.of(context).size.width >= 765;
+  }
+
+  static bool isGrandeScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= 1000 || isMedioScreen(context);
+  }
+
   const ResponsiveWidget({
     Key key,
     this.pequenoScreen,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 darkTheme(context) {
   return ThemeData(
+    iconTheme: IconThemeData(color: Colors.teal, size: 23),
     fontFamily: 'GoogleSansRegular',
     primarySwatch: Colors.blue,
     primaryColor: Colors.black,
@@ -13,10 +14,22 @@ darkTheme(context) {
     backgroundColor: Colors.white10,
     textTheme: TextTheme(
       headline1: TextStyle(
-          fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-      headline2: TextStyle(fontSize: 12, color: Colors.grey),
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        color: Colors.white70,
+      ),
+      headline2: TextStyle(
+        fontSize: 20,
+        color: Colors.white70,
+        fontWeight: FontWeight.bold,
+      ),
       bodyText1: TextStyle(
-        fontSize: 14,
+        fontSize: 15,
+        color: Colors.white.withOpacity(0.7),
+      ),
+      bodyText2: TextStyle(
+        fontSize: 16,
+        color: Colors.black.withOpacity(0.7),
       ),
     ),
     buttonTheme: Theme.of(context).buttonTheme.copyWith(
@@ -51,18 +64,27 @@ lightTheme(context) {
         color: Colors.black54,
       ),
       headline2: TextStyle(
-          fontSize: 20, color: Colors.black54, fontWeight: FontWeight.bold),
+          fontSize: 20, color: Colors.black54, fontWeight: FontWeight.bold,),
       bodyText1: TextStyle(
-        fontSize: 14,
+        fontSize: 15,
+        color: Colors.black.withOpacity(0.7),
+      ),
+      bodyText2: TextStyle(
+        fontSize: 16,
         color: Colors.black.withOpacity(0.7),
       ),
     ),
     buttonTheme: Theme.of(context).buttonTheme.copyWith(
         colorScheme: ColorScheme.light(),
         buttonColor: Colors.blue,
-        splashColor: Colors.white),
+        splashColor: Colors.white,),
     appBarTheme: AppBarTheme(
       elevation: 0.0,
     ),
   );
+}
+
+enum ThemeOption {
+  darkTheme,
+  lightTheme,
 }
