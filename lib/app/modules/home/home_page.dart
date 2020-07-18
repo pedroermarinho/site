@@ -35,27 +35,23 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.all(6),
-                    child: Container1Page(),
-                  ),
+                Padding(
+                  padding: EdgeInsets.all(6),
+                  child: Container1Page(),
                 ),
                 SizedBox(
                   width: 5,
                 ),
                 Expanded(
                   child: Container(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container2Page(),
-                          Container3Page(),
-                          Container4Page(),
-                          Container5Page(),
-                        ],
-                      ),
+                    child: ListView(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container2Page(),
+                        Container3Page(),
+                        Container4Page(),
+                        Container5Page(),
+                      ],
                     ),
                   ),
                 ),
@@ -75,21 +71,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         body: PageView(
           controller: controller.pageViewController,
           children: [
-            SingleChildScrollView(
-              child: Container1Page(),
-            ),
-            SingleChildScrollView(
-              child: Container2Page(),
-            ),
-            SingleChildScrollView(
-              child: Container3Page(),
-            ),
-            SingleChildScrollView(
-              child: Container4Page(),
-            ),
-            SingleChildScrollView(
-              child: Container5Page(),
-            ),
+            Container1Page(),
+            Container2Page(),
+            Container3Page(),
+            Container4Page(),
+            Container5Page(),
           ],
         ),
         bottomNavigationBar: AnimatedBuilder(
@@ -103,28 +89,58 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 items: [
                   BottomNavigationBarItem(
                     backgroundColor: Colors.black87,
-                    icon: Icon(Icons.person,color: Colors.teal,),
-                    title: Text("Perfil",style: TextStyle(color: Colors.white),),
+                    icon: Icon(
+                      Icons.person,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      "Perfil",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   BottomNavigationBarItem(
                     backgroundColor: Colors.black87,
-                    icon: Icon(Icons.business,color: Colors.teal,),
-                    title: Text("Emprego",style: TextStyle(color: Colors.white),),
+                    icon: Icon(
+                      Icons.business,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      "Emprego",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   BottomNavigationBarItem(
                     backgroundColor: Colors.black87,
-                    icon: Icon(Icons.school,color: Colors.teal,),
-                    title: Text("Educação",style: TextStyle(color: Colors.white),),
+                    icon: Icon(
+                      Icons.school,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      "Educação",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   BottomNavigationBarItem(
                     backgroundColor: Colors.black87,
-                    icon: Icon(FontAwesomeIcons.github,color: Colors.teal,),
-                    title: Text("Projetos",style: TextStyle(color: Colors.white),),
+                    icon: Icon(
+                      FontAwesomeIcons.github,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      "Projetos",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   BottomNavigationBarItem(
                     backgroundColor: Colors.black87,
-                    icon: Icon(FontAwesomeIcons.linkedinIn,color: Colors.teal,),
-                    title: Text("Redes",style: TextStyle(color: Colors.white),),
+                    icon: Icon(
+                      FontAwesomeIcons.linkedinIn,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      "Redes",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               );

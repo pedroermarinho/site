@@ -6,6 +6,7 @@ import 'package:site/app/components/responsive/responsive_widget.dart';
 import 'package:site/app/shared/config/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../components/responsive/responsive_widget.dart';
 import 'container5_controller.dart';
 
 class Container5Page extends StatefulWidget {
@@ -45,7 +46,7 @@ class _Container5PageState
                 ],
               ),
         child: Padding(
-          padding: EdgeInsets.all(30),
+          padding: ResponsiveWidget.isPequenoScreen(context)?EdgeInsets.all(10) :EdgeInsets.all(30),
           child: Wrap(
             direction: Axis.horizontal,
             crossAxisAlignment: WrapCrossAlignment.center,

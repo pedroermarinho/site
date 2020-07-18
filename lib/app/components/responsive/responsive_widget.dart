@@ -18,6 +18,20 @@ class ResponsiveWidget extends StatelessWidget {
     return MediaQuery.of(context).size.width >= 1000 || isMedioScreen(context);
   }
 
+  static Widget listViewOrColumn(
+    BuildContext context, {
+    @required List<Widget> children,
+  }) {
+    return isPequenoScreen(context)
+        ? ListView(
+            children: children,
+          )
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: children,
+          );
+  }
+
   const ResponsiveWidget({
     Key key,
     this.pequenoScreen,

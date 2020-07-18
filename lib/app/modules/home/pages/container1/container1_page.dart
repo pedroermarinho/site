@@ -43,29 +43,19 @@ class _Container1PageState
         ),
         child: child,
       ),
-      pequenoScreen: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 6.0,
-            ),
-          ],
-        ),
-        child: child,
-      ),
+      pequenoScreen: child
     );
   }
 
   @override
   Widget build(BuildContext context) {
+
     return containerCostum(
       context,
-      child: Column(
+      child: ListView(
         children: [
           Container(
             height: 300,
-//                  color: Colors.deepOrange,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,

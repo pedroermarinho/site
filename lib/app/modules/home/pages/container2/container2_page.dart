@@ -6,6 +6,8 @@ import 'package:site/app/components/line/line_widget.dart';
 import 'package:site/app/components/responsive/responsive_widget.dart';
 import 'package:site/app/components/text_icon/text_icon_widget.dart';
 
+import '../../../../components/responsive/responsive_widget.dart';
+import '../../../../components/responsive/responsive_widget.dart';
 import 'container2_controller.dart';
 
 class Container2Page extends StatefulWidget {
@@ -16,6 +18,8 @@ class Container2Page extends StatefulWidget {
   @override
   _Container2PageState createState() => _Container2PageState();
 }
+
+
 
 class _Container2PageState
     extends ModularState<Container2Page, Container2Controller> {
@@ -35,9 +39,9 @@ class _Container2PageState
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: ResponsiveWidget.isPequenoScreen(context)?EdgeInsets.all(10) :EdgeInsets.all(30),
+          child: ResponsiveWidget.listViewOrColumn (
+            context,
             children: [
               TextIconWidget(
                 text: "Experiência de Trabalho",

@@ -35,9 +35,9 @@ class _Container3PageState
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding:ResponsiveWidget.isPequenoScreen(context)?EdgeInsets.all(10) : EdgeInsets.all(30),
+          child: ResponsiveWidget.listViewOrColumn (
+            context,
             children: [
               TextIconWidget(
                 text: "Educação",

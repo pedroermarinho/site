@@ -18,8 +18,13 @@ abstract class _ProjetcsControllerBase with Store {
   final _homeController = Modular.get<HomeController>();
 
   @action
-  void closeProjects() {
+  void closeProjectsHome() {
     _homeController.closeProjects();
+  }
+
+  @action
+  void closeProjects() {
+    Modular.to.pop();
   }
 
   final _githubRepositoryController = Modular.get<GithubRepositoryController>();
