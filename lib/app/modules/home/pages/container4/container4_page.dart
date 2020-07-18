@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:site/app/components/item_project/item_project_widget.dart';
 import 'package:site/app/components/line/line_widget.dart';
+import 'package:site/app/components/responsive/responsive_widget.dart';
 import 'package:site/app/components/text_icon/text_icon_widget.dart';
 
 import 'container4_controller.dart';
@@ -25,15 +26,16 @@ class _Container4PageState
     return Padding(
       padding: EdgeInsets.all(6),
       child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
-          boxShadow: [
-            BoxShadow(
-
-              blurRadius: 6.0,
-            ),
-          ],
-        ),
+        decoration: ResponsiveWidget.isPequenoScreen(context)
+            ? null
+            : BoxDecoration(
+                color: Theme.of(context).backgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 6.0,
+                  ),
+                ],
+              ),
         child: Padding(
           padding: EdgeInsets.all(30),
           child: Column(
@@ -112,6 +114,12 @@ class _Container4PageState
                 githubUrl: "https://github.com/pedroermarinho/manaus_acessivel",
                 siteUrl: "https://pedroermarinho.github.io/manaus_acessivel",
               ),
+              ResponsiveWidget.isPequenoScreen(context) ?Center(
+                child: FlatButton(
+                onPressed: controller.pushProjetcs,
+                child: Text("Mais Projetos"),
+              ),
+              ):Container()
             ],
           ),
         ),

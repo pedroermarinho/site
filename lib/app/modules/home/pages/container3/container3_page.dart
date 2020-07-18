@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:site/app/components/item_information/item_information_widget.dart';
 import 'package:site/app/components/line/line_widget.dart';
+import 'package:site/app/components/responsive/responsive_widget.dart';
 import 'package:site/app/components/text_icon/text_icon_widget.dart';
 
 import 'container3_controller.dart';
@@ -24,7 +25,7 @@ class _Container3PageState
     return Padding(
       padding: EdgeInsets.all(6),
       child: Container(
-        decoration: BoxDecoration(
+        decoration:ResponsiveWidget.isPequenoScreen(context)?null: BoxDecoration(
           color: Theme.of(context).backgroundColor,
           boxShadow: [
             BoxShadow(
@@ -51,7 +52,7 @@ class _Container3PageState
                 fim: "2018",
                 descricao: "Técnico",
               ),
-              Padding(
+             Padding(
                 padding: EdgeInsets.only(top: 15, bottom: 15),
                 child: LineWidget(),
               ),
@@ -61,7 +62,7 @@ class _Container3PageState
                 fim: "2022",
                 descricao: "Bacharelado",
               ),
-              Padding(
+             Padding(
                 padding: EdgeInsets.only(top: 15, bottom: 15),
                 child: LineWidget(),
               ),

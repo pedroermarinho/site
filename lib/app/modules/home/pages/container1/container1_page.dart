@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:site/app/components/line/line_widget.dart';
 import 'package:site/app/components/link/link_widget.dart';
 import 'package:site/app/components/responsive/responsive_widget.dart';
@@ -22,7 +24,7 @@ class _Container1PageState
     extends ModularState<Container1Page, Container1Controller> {
   //use 'controller' variable to access controller
 
-  Widget containerCostum(BuildContext context,{Widget child}) {
+  Widget containerCostum(BuildContext context, {Widget child}) {
     return ResponsiveWidget(
       grandeScreen: Container(
         constraints: BoxConstraints(
@@ -74,9 +76,23 @@ class _Container1PageState
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                ResponsiveWidget.isPequenoScreen(context)
+                    ? Observer(
+                        builder: (_) => IconButton(
+                          icon: Icon(
+                            controller.isThemeDark
+                                ? FontAwesomeIcons.solidSun
+                                : FontAwesomeIcons.solidMoon,
+                            color: Colors.white,
+                          ),
+                          onPressed: controller.changeTheme,
+                        ),
+                      )
+                    : Container(),
+                Expanded(child: Container()),
                 Container(
                   child: Text(
                     Constants.APP_NAME,
@@ -86,9 +102,7 @@ class _Container1PageState
                       BoxDecoration(color: Colors.black.withOpacity(0.5)),
                   padding: EdgeInsets.all(4),
                 ),
-                LineWidget(
-                  color: Colors.transparent,
-                )
+                LineWidget(color: Colors.transparent)
               ],
             ),
           ),

@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:site/app/components/responsive/responsive_widget.dart';
 
 class SkillsWidget extends StatelessWidget {
   final String text;

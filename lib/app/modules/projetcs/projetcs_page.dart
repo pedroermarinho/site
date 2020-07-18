@@ -20,7 +20,8 @@ class _ProjetcsPageState
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return ResponsiveWidget(
+      grandeScreen: Padding(
       padding:
           EdgeInsets.all(ResponsiveWidget.isPequenoScreen(context) ? 20 : 70),
       child: Container(
@@ -45,18 +46,65 @@ class _ProjetcsPageState
                 ),
               ],
             ),
-            Observer(builder: (_){
-              return Expanded(child: ListView.builder(
-                padding: EdgeInsets.only(bottom: 15,top: 6),
-                  itemCount: controller.listProjects.length,
-                  itemBuilder: (_,index){
-                    return controller.listProjects[index];
-                  },),);
-            },),
-
+            Observer(
+              builder: (_) {
+                return Expanded(
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(bottom: 15, top: 6),
+                    itemCount: controller.listProjects.length,
+                    itemBuilder: (_, index) {
+                      return controller.listProjects[index];
+                    },
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
+    ),
+    pequenoScreen: Scaffold(
+      appBar: AppBar(),
+      body: Container(
+        // width: double.infinity,
+        // height: double.infinity,
+        // decoration: BoxDecoration(
+        //   color: Theme.of(context).backgroundColor,
+        //   boxShadow: [
+        //     BoxShadow(
+        //       blurRadius: 6.0,
+        //     ),
+        //   ],
+        // ),
+        child: Column(
+          children: [
+            ResponsiveWidget.isPequenoScreen(context)?Container(): Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: controller.closeProjects,
+                ),
+              ],
+            ),
+            Observer(
+              builder: (_) {
+                return 
+                Expanded(
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(bottom: 15, top: 6),
+                    itemCount: controller.listProjects.length,
+                    itemBuilder: (_, index) {
+                      return controller.listProjects[index];
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:site/app/components/line/line_widget.dart';
+import 'package:site/app/components/responsive/responsive_widget.dart';
 import 'package:site/app/shared/config/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -33,14 +34,16 @@ class _Container5PageState
     return Padding(
       padding: EdgeInsets.all(6),
       child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 6.0,
-            ),
-          ],
-        ),
+        decoration: ResponsiveWidget.isPequenoScreen(context)
+            ? null
+            : BoxDecoration(
+                color: Theme.of(context).backgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 6.0,
+                  ),
+                ],
+              ),
         child: Padding(
           padding: EdgeInsets.all(30),
           child: Wrap(
@@ -78,8 +81,8 @@ class _Container5PageState
                 onPressed: () => _launchURL(Constants.PROFILE_TWITTER),
                 iconSize: 100,
               ),
-              LineWidget(
-                color: Colors.transparent,
+              ResponsiveWidget.isPequenoScreen(context)?Container(): LineWidget(
+                color: Colors.transparent
               )
             ],
           ),
