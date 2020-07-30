@@ -4,14 +4,14 @@ Welcome to site 👋
 
 </h1>
 <p>
-<img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+<img alt="Version" src="https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000" />
 <a href="https://github.com/pedroermarinho/site#readme" target="_blank"><img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" /></a>
 <a href="https://github.com/pedroermarinho/site/graphs/commit-activity" target="_blank"><img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
 <a href="https://github.com/pedroermarinho/site/blob/master/LICENSE" target="_blank"><img alt="License:MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
 <a href="https://twitter.com/pedroermarinho" target="_blank"><img alt="Twitter: pedroermarinho" src="https://img.shields.io/twitter/follow/pedroermarinho.svg?style=social" /></a>
 </p>
 
-> pedroermarinho
+> Portfólio
 ### 🏠 [Homepage](https://github.com/pedroermarinho/site#readme)
 ### ✨ [Demo](https://github.com/pedroermarinho/site#readme)
 ## Install

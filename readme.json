@@ -1,7 +1,7 @@
 {
   "project_name": "site",
-  "version": "0.1.0",
-  "description": "pedroermarinho",
+  "version": "0.2.0",
+  "description": "Portfólio",
   "icon_src": "assets/Octocat.png",
   "snap_store_name": null,
   "screenshot_src": ["screenshot/Screenshot1.jpg","screenshot/Screenshot2.jpg","screenshot/Screenshot3.jpg","screenshot/Screenshot4.jpg","screenshot/Screenshot5.jpg","screenshot/Screenshot6.jpg","screenshot/Screenshot7.png","screenshot/Screenshot8.png","screenshot/Screenshot9.png"],
