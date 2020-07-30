@@ -64,7 +64,10 @@ lightTheme(context) {
         color: Colors.black54,
       ),
       headline2: TextStyle(
-          fontSize: 20, color: Colors.black54, fontWeight: FontWeight.bold,),
+        fontSize: 20,
+        color: Colors.black54,
+        fontWeight: FontWeight.bold,
+      ),
       bodyText1: TextStyle(
         fontSize: 15,
         color: Colors.black.withOpacity(0.7),
@@ -75,9 +78,10 @@ lightTheme(context) {
       ),
     ),
     buttonTheme: Theme.of(context).buttonTheme.copyWith(
-        colorScheme: ColorScheme.light(),
-        buttonColor: Colors.blue,
-        splashColor: Colors.white,),
+          colorScheme: ColorScheme.light(),
+          buttonColor: Colors.blue,
+          splashColor: Colors.white,
+        ),
     appBarTheme: AppBarTheme(
       elevation: 0.0,
     ),

@@ -1,4 +1,4 @@
-import 'package:site/app/shared/config/constants.dart';
+import 'package:pedroermarinho/app/shared/config/constants.dart';
 
 class ReadmeUtils {
   static String projectImgUrl(String projectName, String imgSrc) {

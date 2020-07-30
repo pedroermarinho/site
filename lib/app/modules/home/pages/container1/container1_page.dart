@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:site/app/components/line/line_widget.dart';
-import 'package:site/app/components/link/link_widget.dart';
-import 'package:site/app/components/responsive/responsive_widget.dart';
-import 'package:site/app/components/skills/skills_widget.dart';
-import 'package:site/app/components/text_icon/text_icon_widget.dart';
-import 'package:site/app/shared/config/constants.dart';
+import 'package:pedroermarinho/app/components/responsive/responsive_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/line/line_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/link/link_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/skills/skills_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/text_icon/text_icon_widget.dart';
+import 'package:pedroermarinho/app/shared/config/constants.dart';
 
 import 'container1_controller.dart';
 
@@ -26,30 +26,28 @@ class _Container1PageState
 
   Widget containerCostum(BuildContext context, {Widget child}) {
     return ResponsiveWidget(
-      grandeScreen: Container(
-        constraints: BoxConstraints(
-          maxWidth: 430,
-          minWidth: 200,
+        grandeScreen: Container(
+          constraints: BoxConstraints(
+            maxWidth: 430,
+            minWidth: 200,
 //         maxHeight:width>750?height:330,
-          minHeight: 200,
+            minHeight: 200,
+          ),
+          decoration: BoxDecoration(
+            color: Theme.of(context).backgroundColor,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 6.0,
+              ),
+            ],
+          ),
+          child: child,
         ),
-        decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 6.0,
-            ),
-          ],
-        ),
-        child: child,
-      ),
-      pequenoScreen: child
-    );
+        pequenoScreen: child);
   }
 
   @override
   Widget build(BuildContext context) {
-
     return containerCostum(
       context,
       child: ListView(

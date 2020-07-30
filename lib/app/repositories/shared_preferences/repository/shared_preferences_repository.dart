@@ -1,6 +1,6 @@
+import 'package:pedroermarinho/app/repositories/shared_preferences/repository/shared_preferences_repository_interface.dart';
+import 'package:pedroermarinho/app/shared/config/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:site/app/repositories/shared_preferences/repository/shared_preferences_repository_interface.dart';
-import 'package:site/app/shared/config/constants.dart';
 
 class SharedPreferencesRepository extends ISharedPreferencesRepository {
   @override

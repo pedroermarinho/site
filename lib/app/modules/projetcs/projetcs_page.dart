@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:site/app/components/responsive/responsive_widget.dart';
+import 'package:pedroermarinho/app/components/responsive/responsive_widget.dart';
 
-import '../../components/responsive/responsive_widget.dart';
 import 'projetcs_controller.dart';
 
 class ProjetcsPage extends StatefulWidget {
@@ -23,8 +22,7 @@ class _ProjetcsPageState
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       grandeScreen: Padding(
-        padding:
-            EdgeInsets.all(70),
+        padding: EdgeInsets.all(70),
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -73,7 +71,7 @@ class _ProjetcsPageState
                 children: [
                   IconButton(
                     icon: Icon(Icons.close),
-                    onPressed:controller.closeProjects,
+                    onPressed: controller.closeProjects,
                   ),
                 ],
               ),

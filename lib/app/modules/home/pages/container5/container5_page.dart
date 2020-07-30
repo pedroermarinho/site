@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:site/app/components/line/line_widget.dart';
-import 'package:site/app/components/responsive/responsive_widget.dart';
-import 'package:site/app/shared/config/constants.dart';
+import 'package:pedroermarinho/app/components/responsive/responsive_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/line/line_widget.dart';
+import 'package:pedroermarinho/app/shared/config/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../components/responsive/responsive_widget.dart';
 import 'container5_controller.dart';
 
 class Container5Page extends StatefulWidget {
@@ -46,7 +45,9 @@ class _Container5PageState
                 ],
               ),
         child: Padding(
-          padding: ResponsiveWidget.isPequenoScreen(context)?EdgeInsets.all(10) :EdgeInsets.all(30),
+          padding: ResponsiveWidget.isPequenoScreen(context)
+              ? EdgeInsets.all(10)
+              : EdgeInsets.all(30),
           child: Wrap(
             direction: Axis.horizontal,
             crossAxisAlignment: WrapCrossAlignment.center,
@@ -82,9 +83,9 @@ class _Container5PageState
                 onPressed: () => _launchURL(Constants.PROFILE_TWITTER),
                 iconSize: 100,
               ),
-              ResponsiveWidget.isPequenoScreen(context)?Container(): LineWidget(
-                color: Colors.transparent
-              )
+              ResponsiveWidget.isPequenoScreen(context)
+                  ? Container()
+                  : LineWidget(color: Colors.transparent)
             ],
           ),
         ),

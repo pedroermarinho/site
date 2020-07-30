@@ -3,11 +3,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'projetcs_controller.dart';
 import 'projetcs_page.dart';
+import 'repositories/github/github_repository_controller.dart';
 
 class ProjetcsModule extends WidgetModule {
   @override
   List<Bind> get binds => [
         Bind((i) => ProjetcsController()),
+        Bind((i) => GithubRepositoryController()),
       ];
 
   @override

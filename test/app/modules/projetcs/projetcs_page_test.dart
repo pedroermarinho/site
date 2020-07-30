@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 
-import 'package:site/app/modules/projetcs/projetcs_page.dart';
+import 'package:pedroermarinho/app/modules/projetcs/projetcs_page.dart';
 
 void main() {
   testWidgets('ProjetcsPage has title', (tester) async {

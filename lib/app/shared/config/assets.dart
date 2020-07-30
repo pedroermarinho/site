@@ -1,3 +1,3 @@
 class Assets {
-  static const String icon ="assets/Octocat.png";
+  static const String icon = "assets/Octocat.png";
 }

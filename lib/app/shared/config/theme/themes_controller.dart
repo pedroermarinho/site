@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:site/app/repositories/shared_preferences/shared_preferences_repository_controller.dart';
-import 'package:site/app/shared/config/constants.dart';
-import 'package:site/app/shared/config/theme/themes.dart';
+import 'package:pedroermarinho/app/repositories/shared_preferences/shared_preferences_repository_controller.dart';
+import 'package:pedroermarinho/app/shared/config/theme/themes.dart';
 
 part 'themes_controller.g.dart';
 

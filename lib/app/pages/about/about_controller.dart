@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:package_info/package_info.dart';
-import 'package:site/app/modules/home/home_controller.dart';
+import 'package:pedroermarinho/app/modules/home/home_controller.dart';
 
 part 'about_controller.g.dart';
 
@@ -11,9 +10,10 @@ abstract class _AboutControllerBase with Store {
   final _homeController = Modular.get<HomeController>();
 
   @action
-  void closeAbout(){
+  void closeAbout() {
     _homeController.closeAbout();
   }
+
 //  @observable
 //  String appName = "";
 //

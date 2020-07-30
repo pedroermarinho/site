@@ -1,8 +1,8 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:site/app/modules/projetcs/projetcs_controller.dart';
-import 'package:site/app/modules/projetcs/projetcs_module.dart';
+import 'package:pedroermarinho/app/modules/projetcs/projetcs_controller.dart';
+import 'package:pedroermarinho/app/modules/projetcs/projetcs_module.dart';
 
 void main() {
   initModule(ProjetcsModule());

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:site/app/components/item_project/item_project_widget.dart';
-import 'package:site/app/components/line/line_widget.dart';
-import 'package:site/app/components/responsive/responsive_widget.dart';
-import 'package:site/app/components/text_icon/text_icon_widget.dart';
+import 'package:pedroermarinho/app/components/responsive/responsive_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/item_project/item_project_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/line/line_widget.dart';
+import 'package:pedroermarinho/app/modules/home/components/text_icon/text_icon_widget.dart';
 
 import 'container4_controller.dart';
 
@@ -37,8 +37,10 @@ class _Container4PageState
                 ],
               ),
         child: Padding(
-          padding:ResponsiveWidget.isPequenoScreen(context)?EdgeInsets.all(10) : EdgeInsets.all(30),
-          child: ResponsiveWidget.listViewOrColumn (
+          padding: ResponsiveWidget.isPequenoScreen(context)
+              ? EdgeInsets.all(10)
+              : EdgeInsets.all(30),
+          child: ResponsiveWidget.listViewOrColumn(
             context,
             children: [
               TextIconWidget(
@@ -114,12 +116,14 @@ class _Container4PageState
                 githubUrl: "https://github.com/pedroermarinho/manaus_acessivel",
                 siteUrl: "https://pedroermarinho.github.io/manaus_acessivel",
               ),
-              ResponsiveWidget.isPequenoScreen(context) ?Center(
-                child: FlatButton(
-                onPressed: controller.pushProjetcs,
-                child: Text("Mais Projetos"),
-              ),
-              ):Container()
+              ResponsiveWidget.isPequenoScreen(context)
+                  ? Center(
+                      child: FlatButton(
+                        onPressed: controller.pushProjetcs,
+                        child: Text("Mais Projetos"),
+                      ),
+                    )
+                  : Container()
             ],
           ),
         ),

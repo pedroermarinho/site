@@ -7,8 +7,7 @@ class Container4Controller = _Container4ControllerBase
     with _$Container4Controller;
 
 abstract class _Container4ControllerBase with Store {
- 
- pushProjetcs(){
-   Modular.to.pushNamed("/projects");
- }
+  pushProjetcs() {
+    Modular.to.pushNamed("/projects");
+  }
 }

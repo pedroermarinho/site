@@ -3,13 +3,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:site/app/components/responsive/responsive_widget.dart';
-import 'package:site/app/modules/home/pages/container1/container1_page.dart';
-import 'package:site/app/modules/home/pages/container2/container2_page.dart';
-import 'package:site/app/modules/home/pages/container3/container3_page.dart';
-import 'package:site/app/modules/home/pages/container4/container4_page.dart';
-import 'package:site/app/modules/home/pages/container5/container5_page.dart';
-import 'package:site/app/modules/settings/settings_module.dart';
+import 'package:pedroermarinho/app/components/responsive/responsive_widget.dart';
+import 'pages/container1/container1_page.dart';
+import 'pages/container2/container2_page.dart';
+import 'pages/container3/container3_page.dart';
+import 'pages/container4/container4_page.dart';
+import 'pages/container5/container5_page.dart';
+import 'package:pedroermarinho/app/modules/settings/settings_module.dart';
 
 import 'home_controller.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:site/app/modules/projetcs/projetcs_module.dart';
-import 'package:site/app/pages/about/about_page.dart';
+import 'package:pedroermarinho/app/modules/projetcs/projetcs_module.dart';
+import 'package:pedroermarinho/app/pages/about/about_page.dart';
 
 part 'home_controller.g.dart';
 
@@ -13,11 +13,12 @@ abstract class _HomeControllerBase with Store implements Disposable {
   Widget projects = Container();
 
   @action
-  void openProjects(){
+  void openProjects() {
     projects = ProjetcsModule();
   }
+
   @action
-  void closeProjects(){
+  void closeProjects() {
     projects = Container();
   }
 
@@ -25,19 +26,19 @@ abstract class _HomeControllerBase with Store implements Disposable {
   Widget about = Container();
 
   @action
-  void openAbout(){
+  void openAbout() {
     about = AboutPage();
   }
+
   @action
-  void closeAbout(){
+  void closeAbout() {
     about = Container();
   }
 
-  final pageViewController =PageController();
+  final pageViewController = PageController();
 
   @override
   void dispose() {
     pageViewController.dispose();
   }
-
 }

@@ -8,9 +8,7 @@ class LayoutCustomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar,
-      body:body
+    return Scaffold(appBar: appBar, body: body
 
 //      Stack(
 //        children: <Widget>[
@@ -28,6 +26,6 @@ class LayoutCustomWidget extends StatelessWidget {
 //          ),
 //        ],
 //      ),
-    );
+        );
   }
 }

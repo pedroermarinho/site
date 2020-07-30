@@ -28,27 +28,31 @@ class _SettingsPageState
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Observer(builder: (_)=>IconButton(
+          Observer(
+            builder: (_) => IconButton(
+              icon: Icon(
+                controller.isThemeDark
+                    ? FontAwesomeIcons.solidSun
+                    : FontAwesomeIcons.solidMoon,
+                color: Colors.white,
+              ),
+              onPressed: controller.changeTheme,
+            ),
+          ),
+          IconButton(
             icon: Icon(
-              controller.isThemeDark
-                  ? FontAwesomeIcons.solidSun
-                  : FontAwesomeIcons.solidMoon,
+              FontAwesomeIcons.github,
               color: Colors.white,
             ),
-            onPressed: controller.changeTheme,
-          ),),
+            onPressed: controller.openProjects,
+          ),
           IconButton(
-              icon: Icon(
-                FontAwesomeIcons.github,
-                color: Colors.white,
-              ),
-              onPressed: controller.openProjects,),
-          IconButton(
-              icon: Icon(
-                FontAwesomeIcons.infoCircle,
-                color: Colors.white,
-              ),
-              onPressed:  controller.openAbout,),
+            icon: Icon(
+              FontAwesomeIcons.infoCircle,
+              color: Colors.white,
+            ),
+            onPressed: controller.openAbout,
+          ),
         ],
       ),
     );
