@@ -21,14 +21,14 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  package_info: ^0.4.1
-  font_awesome_flutter: ^8.8.1
-  url_launcher: ^5.5.0
-  shared_preferences: ^0.5.8
-  dio: ^3.0.9
-  flutter_mobx: ^1.1.0+1
-  mobx: ^1.2.1+1
-  flutter_modular: ^1.2.7+1
+  package_info: ^0.4.3+2
+  font_awesome_flutter: ^8.10.0
+  url_launcher: ^5.7.10
+  shared_preferences: ^0.5.12+4
+  dio: ^3.0.10
+  flutter_mobx: ^1.1.0+2
+  mobx: ^1.2.1+4
+  flutter_modular: ^2.0.1
   flutter:
     sdk: flutter
 
@@ -38,10 +38,12 @@ dependencies:
   cupertino_icons: ^0.1.3
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.7.5
-  mockito: ^4.1.1
-  mobx_codegen: ^1.1.0+1
-  build_runner: ^1.10.0
+  flutter_launcher_icons: ^0.8.1
+  mockito: ^4.1.3
+  modular_codegen: ^2.0.1
+  mobx_codegen: ^1.1.2
+  build_runner: ^1.10.4
+  build_web_compilers: ^2.13.0
   flutter_test:
     sdk: flutter
 
@@ -67,13 +69,17 @@ flutter:
     - assets/Octocat.png
 
 
-vars:
-  clean: flutter clean
-  get: flutter pub get
-  runner: flutter pub run build_runner
-scripts:
-  mobx_build: $clean & $get & $runner build --delete-conflicting-outputs
-  mobx_watch: $clean & $get & $runner watch --delete-conflicting-outputs
+## Slidy Scripts 
+vars: 
+    clean: flutter clean
+    get: flutter pub get
+    runner: flutter pub run build_runner
+scripts: 
+    mobx_build: $runner build
+    mobx_watch: $clean & $get & $runner watch
+    mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

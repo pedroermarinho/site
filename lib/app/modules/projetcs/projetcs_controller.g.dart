@@ -28,6 +28,17 @@ mixin _$ProjetcsController on _ProjetcsControllerBase, Store {
       ActionController(name: '_ProjetcsControllerBase');
 
   @override
+  void closeProjectsHome() {
+    final _$actionInfo = _$_ProjetcsControllerBaseActionController.startAction(
+        name: '_ProjetcsControllerBase.closeProjectsHome');
+    try {
+      return super.closeProjectsHome();
+    } finally {
+      _$_ProjetcsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void closeProjects() {
     final _$actionInfo = _$_ProjetcsControllerBaseActionController.startAction(
         name: '_ProjetcsControllerBase.closeProjects');
