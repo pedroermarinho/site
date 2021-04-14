@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LinkWidget extends StatelessWidget {
-  final String text;
+  final String? text;
   final String url;
-  final TextStyle style;
+  final TextStyle? style;
 
-  const LinkWidget({Key key, this.text, @required this.url, this.style})
-      : super(key: key);
+  const LinkWidget({required this.url, this.text, this.style});
 
   _launchURL() async {
     if (await canLaunch(url)) {
@@ -18,24 +17,22 @@ class LinkWidget extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-      onPressed: _launchURL,
-      child: Row(
-        children: [
-          Icon(
-            Icons.link,
-            color: Colors.grey,
-            size: 15,
-          ),
-          Flexible(
-            child: Text(
-              text ?? url,
-              style: TextStyle(decoration: TextDecoration.underline),
+  Widget build(BuildContext context) => TextButton(
+        onPressed: _launchURL,
+        child: Row(
+          children: [
+            Icon(
+              Icons.link,
+              color: Colors.grey,
+              size: 15,
             ),
-          ),
-        ],
-      ),
-    );
-  }
+            Flexible(
+              child: Text(
+                text ?? url,
+                style: TextStyle(decoration: TextDecoration.underline),
+              ),
+            ),
+          ],
+        ),
+      );
 }

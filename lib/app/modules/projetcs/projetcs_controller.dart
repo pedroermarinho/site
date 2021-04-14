@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:pedroermarinho/app/components/project_component/project_component_widget.dart';
-import 'package:pedroermarinho/app/modules/home/home_controller.dart';
-import 'package:pedroermarinho/app/modules/projetcs/models/github_repos_model.dart';
-import 'package:pedroermarinho/app/modules/projetcs/models/readme_model.dart';
+import '../../core/presenter/components/project_component_widget.dart';
+import '../home/home_controller.dart';
+import 'models/github_repos_model.dart';
+import 'models/readme_model.dart';
 
 import 'repositories/github/github_repository_controller.dart';
 
@@ -36,27 +36,24 @@ abstract class _ProjetcsControllerBase with Store {
     getGithubRepos();
   }
 
-  getProjects(String repository) async {
-    _githubRepositoryController.getDataGitHubRepos(repository).then(
-      (value) {
-        if (value != null && value.data != null) {
-          ReadmeModel readmeModel =
-              ReadmeModel.fromJson(json.decode(value.data));
-          listProjects.add(ProjectComponentWidget(readmeModel, 0));
-        }
-      },
-    );
-  }
+  void getProjects(String repository) async =>
+      _githubRepositoryController.getDataGitHubRepos(repository).then(
+        (value) {
+          if (value.data != null) {
+            final readmeModel = ReadmeModel.fromJson(json.decode(value.data));
+            listProjects.add(ProjectComponentWidget(readmeModel, 0));
+          }
+        },
+      );
 
-  getGithubRepos() async {
+  void getGithubRepos() async {
     print("inint -> getGithubRepos");
     _githubRepositoryController.getGitHubRepos().then(
       (value) {
-        if (value != null && value.data != null) {
+        if (value.data != null) {
           for (var repos in value.data) {
-            GithubReposModel githubReposModel =
-                GithubReposModel.fromJson(repos);
-            getProjects(githubReposModel.name);
+            final githubReposModel = GithubReposModel.fromJson(repos);
+            getProjects(githubReposModel.name!);
           }
         }
       },

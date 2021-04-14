@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:pedroermarinho/app/modules/projetcs/projetcs_module.dart';
-import 'package:pedroermarinho/app/pages/about/about_page.dart';
+import '../../core/presenter/pages/about/about_page.dart';
+
+import '../projetcs/projetcs_module.dart';
 
 part 'home_controller.g.dart';
 

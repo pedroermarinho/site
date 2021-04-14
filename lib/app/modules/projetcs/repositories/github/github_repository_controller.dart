@@ -11,11 +11,8 @@ class GithubRepositoryController = _GithubRepositoryControllerBase
 abstract class _GithubRepositoryControllerBase with Store {
   final _githubRepository = GithubRepository();
 
-  Future<Response> getDataGitHubRepos(String repository) {
-    return _githubRepository.getDataGitHubRepos(repository);
-  }
+  Future<Response> getDataGitHubRepos(String repository) =>
+      _githubRepository.getDataGitHubRepos(repository);
 
-  Future<Response> getGitHubRepos() async {
-    return _githubRepository.getGitHubRepos();
-  }
+  Future<Response> getGitHubRepos() async => _githubRepository.getGitHubRepos();
 }

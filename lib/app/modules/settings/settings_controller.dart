@@ -1,21 +1,19 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:pedroermarinho/app/modules/home/home_controller.dart';
-import 'package:pedroermarinho/app/shared/config/theme/themes.dart';
-import 'package:pedroermarinho/app/shared/config/theme/themes_controller.dart';
+import '../../core/external/stores/theme/themes_store.dart';
+
+import '../home/home_controller.dart';
 
 part 'settings_controller.g.dart';
 
 class SettingsController = _SettingsControllerBase with _$SettingsController;
 
 abstract class _SettingsControllerBase with Store {
-  final _themesController = Modular.get<ThemesController>();
+  final _themesController = Modular.get<ThemesStore>();
   final _homeController = Modular.get<HomeController>();
 
   @computed
-  bool get isThemeDark {
-    return _themesController.theme == ThemeOption.darkTheme;
-  }
+  bool get isThemeDark => _themesController.isDark;
 
   @action
   void changeTheme() {

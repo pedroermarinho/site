@@ -1,39 +1,63 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pedroermarinho/app/app_controller.dart';
-import 'package:pedroermarinho/app/app_widget.dart';
-import 'package:pedroermarinho/app/components/layout_custom/layout_custom_controller.dart';
-import 'package:pedroermarinho/app/components/responsive/responsive_controller.dart';
-import 'package:pedroermarinho/app/modules/home/home_module.dart';
-import 'package:pedroermarinho/app/modules/projetcs/projetcs_module.dart';
-import 'package:pedroermarinho/app/pages/about/about_controller.dart';
-import 'package:pedroermarinho/app/pages/splash_screen/splash_screen_controller.dart';
-import 'package:pedroermarinho/app/repositories/shared_preferences/shared_preferences_repository_controller.dart';
-import 'package:pedroermarinho/app/shared/config/theme/themes_controller.dart';
+import 'core/domain/usercases/get_theme.dart';
+import 'core/domain/usercases/set_theme.dart';
+import 'core/external/datasources/theme_datasource_impl.dart';
+import 'core/external/drivers/shared_storage_driver_impl.dart';
+import 'core/external/stores/theme/themes_store.dart';
+import 'core/infra/repositories/theme_repository_impl.dart';
+import 'core/infra/services/storage_service_impl.dart';
+import 'core/presenter/components/loading_dialog.dart';
+import 'core/presenter/components/success_dialog.dart';
+import 'core/presenter/pages/about/about_controller.dart';
+import 'core/presenter/pages/splash_screen/splash_screen_controller.dart';
+import 'modules/home/home_module.dart';
+import 'modules/projetcs/projetcs_module.dart';
 
-import 'components/project_component/project_component_controller.dart';
-
-class AppModule extends MainModule {
+class AppModule extends Module {
   @override
-  List<Bind> get binds => [
-        Bind((i) => ProjectComponentController()),
-        Bind((i) => SplashScreenController()),
-        Bind((i) => AboutController()),
-        Bind((i) => AppController()),
-        Bind((i) => SharedPreferencesRepositoryController()),
-        Bind((i) => ThemesController()),
-        Bind((i) => LayoutCustomController()),
-        Bind((i) => ResponsiveController()),
-      ];
+  final List<Bind> binds = [
+    BindInject(
+      (i) => SharedStorageDriver(),
+      isSingleton: false,
+    ),
+    Bind(
+      (i) => StorageServiceImpl(i()),
+      isSingleton: false,
+    ),
+    Bind.lazySingleton(
+      (i) => LoadingDialogImpl(),
+    ),
+    Bind.lazySingleton(
+      (i) => SuccessDialogImpl(),
+    ),
+    Bind(
+      (i) => SetThemeImpl(i()),
+      isSingleton: false,
+    ),
+    Bind(
+      (i) => GetThemeImpl(i()),
+      isSingleton: false,
+    ),
+    Bind(
+      (i) => ThemeDataSourceImpl(i()),
+      isSingleton: false,
+    ),
+    Bind(
+      (i) => ThemeRepositoryImpl(i()),
+      isSingleton: false,
+    ),
+    Bind.lazySingleton(
+      (i) => ThemesStoreImpl(
+        getTheme: i(),
+        setTheme: i(),
+      ),
+    ),
+    Bind((i) => SplashScreenController()),
+    Bind((i) => AboutController(homeController: i())),
+  ];
 
-  @override
-  List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, module: HomeModule()),
-        ModularRouter("/projects", module: ProjetcsModule()),
-      ];
-
-  @override
-  Widget get bootstrap => AppWidget();
-
-  static Inject get to => Inject<AppModule>.of();
+  final List<ModularRoute> routes = [
+    ModuleRoute(Modular.initialRoute, module: HomeModule()),
+    ModuleRoute("/projects", module: ProjetcsModule()),
+  ];
 }

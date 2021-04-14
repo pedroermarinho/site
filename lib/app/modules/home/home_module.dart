@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pedroermarinho/app/modules/settings/settings_module.dart';
 import 'components/item_information/item_information_controller.dart';
 import 'components/item_project/item_project_controller.dart';
 import 'components/line/line_controller.dart';
@@ -14,27 +15,25 @@ import 'pages/container3/container3_controller.dart';
 import 'pages/container4/container4_controller.dart';
 import 'pages/container5/container5_controller.dart';
 
-class HomeModule extends ChildModule {
+class HomeModule extends Module {
   @override
-  List<Bind> get binds => [
-        Bind((i) => ItemProjectController()),
-        Bind((i) => ItemInformationController()),
-        Bind((i) => LinkController()),
-        Bind((i) => SkillsController()),
-        Bind((i) => LineController()),
-        Bind((i) => TextIconController()),
-        Bind((i) => Container5Controller()),
-        Bind((i) => Container4Controller()),
-        Bind((i) => Container3Controller()),
-        Bind((i) => Container2Controller()),
-        Bind((i) => Container1Controller()),
-        Bind((i) => HomeController()),
-      ];
+  final List<Bind> binds = [
+    ...SettingsModule().binds,
+    Bind((i) => ItemProjectController()),
+    Bind((i) => ItemInformationController()),
+    Bind((i) => LinkController()),
+    Bind((i) => SkillsController()),
+    Bind((i) => LineController()),
+    Bind((i) => TextIconController()),
+    Bind((i) => Container5Controller()),
+    Bind((i) => Container4Controller()),
+    Bind((i) => Container3Controller()),
+    Bind((i) => Container2Controller()),
+    Bind((i) => Container1Controller()),
+    Bind((i) => HomeController()),
+  ];
 
-  @override
-  List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, child: (_, args) => HomePage()),
-      ];
-
-  static Inject get to => Inject<HomeModule>.of();
+  final List<ModularRoute> routes = [
+    ChildRoute(Modular.initialRoute, child: (_, args) => HomePage()),
+  ];
 }

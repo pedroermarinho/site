@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:pedroermarinho/app/shared/config/theme/themes.dart';
-import 'package:pedroermarinho/app/shared/config/theme/themes_controller.dart';
+import '../../../../core/external/stores/theme/themes_store.dart';
 
 part 'container1_controller.g.dart';
 
@@ -9,12 +8,10 @@ class Container1Controller = _Container1ControllerBase
     with _$Container1Controller;
 
 abstract class _Container1ControllerBase with Store {
-  final _themesController = Modular.get<ThemesController>();
+  final _themesController = Modular.get<ThemesStore>();
 
   @computed
-  bool get isThemeDark {
-    return _themesController.theme == ThemeOption.darkTheme;
-  }
+  bool get isThemeDark => _themesController.isDark;
 
   @action
   void changeTheme() {
