@@ -41,5 +41,5 @@ jobs:
           git checkout -b master
           git add --all
           git commit -m "update"
-          git push origin gh-pages -f
+          git push origin master -f
 
