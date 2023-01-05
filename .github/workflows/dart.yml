@@ -38,7 +38,7 @@ jobs:
           git config --global user.name Pedro Marinho
           git status
           git remote add origin https://${{secrets.token}}@github.com/pedroermarinho/pedroermarinho.github.io.git
-          git checkout -b master
+          git checkout master
           git add --all
           git commit -m "update"
           git push origin gh-pages -f
