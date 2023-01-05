@@ -16,12 +16,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          build: flutter build web --release
-          deploy: build/web
-          branch: gh-pages
-          message: "Deploy to GitHub Pages"
+          channel: "stable"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build
+        run: flutter build web --release
+
+      - name: Deploy
+        run: |
+          cd build/web
+          git init
+          git config --global user.email pedroermarinho@gmail.com
+          git config --global user.name Pedro Marinho
+          git status
+          git remote add origin https://${{secrets.token}}@github.com/pedroermarinho/pedroermarinho.github.io.git
+          git checkout -b gh-pages
+          git add --all
+          git commit -m "update"
+          git push origin gh-pages -f
 
