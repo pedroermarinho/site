@@ -4,10 +4,12 @@ abstract class ThemeFailure implements Exception {
 
 class ErrorGetTheme extends ThemeFailure {
   final String message;
+
   ErrorGetTheme({required this.message});
 }
 
 class ErrorSetTheme extends ThemeFailure {
   final String message;
+
   ErrorSetTheme({required this.message});
 }

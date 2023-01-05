@@ -9,9 +9,7 @@ class LinkWidget extends StatelessWidget {
   const LinkWidget({required this.url, this.text, this.style});
 
   _launchURL() async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
+    if (!await launchUrl(Uri.parse(url))) {
       throw 'Could not launch $url';
     }
   }

@@ -22,6 +22,16 @@ ThemeData darkTheme(BuildContext context) => ThemeData(
           color: Colors.white70,
           fontWeight: FontWeight.bold,
         ),
+        headline3: TextStyle(
+          fontSize: 16,
+          color: Colors.black54,
+          fontWeight: FontWeight.bold,
+        ),
+        headline4: TextStyle(
+          fontSize: 14,
+          color: Colors.black54,
+          fontWeight: FontWeight.bold,
+        ),
         bodyText1: TextStyle(
           fontSize: 15,
           color: Colors.white.withOpacity(0.7),
@@ -62,6 +72,16 @@ ThemeData lightTheme(BuildContext context) => ThemeData(
         ),
         headline2: TextStyle(
           fontSize: 20,
+          color: Colors.black54,
+          fontWeight: FontWeight.bold,
+        ),
+        headline3: TextStyle(
+          fontSize: 16,
+          color: Colors.black54,
+          fontWeight: FontWeight.bold,
+        ),
+        headline4: TextStyle(
+          fontSize: 14,
           color: Colors.black54,
           fontWeight: FontWeight.bold,
         ),

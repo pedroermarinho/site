@@ -1,4 +1,4 @@
-import 'package:asuka/asuka.dart' as asuka;
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -11,9 +11,13 @@ part 'themes_store.g.dart';
 
 abstract class ThemesStore {
   ThemeData get themeActual;
+
   void setContext(BuildContext context);
+
   Future recoverTheme();
+
   Future changeTheme();
+
   bool get isDark;
 }
 
@@ -65,7 +69,7 @@ abstract class _ThemesStoreImplBase with Store implements ThemesStore {
     final result = await setTheme(theme);
 
     result.fold((l) {
-      asuka.showSnackBar(SnackBar(content: Text(l.message)));
-    }, (r) => asuka.showSnackBar(SnackBar(content: Text('Tema alterado'))));
+      Asuka.showSnackBar(SnackBar(content: Text(l.message)));
+    }, (r) => Asuka.showSnackBar(SnackBar(content: Text('Tema alterado'))));
   }
 }

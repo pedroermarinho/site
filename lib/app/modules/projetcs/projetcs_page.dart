@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../core/presenter/components/responsive_widget.dart';
 
+import '../../core/presenter/components/responsive_widget.dart';
 import 'projetcs_controller.dart';
 
 class ProjetcsPage extends StatefulWidget {

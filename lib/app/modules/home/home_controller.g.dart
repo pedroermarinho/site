@@ -6,10 +6,11 @@ part of 'home_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeController on _HomeControllerBase, Store {
-  final _$projectsAtom = Atom(name: '_HomeControllerBase.projects');
+  late final _$projectsAtom =
+      Atom(name: '_HomeControllerBase.projects', context: context);
 
   @override
   Widget get projects {
@@ -24,7 +25,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$aboutAtom = Atom(name: '_HomeControllerBase.about');
+  late final _$aboutAtom =
+      Atom(name: '_HomeControllerBase.about', context: context);
 
   @override
   Widget get about {
@@ -39,8 +41,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$_HomeControllerBaseActionController =
-      ActionController(name: '_HomeControllerBase');
+  late final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase', context: context);
 
   @override
   void openProjects() {

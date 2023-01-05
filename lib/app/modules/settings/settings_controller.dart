@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import '../../core/external/stores/theme/themes_store.dart';
 
+import '../../core/external/stores/theme/themes_store.dart';
 import '../home/home_controller.dart';
 
 part 'settings_controller.g.dart';

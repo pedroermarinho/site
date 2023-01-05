@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../core/presenter/components/responsive_widget.dart';
 
+import '../../core/presenter/components/responsive_widget.dart';
 import '../settings/settings_module.dart';
 import 'home_controller.dart';
 import 'pages/container1/container1_page.dart';
@@ -18,8 +17,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends ModularState<HomePage, HomeController> {
-  //use 'controller' variable to access controller
+class _HomePageState extends State<HomePage> {
+  final controller = Modular.get<HomeController>();
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
@@ -77,9 +76,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             animation: controller.pageViewController,
             builder: (context, snapshot) => BottomNavigationBar(
               currentIndex: controller.pageViewController.page?.round() ?? 0,
-              onTap: (index) {
-                controller.pageViewController.jumpToPage(index);
-              },
+              onTap: controller.pageViewController.jumpToPage,
               items: [
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,

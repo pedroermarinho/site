@@ -1,11 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pedroermarinho/app/modules/settings/settings_module.dart';
-import 'components/item_information/item_information_controller.dart';
-import 'components/item_project/item_project_controller.dart';
-import 'components/line/line_controller.dart';
-import 'components/link/link_controller.dart';
-import 'components/skills/skills_controller.dart';
-import 'components/text_icon/text_icon_controller.dart';
 
 import 'home_controller.dart';
 import 'home_page.dart';
@@ -19,12 +13,6 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     ...SettingsModule().binds,
-    Bind((i) => ItemProjectController()),
-    Bind((i) => ItemInformationController()),
-    Bind((i) => LinkController()),
-    Bind((i) => SkillsController()),
-    Bind((i) => LineController()),
-    Bind((i) => TextIconController()),
     Bind((i) => Container5Controller()),
     Bind((i) => Container4Controller()),
     Bind((i) => Container3Controller()),

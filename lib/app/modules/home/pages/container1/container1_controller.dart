@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+
 import '../../../../core/external/stores/theme/themes_store.dart';
 
 part 'container1_controller.g.dart';

@@ -3,8 +3,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../core/domain/entities/settings/skills.dart';
+import '../../../../core/external/stores/settings/settings_store.dart';
+import '../../../../core/presenter/components/loading_senttings_data.dart';
 import '../../../../core/presenter/components/responsive_widget.dart';
-import '../../../../core/presenter/utils/constants.dart';
 import '../../components/line/line_widget.dart';
 import '../../components/link/link_widget.dart';
 import '../../components/skills/skills_widget.dart';
@@ -16,9 +18,9 @@ class Container1Page extends StatefulWidget {
   _Container1PageState createState() => _Container1PageState();
 }
 
-class _Container1PageState
-    extends ModularState<Container1Page, Container1Controller> {
-  //use 'controller' variable to access controller
+class _Container1PageState extends State<Container1Page> {
+  final controller = Modular.get<Container1Controller>();
+  final _settingsStore = Modular.get<SettingsStoreImpl>();
 
   Widget containerCostum(BuildContext context, {required Widget child}) =>
       ResponsiveWidget(
@@ -41,221 +43,244 @@ class _Container1PageState
           pequenoScreen: child);
 
   @override
-  Widget build(BuildContext context) => containerCostum(
-        context,
-        child: ListView(
-          children: [
-            Container(
-              height: 300,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                  image: NetworkImage(
-                    Constants.profileUrlIMG,
+  Widget build(BuildContext context) => Observer(
+        builder: (_) => LoadingSettingsData(
+          data: _settingsStore.settings,
+          builder: (settings) => containerCostum(
+            context,
+            child: ListView(
+              children: [
+                Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                      image: NetworkImage(settings.photo),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ResponsiveWidget.isPequenoScreen(context)
+                          ? Observer(
+                              builder: (_) => IconButton(
+                                icon: Icon(
+                                  controller.isThemeDark
+                                      ? FontAwesomeIcons.solidSun
+                                      : FontAwesomeIcons.solidMoon,
+                                  color: Colors.white,
+                                ),
+                                onPressed: controller.changeTheme,
+                              ),
+                            )
+                          : Container(),
+                      Expanded(child: Container()),
+                      Container(
+                        child: Text(
+                          settings.name,
+                          style: TextStyle(fontSize: 30, color: Colors.white),
+                        ),
+                        decoration:
+                            BoxDecoration(color: Colors.black.withOpacity(0.5)),
+                        padding: EdgeInsets.all(4),
+                      ),
+                      LineWidget(color: Colors.transparent)
+                    ],
                   ),
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ResponsiveWidget.isPequenoScreen(context)
-                      ? Observer(
-                          builder: (_) => IconButton(
-                            icon: Icon(
-                              controller.isThemeDark
-                                  ? FontAwesomeIcons.solidSun
-                                  : FontAwesomeIcons.solidMoon,
-                              color: Colors.white,
-                            ),
-                            onPressed: controller.changeTheme,
-                          ),
-                        )
-                      : Container(),
-                  Expanded(child: Container()),
-                  Container(
-                    child: Text(
-                      Constants.appName,
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                    decoration:
-                        BoxDecoration(color: Colors.black.withOpacity(0.5)),
-                    padding: EdgeInsets.all(4),
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 15,
+                    top: 15,
+                    bottom: 20,
                   ),
-                  LineWidget(color: Colors.transparent)
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 15,
-                top: 15,
-                bottom: 20,
-              ),
-              child: Column(
-                children: [
-                  TextIconWidget(
-                    text: "Desenvolvedor",
-                    icon: Icons.business_center,
-                    style: Theme.of(context).textTheme.bodyText1,
+                  child: Column(
+                    children: [
+                      TextIconWidget(
+                        text: settings.role,
+                        icon: Icons.business_center,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextIconWidget(
+                        text: settings.location,
+                        icon: Icons.home,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextIconWidget(
+                        text: settings.email,
+                        icon: Icons.email,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextIconWidget(
+                        text: settings.phone.fullNumber,
+                        icon: Icons.phone,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextIconWidget(
-                    text: "Manauas-AM",
-                    icon: Icons.home,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextIconWidget(
-                    text: "pedro.marinho238@gmail.com",
-                    icon: Icons.email,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextIconWidget(
-                    text: "+55 97 991389183",
-                    icon: Icons.phone,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ],
-              ),
-            ),
-            LineWidget(),
-            Container(
+                ),
+                LineWidget(),
+                Container(
 //                  color: Colors.amber,
-              padding: EdgeInsets.only(
-                left: 15,
-                top: 15,
-                bottom: 20,
-              ),
-              child: Column(
-                children: [
-                  TextIconWidget(
-                    text: "Habilidades",
-                    style: Theme.of(context).textTheme.headline2,
+                  padding: EdgeInsets.only(
+                    left: 15,
+                    top: 15,
+                    bottom: 20,
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      spacing: 5,
-                      runSpacing: 5,
-                      children: [
-                        SkillsWidget(text: "Básico", nivel: 1),
-                        SkillsWidget(text: "Intermediário", nivel: 2),
-                        SkillsWidget(text: "Avançado", nivel: 3),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    direction: Axis.horizontal,
-                    spacing: 10,
-                    runSpacing: 10,
+                  child: Column(
                     children: [
-                      SkillsWidget(text: "Java", nivel: 2),
-                      SkillsWidget(text: "JavaFX", nivel: 2),
-                      SkillsWidget(text: "Python", nivel: 2),
-                      SkillsWidget(text: "C/C++", nivel: 1),
-                      SkillsWidget(text: "Mysql", nivel: 1),
-                      SkillsWidget(text: "Linux", nivel: 2),
-                      SkillsWidget(text: "Rust", nivel: 1),
-                      SkillsWidget(text: "Flutter", nivel: 2),
-                      SkillsWidget(text: "Bash", nivel: 1),
-                      SkillsWidget(text: "Git/Github", nivel: 2),
-                      SkillsWidget(text: "PHP", nivel: 1),
-                      SkillsWidget(text: "HTML", nivel: 1),
-                      SkillsWidget(text: "Javascript", nivel: 1),
-                      SkillsWidget(text: "Windows", nivel: 2),
+                      TextIconWidget(
+                        text: "Habilidades",
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        child: Wrap(
+                          direction: Axis.horizontal,
+                          spacing: 5,
+                          runSpacing: 5,
+                          children: [
+                            SkillsWidget(
+                              skills: Skills(
+                                name: "Básico",
+                                level: "basic",
+                              ),
+                            ),
+                            SkillsWidget(
+                              skills: Skills(
+                                name: "Intermediário",
+                                level: "intermediary",
+                              ),
+                            ),
+                            SkillsWidget(
+                              skills: Skills(
+                                name: "Avançado",
+                                level: "advanced",
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        direction: Axis.horizontal,
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: settings.skills
+                            .map((skill) => SkillsWidget(skills: skill))
+                            .toList(),
+                      ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            LineWidget(),
-            Container(
-              padding: EdgeInsets.only(
-                left: 15,
-                top: 15,
-                bottom: 20,
-              ),
-              child: Column(
-                children: [
-                  TextIconWidget(
-                    text: "Línguas",
-                    icon: Icons.language,
-                    style: Theme.of(context).textTheme.headline2,
+                ),
+                LineWidget(),
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 15,
+                    top: 15,
+                    bottom: 20,
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      spacing: 5,
-                      runSpacing: 5,
-                      children: [
-                        SkillsWidget(text: "Básico", nivel: 1),
-                        SkillsWidget(text: "Intermediário", nivel: 2),
-                        SkillsWidget(text: "Avançado", nivel: 3),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Wrap(
-                    alignment: WrapAlignment.start,
-                    direction: Axis.horizontal,
-                    spacing: 10,
-                    runSpacing: 10,
+                  child: Column(
                     children: [
-                      SkillsWidget(text: "Português", nivel: 3),
-                      SkillsWidget(text: "Espanhol", nivel: 1),
-                      SkillsWidget(text: "Inglês", nivel: 1),
+                      TextIconWidget(
+                        text: "Línguas",
+                        icon: Icons.language,
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        child: Wrap(
+                          direction: Axis.horizontal,
+                          spacing: 5,
+                          runSpacing: 5,
+                          children: [
+                            SkillsWidget(
+                              skills: Skills(
+                                name: "Básico",
+                                level: "basic",
+                              ),
+                            ),
+                            SkillsWidget(
+                              skills: Skills(
+                                name: "Intermediário",
+                                level: "intermediary",
+                              ),
+                            ),
+                            SkillsWidget(
+                              skills: Skills(
+                                name: "Avançado",
+                                level: "advanced",
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Wrap(
+                        alignment: WrapAlignment.start,
+                        direction: Axis.horizontal,
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: settings.languages
+                            .map(
+                              (language) => SkillsWidget(
+                                skills: language,
+                              ),
+                            )
+                            .toList(),
+                      )
                     ],
-                  )
-                ],
-              ),
-            ),
-            LineWidget(),
-            Container(
-              padding: EdgeInsets.only(
-                left: 15,
-                top: 15,
-                bottom: 20,
-              ),
-              child: Column(
-                children: [
-                  TextIconWidget(
-                    text: "Links Relacionados",
-                    icon: Icons.link,
-                    style: Theme.of(context).textTheme.headline2,
                   ),
-                  SizedBox(
-                    height: 15,
+                ),
+                LineWidget(),
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 15,
+                    top: 15,
+                    bottom: 20,
                   ),
-                  LinkWidget(
-                    url:
-                        "https://www.diolinux.com.br/2019/09/photogimp-snapcraft-snap-ubuntu-gimp-photoshop-editor-imagem-linux.html",
-                    text: "PhotoGIMP agora está disponível em Snap",
-                  )
-                ],
-              ),
+                  child: Column(
+                    children: [
+                      TextIconWidget(
+                        text: "Links Relacionados",
+                        icon: Icons.link,
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      ...settings.links
+                          .map((link) => LinkWidget(
+                                url: link.url,
+                                text: link.name,
+                              ))
+                          .toList(),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       );
 }

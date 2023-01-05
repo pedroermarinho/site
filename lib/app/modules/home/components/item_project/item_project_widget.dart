@@ -2,34 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ItemProjectWidget extends StatelessWidget {
-  final String? titulo;
-  final String? snapUrl;
-  final String? pypiUrl;
-  final String? githubUrl;
-  final String? siteUrl;
-  final String? descricao;
+import '../../../../core/domain/entities/settings/projects.dart';
+import '../line/line_widget.dart';
 
-  const ItemProjectWidget(
-      {this.titulo,
-      this.descricao,
-      this.snapUrl,
-      this.pypiUrl,
-      this.githubUrl,
-      this.siteUrl});
+class ItemProjectWidget extends StatelessWidget {
+  final Projects projects;
+
+  const ItemProjectWidget({Key? key, required this.projects}) : super(key: key);
 
   _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
+    if (!await launchUrl(Uri.parse(url))) {
       throw 'Could not launch $url';
     }
   }
 
-  Widget url(String title, IconData icon, String url) => Container(
+  Widget url(String title, IconData icon, String? url) => Container(
         constraints: BoxConstraints(maxWidth: 130),
         child: TextButton(
-          onPressed: () => _launchURL(url),
+          onPressed: () => url != null ? _launchURL(url) : null,
           child: Row(
             children: [
               Icon(icon),
@@ -49,31 +39,33 @@ class ItemProjectWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
-              onTap: () => siteUrl == null ? null : _launchURL(siteUrl!),
+              onTap: () => _launchURL(projects.url),
               child: Text(
-                titulo ?? "",
+                projects.name,
                 style: Theme.of(context).textTheme.headline2,
               ),
             ),
             Wrap(
               direction: Axis.horizontal,
               children: [
-                descricao == null
-                    ? Container()
-                    : Padding(
-                        padding: EdgeInsets.only(top: 10, bottom: 10),
-                        child: Text(descricao!),
-                      ),
-                snapUrl == null
-                    ? Container()
-                    : url("Snap", FontAwesomeIcons.linux, snapUrl!),
-                githubUrl == null
-                    ? Container()
-                    : url("GitHub", FontAwesomeIcons.github, githubUrl!),
-                pypiUrl == null
-                    ? Container()
-                    : url("PyPi", FontAwesomeIcons.python, pypiUrl!),
+                Visibility(
+                  visible: projects.snap != null,
+                  child: url("Snap", FontAwesomeIcons.linux, projects.snap),
+                ),
+                Visibility(
+                  visible: projects.github != null,
+                  child:
+                      url("GitHub", FontAwesomeIcons.python, projects.github),
+                ),
+                Visibility(
+                  visible: projects.pypi != null,
+                  child: url("PyPi", FontAwesomeIcons.python, projects.pypi),
+                ),
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 15, bottom: 15),
+              child: LineWidget(),
             ),
           ],
         ),

@@ -78,16 +78,16 @@ class ReadmeModel {
         licenseUrl: json['license_url'],
         issuesUrl: json['issues_url'],
         license: json['license'],
-        installCommand: json['install_command'].cast<String>(),
-        usageCommand: json['usage_command'].cast<String>(),
-        testCommand: json['test_command'].cast<String>(),
+        installCommand: json['install_command']?.cast<String>() ?? null,
+        usageCommand: json['usage_command']?.cast<String>() ?? null,
+        testCommand: json['test_command']?.cast<String>() ?? null,
         repository: json['repository'] != null
             ? Repository.fromJson(json['repository'])
             : null,
         credits: json['credits'] != null
             ? <Credits>[]
             : _setCredits(json['credits']),
-        keywords: json['keywords'].cast<String>(),
+        keywords: json['keywords']?.cast<String>() ?? null,
         isGithubRepos: json['is_github_repos'],
         hasStartCommand: json['has_start_command'],
         hasTestCommand: json['has_test_command'],
@@ -95,9 +95,11 @@ class ReadmeModel {
 
   static List<Credits> _setCredits(var data) {
     var credits = <Credits>[];
-    data.forEach((v) {
-      credits.add(Credits.fromJson(v));
-    });
+    if (data != null) {
+      for (var item in data) {
+        credits.add(Credits.fromJson(item));
+      }
+    }
     return credits;
   }
 

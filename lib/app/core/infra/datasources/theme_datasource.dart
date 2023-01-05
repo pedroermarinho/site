@@ -5,5 +5,6 @@ import '../../domain/errors/theme_errors.dart';
 
 abstract class ThemeDataSource {
   Future<Either<ThemeFailure, ThemeEnum>> getTheme();
+
   Future<Either<ThemeFailure, Unit>> setTheme(ThemeEnum themeEnum);
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../components/responsive_widget.dart';
 
+import '../../components/responsive_widget.dart';
 import '../../utils/assets_path.dart';
 import 'about_controller.dart';
 

@@ -6,7 +6,7 @@ part of 'themes_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ThemesStoreImpl on _ThemesStoreImplBase, Store {
   Computed<ThemeData>? _$themeActualComputed;
@@ -17,7 +17,8 @@ mixin _$ThemesStoreImpl on _ThemesStoreImplBase, Store {
               name: '_ThemesStoreImplBase.themeActual'))
           .value;
 
-  final _$themeAtom = Atom(name: '_ThemesStoreImplBase.theme');
+  late final _$themeAtom =
+      Atom(name: '_ThemesStoreImplBase.theme', context: context);
 
   @override
   ThemeEnum get theme {
@@ -32,16 +33,16 @@ mixin _$ThemesStoreImpl on _ThemesStoreImplBase, Store {
     });
   }
 
-  final _$changeThemeAsyncAction =
-      AsyncAction('_ThemesStoreImplBase.changeTheme');
+  late final _$changeThemeAsyncAction =
+      AsyncAction('_ThemesStoreImplBase.changeTheme', context: context);
 
   @override
   Future<dynamic> changeTheme() {
     return _$changeThemeAsyncAction.run(() => super.changeTheme());
   }
 
-  final _$_ThemesStoreImplBaseActionController =
-      ActionController(name: '_ThemesStoreImplBase');
+  late final _$_ThemesStoreImplBaseActionController =
+      ActionController(name: '_ThemesStoreImplBase', context: context);
 
   @override
   void setContext(BuildContext context) {

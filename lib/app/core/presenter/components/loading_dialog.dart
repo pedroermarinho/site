@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 abstract class LoadingDialog {
   void show();
+
   Future<void> hide();
 }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 abstract class SuccessDialog {
   void show();
+
   Future<void> hide();
 }
 
