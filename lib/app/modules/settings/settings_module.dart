@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pedroermarinho/app/modules/projetcs/projetcs_module.dart';
+import 'package:pedroermarinho/app/modules/projetcs/projects_module.dart';
 
 import 'settings_controller.dart';
 import 'settings_page.dart';
@@ -8,7 +8,7 @@ import 'settings_page.dart';
 // ignore: must_be_immutable
 class SettingsModule extends WidgetModule {
   final List<Bind> binds = [
-    ...ProjetcsModule().binds,
+    ...ProjectsModule().binds,
     Bind((i) => SettingsController()),
   ];
 

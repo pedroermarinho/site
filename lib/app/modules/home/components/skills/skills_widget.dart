@@ -38,7 +38,11 @@ class SkillsWidget extends StatelessWidget {
         constraints: BoxConstraints(minWidth: 30, maxWidth: 200),
         child: Text(
           "${skills.name}",
-          style: Theme.of(context).textTheme.headline4,
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         padding: EdgeInsets.only(top: 4, bottom: 4, left: 10, right: 10),
         decoration: BoxDecoration(

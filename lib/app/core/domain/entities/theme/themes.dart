@@ -5,6 +5,8 @@ ThemeData darkTheme(BuildContext context) => ThemeData(
       fontFamily: 'GoogleSansRegular',
       primarySwatch: Colors.blue,
       primaryColor: Colors.black,
+  primaryColorDark: Colors.black,
+  primaryColorLight: Colors.grey,
       accentColor: Colors.blue,
       disabledColor: Colors.grey,
       cardColor: Color(0xff1f2124),
@@ -24,12 +26,12 @@ ThemeData darkTheme(BuildContext context) => ThemeData(
         ),
         headline3: TextStyle(
           fontSize: 16,
-          color: Colors.black54,
+          color: Colors.white70,
           fontWeight: FontWeight.bold,
         ),
         headline4: TextStyle(
           fontSize: 14,
-          color: Colors.black54,
+          color: Colors.white70,
           fontWeight: FontWeight.bold,
         ),
         bodyText1: TextStyle(

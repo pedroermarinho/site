@@ -4,9 +4,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/external/stores/settings/settings_store.dart';
+import '../../../../core/infra/utils/launch_url.dart';
 import '../../../../core/presenter/components/loading_senttings_data.dart';
 import '../../../../core/presenter/components/responsive_widget.dart';
-import '../../../../core/presenter/utils/launch_url.dart';
 import '../../components/line/line_widget.dart';
 import 'container5_controller.dart';
 

@@ -77,6 +77,7 @@ class _HomePageState extends State<HomePage> {
             builder: (context, snapshot) => BottomNavigationBar(
               currentIndex: controller.pageViewController.page?.round() ?? 0,
               onTap: controller.pageViewController.jumpToPage,
+              selectedItemColor: Colors.white,
               items: [
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,

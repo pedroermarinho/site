@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 import '../../domain/entities/settings/settings.dart';
 import '../../domain/errors/settings_errors.dart';
-import '../../infra/datasources/settings_datasources.dart';
+import '../../infra/datasources/settings_datasource.dart';
 
 class SettingsDataSourceImpl implements SettingsDataSource {
   @override

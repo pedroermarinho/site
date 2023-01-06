@@ -4,7 +4,7 @@ import '../../domain/entities/theme/theme_enum.dart';
 import '../../domain/errors/theme_errors.dart';
 import '../../domain/services/storage_service.dart';
 import '../../infra/datasources/theme_datasource.dart';
-import '../../presenter/utils/constants.dart';
+import '../../infra/utils/constants.dart';
 
 class ThemeDataSourceImpl implements ThemeDataSource {
   final StorageService service;

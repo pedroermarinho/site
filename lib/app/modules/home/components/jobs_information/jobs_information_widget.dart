@@ -81,7 +81,10 @@ class JobsInformationWidget extends StatelessWidget {
                             constraints: BoxConstraints(minWidth: 20),
                             child: Text(
                               skill,
-                              style: Theme.of(context).textTheme.bodySmall,
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 12,
+                              ),
                             ),
                             padding: EdgeInsets.only(
                                 top: 4, bottom: 4, left: 8, right: 8),

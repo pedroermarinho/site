@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../core/presenter/components/project_component_widget.dart';
 import '../../core/presenter/components/responsive_widget.dart';
-import 'projetcs_controller.dart';
+import 'projects_controller.dart';
 
-class ProjetcsPage extends StatefulWidget {
+class ProjectsPage extends StatefulWidget {
   @override
-  _ProjetcsPageState createState() => _ProjetcsPageState();
+  _ProjectsPageState createState() => _ProjectsPageState();
 }
 
-class _ProjetcsPageState
-    extends ModularState<ProjetcsPage, ProjetcsController> {
-  //use 'controller' variable to access controller
+class _ProjectsPageState extends State<ProjectsPage> {
+  final controller = Modular.get<ProjectsController>();
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
@@ -45,7 +45,9 @@ class _ProjetcsPageState
                     child: ListView.builder(
                       padding: EdgeInsets.only(bottom: 15, top: 6),
                       itemCount: controller.listProjects.length,
-                      itemBuilder: (_, index) => controller.listProjects[index],
+                      itemBuilder: (_, index) => ProjectComponentWidget(
+                        repo: controller.listProjects.elementAt(index),
+                      ),
                     ),
                   ),
                 ),
@@ -71,7 +73,9 @@ class _ProjetcsPageState
                     child: ListView.builder(
                       padding: EdgeInsets.only(bottom: 15, top: 6),
                       itemCount: controller.listProjects.length,
-                      itemBuilder: (_, index) => controller.listProjects[index],
+                      itemBuilder: (_, index) => ProjectComponentWidget(
+                        repo: controller.listProjects.elementAt(index),
+                      ),
                     ),
                   ),
                 ),

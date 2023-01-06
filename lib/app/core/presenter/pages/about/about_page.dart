@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../infra/utils/assets_path.dart';
 import '../../components/responsive_widget.dart';
-import '../../utils/assets_path.dart';
 import 'about_controller.dart';
 
 class AboutPage extends StatefulWidget {
@@ -10,7 +10,8 @@ class AboutPage extends StatefulWidget {
   _AboutPageState createState() => _AboutPageState();
 }
 
-class _AboutPageState extends ModularState<AboutPage, AboutController> {
+class _AboutPageState extends State<AboutPage> {
+  final controller = Modular.get<AboutController>();
   @override
   Widget build(BuildContext context) => Padding(
         padding:
