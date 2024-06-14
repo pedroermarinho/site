@@ -14,7 +14,7 @@
     "linkedin": "pedroermarinho",
     "twitter": "pedroermarinho",
     "instagram": "pedroermarinho",
-    "youtube": "pedro12131451"
+    "youtube": "pedroermarinho"
   },
   "academic": [
     {
@@ -48,6 +48,27 @@
   ],
   "jobs": [
     {
+      "companyName": "XMobots",
+      "roles": [
+        {
+          "role": "Desenvolvedor Software Jr",
+          "location": "Manaus, Amazonas, Brasil",
+          "startDate": "2023/10",
+          "endDate": null,
+          "skills": [
+            "Java",
+            "Spring Boot",
+            "Keycloak",
+            "Jooq",
+            "React.js",
+            "TypeScript",
+            "ArcGIS",
+            "GeoServer"
+          ]
+        }
+      ]
+    },
+    {
       "companyName": "Instituto Creathus",
       "roles": [
         {
@@ -74,7 +95,7 @@
           "role": "Desenvolvedor Software Jr III",
           "location": "Manaus, Amazonas, Brasil",
           "startDate": "2022/4",
-          "endDate": null,
+          "endDate": "2023/2",
           "skills": [
             "Liquibase",
             "Jooq",
@@ -89,6 +110,25 @@
             "React",
             "Flutter",
             "Kotlin"
+          ]
+        },
+        {
+          "role": "Desenvolvedor Software PL I",
+          "location": "Manaus, Amazonas, Brasil",
+          "startDate": "2023/2",
+          "endDate": "2023/11",
+          "skills": [
+            "Vue.js",
+            "Angular",
+            "MQTT",
+            "TypeScript",
+            "Java",
+            "Docker",
+            "Spring Boot",
+            "Liquibase",
+            "Git",
+            "SQL",
+            "JavaScript"
           ]
         }
       ]
@@ -126,6 +166,18 @@
     },
     {
       "name": "MQTT",
+      "level": "basic"
+    },
+    {
+      "name": "Keycloak",
+      "level": "basic"
+    },
+    {
+      "name": "GeoServer",
+      "level": "basic"
+    },
+    {
+      "name": "ArcGIS",
       "level": "basic"
     },
     {
@@ -208,32 +260,11 @@
       "snap": "https://snapcraft.io/photogimp"
     },
     {
-      "name": "SaudeFX",
-      "description": "Projeto feito em Java/JavaFX visando demostrar alguns indicadores de saúde.",
-      "url": "https://pedroermarinho.github.io/SaudeFX/",
-      "github": "https://github.com/pedroermarinho/SaudeFX",
-      "snap": "https://snapcraft.io/saudefx"
-    },
-    {
-      "name": "TopCorridaFX",
-      "description": "Programa feito em Java / JavaFX, voltado para o atletismo.",
-      "url": "https://pedroermarinho.github.io/TopCorridaFX/",
-      "github": "https://github.com/pedroermarinho/TopCorridaFX",
-      "snap": "https://snapcraft.io/topcorridafx"
-    },
-    {
       "name": "VisualG Snap",
       "description": "Snap do VisualG, um software para ensino de lógica de programação empacotado para em Snap.",
       "url": "https://pedroermarinho.github.io/visualg/",
       "github": "https://github.com/pedroermarinho/visualg",
       "snap": "https://snapcraft.io/visualg"
-    },
-    {
-      "name": "ClinicaFX",
-      "description": "Programa feito em Java / JavaFX voltado para area da saúde.",
-      "url": "https://pedroermarinho.github.io/ClinicaFX/",
-      "github": "https://github.com/pedroermarinho/ClinicaFX",
-      "snap": "https://snapcraft.io/clinicafx"
     },
     {
       "name": "Markdown Readme Generator",
