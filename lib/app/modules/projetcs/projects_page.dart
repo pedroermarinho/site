@@ -22,7 +22,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
+              color: Theme.of(context).textTheme.headlineSmall!.color,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 6.0,

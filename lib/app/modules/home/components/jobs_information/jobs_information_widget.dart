@@ -26,7 +26,7 @@ class JobsInformationWidget extends StatelessWidget {
           children: [
             Text(
               jobs.companyName,
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             ...jobs.roles.map(
               (role) => Padding(
@@ -37,12 +37,12 @@ class JobsInformationWidget extends StatelessWidget {
                   children: [
                     Text(
                       role.role,
-                      style: Theme.of(context).textTheme.headline3,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     SizedBox(height: 8),
                     Text(
                       role.location,
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     SizedBox(height: 8),
                     Wrap(

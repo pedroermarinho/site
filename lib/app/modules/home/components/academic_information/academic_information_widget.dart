@@ -28,7 +28,7 @@ class AcademicInformationWidget extends StatelessWidget {
           children: [
             Text(
               academic.course,
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
@@ -38,12 +38,12 @@ class AcademicInformationWidget extends StatelessWidget {
                   children: [
                     Text(
                       academic.institution,
-                      style: Theme.of(context).textTheme.headline3,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                     SizedBox(height: 8),
                     Text(
                       academic.type,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     SizedBox(height: 8),
                     Wrap(

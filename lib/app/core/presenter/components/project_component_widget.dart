@@ -40,7 +40,7 @@ class ProjectComponentWidget extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           repo.name,
-                          style: Theme.of(context).textTheme.headline5,
+                          style: Theme.of(context).textTheme.headlineSmall ,
                         ),
                       ],
                     ),
@@ -110,7 +110,7 @@ class ProjectComponentWidget extends StatelessWidget {
               Text(
                 repo.description ?? '',
                 textScaleFactor: 1.2,
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               SizedBox(
                 height: 10.0,

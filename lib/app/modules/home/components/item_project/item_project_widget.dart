@@ -42,7 +42,7 @@ class ItemProjectWidget extends StatelessWidget {
               onTap: () => _launchURL(projects.url),
               child: Text(
                 projects.name,
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ),
             Wrap(

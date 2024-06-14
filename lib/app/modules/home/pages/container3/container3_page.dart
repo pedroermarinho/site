@@ -28,7 +28,7 @@ class _Container3PageState extends State<Container3Page> {
               decoration: ResponsiveWidget.isPequenoScreen(context)
                   ? null
                   : BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
+                      color: Theme.of(context).scaffoldBackgroundColor,
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 6.0,
@@ -46,7 +46,7 @@ class _Container3PageState extends State<Container3Page> {
                       text: "Educação",
                       icon: Icons.school,
                       sizeIcon: 40,
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.displayLarge,
                     ),
                     SizedBox(height: 55),
                     ...settings.academic.map(

@@ -30,7 +30,7 @@ class _Container2PageState extends State<Container2Page> {
                 decoration: ResponsiveWidget.isPequenoScreen(context)
                     ? null
                     : BoxDecoration(
-                        color: Theme.of(context).backgroundColor,
+                        color: Theme.of(context).scaffoldBackgroundColor,
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 6.0,
@@ -48,7 +48,7 @@ class _Container2PageState extends State<Container2Page> {
                         text: "Experiência de Trabalho",
                         icon: Icons.business,
                         sizeIcon: 40,
-                        style: Theme.of(context).textTheme.headline1,
+                        style: Theme.of(context).textTheme.displayLarge,
                       ),
                       SizedBox(height: 55),
                       ...settings.jobs

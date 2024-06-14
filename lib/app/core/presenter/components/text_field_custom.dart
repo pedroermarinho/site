@@ -26,7 +26,7 @@ class TextFieldCustom extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
           fillColor: Colors.blue,
-          labelStyle: labelStyle ?? Theme.of(context).textTheme.bodyText1,
+          labelStyle: labelStyle ?? Theme.of(context).textTheme.bodyLarge,
           labelText: labelText,
         ),
       );

@@ -40,7 +40,7 @@ class ButtonCustom extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: onPressed != null
-                  ? color ?? Theme.of(context).accentColor
+                  ? color ?? Theme.of(context).colorScheme.secondary
                   : Colors.grey,
             ),
           ),

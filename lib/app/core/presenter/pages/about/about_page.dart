@@ -20,7 +20,7 @@ class _AboutPageState extends State<AboutPage> {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: Theme.of(context).backgroundColor,
+            color: Theme.of(context).colorScheme.background,
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,

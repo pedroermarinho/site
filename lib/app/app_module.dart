@@ -37,7 +37,7 @@ class AppModule extends Module {
     Bind((i) => ThemeRepositoryImpl(i()), isSingleton: false),
     Bind((i) => GetThemeImpl(i())),
     Bind.lazySingleton((i) => ThemesStoreImpl(getTheme: i(), setTheme: i())),
-    Bind((i) => SettingsDataSourceImpl()),
+    Bind((i) => SettingsDataSourceImpl(dio: i())),
     Bind((i) => SettingsRepositoryImpl(i())),
     Bind((i) => GetSettingsImpl(i())),
     Bind((i) => SettingsStoreImpl(i())),

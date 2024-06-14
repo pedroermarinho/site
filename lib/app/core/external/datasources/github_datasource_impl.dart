@@ -30,7 +30,7 @@ class GitHubDataSourceImpl implements GitHubDataSource {
       return Left(ErrorGetRepo(message: e.message));
     }on DioError catch(e) {
       Logger().e(e);
-      return Left(ErrorGetRepo(message: e.message));
+      return Left(ErrorGetRepo(message: e.message??"Erro ao buscar repositórios"));
     }
   }
 
@@ -48,7 +48,7 @@ class GitHubDataSourceImpl implements GitHubDataSource {
       return Left(ErrorGetUser(message: e.message));
     }on DioError catch(e) {
       Logger().e(e);
-      return Left(ErrorGetUser(message: e.message));
+      return Left(ErrorGetUser(message: e.message?? "Erro ao buscar usuário"));
     }
   }
 

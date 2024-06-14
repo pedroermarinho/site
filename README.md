@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="assets/Octocat.png" height="200" width="200"><br/>
+<img src="assets/octocat.png" height="200" width="200"><br/>
 Welcome to site 👋
 
 </h1>

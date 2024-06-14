@@ -29,7 +29,7 @@ class _Container5PageState extends State<Container5Page> {
               decoration: ResponsiveWidget.isPequenoScreen(context)
                   ? null
                   : BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
+                      color: Theme.of(context).scaffoldBackgroundColor,
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 6.0,

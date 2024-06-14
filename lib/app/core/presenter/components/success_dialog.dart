@@ -1,4 +1,4 @@
-import 'package:asuka/asuka.dart' as asuka;
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 
 abstract class SuccessDialog {
@@ -35,7 +35,7 @@ class SuccessDialogImpl implements SuccessDialog {
   @override
   void show() async {
     FocusManager.instance.primaryFocus!.unfocus();
-    asuka.addOverlay(_entry);
+    Asuka.addOverlay(_entry);
     await Future.delayed(Duration(seconds: 3));
     hide();
   }

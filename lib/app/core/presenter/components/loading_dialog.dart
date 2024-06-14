@@ -1,4 +1,4 @@
-import 'package:asuka/asuka.dart' as asuka;
+import 'package:asuka/asuka.dart' ;
 import 'package:flutter/material.dart';
 
 abstract class LoadingDialog {
@@ -29,6 +29,6 @@ class LoadingDialogImpl implements LoadingDialog {
   @override
   void show() {
     FocusManager.instance.primaryFocus!.unfocus();
-    asuka.addOverlay(_entry);
+    Asuka.addOverlay(_entry);
   }
 }

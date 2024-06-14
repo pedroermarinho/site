@@ -31,7 +31,7 @@ class _Container1PageState extends State<Container1Page> {
               minHeight: 200,
             ),
             decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
+              color: Theme.of(context).scaffoldBackgroundColor,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 6.0,
@@ -101,7 +101,7 @@ class _Container1PageState extends State<Container1Page> {
                       TextIconWidget(
                         text: settings.role,
                         icon: Icons.business_center,
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       SizedBox(
                         height: 15,
@@ -109,7 +109,7 @@ class _Container1PageState extends State<Container1Page> {
                       TextIconWidget(
                         text: settings.location,
                         icon: Icons.home,
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       SizedBox(
                         height: 15,
@@ -117,7 +117,7 @@ class _Container1PageState extends State<Container1Page> {
                       TextIconWidget(
                         text: settings.email,
                         icon: Icons.email,
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       SizedBox(
                         height: 15,
@@ -125,7 +125,7 @@ class _Container1PageState extends State<Container1Page> {
                       TextIconWidget(
                         text: settings.phone.fullNumber,
                         icon: Icons.phone,
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ],
                   ),
@@ -142,7 +142,7 @@ class _Container1PageState extends State<Container1Page> {
                     children: [
                       TextIconWidget(
                         text: "Habilidades",
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       SizedBox(
                         height: 15,
@@ -201,7 +201,7 @@ class _Container1PageState extends State<Container1Page> {
                       TextIconWidget(
                         text: "Línguas",
                         icon: Icons.language,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       SizedBox(
                         height: 15,
@@ -264,7 +264,7 @@ class _Container1PageState extends State<Container1Page> {
                       TextIconWidget(
                         text: "Links Relacionados",
                         icon: Icons.link,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       SizedBox(
                         height: 15,
