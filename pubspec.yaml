@@ -41,6 +41,6 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-    - assets/.env
+    - assets/env
     - assets/octocat.png
     - assets/settings.json
