@@ -6,7 +6,7 @@ import 'app/app_module.dart';
 import 'app/app_widget.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "assets/.env");
   runApp(ModularApp(
     module: AppModule(),
     child: AppWidget(),
