@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../ui/shared/pages/about/about_page.dart';
+import '../markdown/markdown_module.dart';
 import '../projects/projects_module.dart';
 
 class HomeController extends ChangeNotifier {
@@ -25,6 +26,18 @@ class HomeController extends ChangeNotifier {
 
   void closeAbout() {
     about = Container();
+    notifyListeners();
+  }
+
+  Widget markdown = Container();
+
+  void openMarkdown() {
+    markdown = MarkdownModule();
+    notifyListeners();
+  }
+
+  void closeMarkdown() {
+    markdown = Container();
     notifyListeners();
   }
 

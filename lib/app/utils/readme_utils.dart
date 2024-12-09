@@ -1,3 +1,3 @@
-import '../config/constants.dart';
+import '../config/environment.dart';
 
-String projectImgUrl(String projectName, String imgSrc) => "${Constants.rawGitHub}/$projectName/master/$imgSrc";
+String projectImgUrl(String projectName, String imgSrc) => "$rawGitHub/$projectName/master/$imgSrc";

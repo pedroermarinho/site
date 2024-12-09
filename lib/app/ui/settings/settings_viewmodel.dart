@@ -24,4 +24,9 @@ class SettingsViewModel extends ChangeNotifier {
     _homeController.openAbout();
     notifyListeners();
   }
+
+  void openMarkdown() {
+    _homeController.openMarkdown();
+    notifyListeners();
+  }
 }

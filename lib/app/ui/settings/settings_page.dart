@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../config/environment.dart';
 import 'settings_viewmodel.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -28,7 +29,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) => Container(
-        width: 150,
         height: 40,
         decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(30)),
         child: Row(
@@ -48,6 +48,14 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               onPressed: controller.openProjects,
             ),
+            if (!isProduction)
+              IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.book,
+                  color: Colors.white,
+                ),
+                onPressed: controller.openMarkdown,
+              ),
             IconButton(
               icon: Icon(
                 FontAwesomeIcons.infoCircle,

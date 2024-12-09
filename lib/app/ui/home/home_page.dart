@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../config/environment.dart';
 import '../../ui/shared/components/responsive_widget.dart';
+import '../markdown/markdown_module.dart';
 import '../settings/settings_module.dart';
 import 'home_viewmodel.dart';
 import 'pages/container1/container1_page.dart';
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
-        grandeScreen: Scaffold(
+        largeScreen: Scaffold(
           body: Stack(
             children: [
               Row(
@@ -67,6 +69,7 @@ class _HomePageState extends State<HomePage> {
               ),
               controller.projects,
               controller.about,
+              if (!isProduction) controller.markdown,
               Positioned(
                 top: 20,
                 right: 20,
@@ -75,7 +78,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        pequenoScreen: Scaffold(
+        smallScreen: Scaffold(
           body: PageView(
             controller: controller.pageViewController,
             children: [
@@ -83,6 +86,7 @@ class _HomePageState extends State<HomePage> {
               Container2Page(),
               Container3Page(),
               Container4Page(),
+              MarkdownModule(),
               Container5Page(),
             ],
           ),
@@ -125,6 +129,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                   label: "Projetos",
                 ),
+                if (!isProduction)
+                  BottomNavigationBarItem(
+                    backgroundColor: Colors.black87,
+                    icon: Icon(
+                      FontAwesomeIcons.book,
+                      color: Colors.teal,
+                    ),
+                    label: "Markdown",
+                  ),
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,
                   icon: Icon(

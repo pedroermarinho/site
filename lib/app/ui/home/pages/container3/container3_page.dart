@@ -35,7 +35,7 @@ class _Container3PageState extends State<Container3Page> {
         builder: (settings) => Padding(
           padding: EdgeInsets.all(6),
           child: Container(
-            decoration: ResponsiveWidget.isPequenoScreen(context)
+            decoration: ResponsiveWidget.isSmallScreen(context)
                 ? null
                 : BoxDecoration(
                     color: Theme.of(context).scaffoldBackgroundColor,
@@ -46,7 +46,7 @@ class _Container3PageState extends State<Container3Page> {
                     ],
                   ),
             child: Padding(
-              padding: ResponsiveWidget.isPequenoScreen(context) ? EdgeInsets.all(10) : EdgeInsets.all(30),
+              padding: ResponsiveWidget.isSmallScreen(context) ? EdgeInsets.all(10) : EdgeInsets.all(30),
               child: ResponsiveWidget.listViewOrColumn(
                 context,
                 children: [

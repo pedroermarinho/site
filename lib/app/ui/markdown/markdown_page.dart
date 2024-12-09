@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../shared/components/responsive_widget.dart';
 import 'markdown_viewmodel.dart';
 
 class MarkdownPage extends StatefulWidget {
@@ -27,35 +28,54 @@ class _MarkdownPageState extends State<MarkdownPage> {
   }
 
   @override
-  Widget build(BuildContext context) => Container(
-        width: 150,
-        height: 40,
-        decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(30)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              icon: Icon(
-                controller.isThemeDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
-                color: Colors.white,
-              ),
-              onPressed: controller.changeTheme,
+  Widget build(BuildContext context) => ResponsiveWidget(
+        largeScreen: Padding(
+          padding: EdgeInsets.all(70),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: Color(0xFFFFFFFF),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 6.0,
+                ),
+              ],
             ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.github,
-                color: Colors.white,
-              ),
-              onPressed: controller.openProjects,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.close),
+                      onPressed: controller.closeMarkdown,
+                    ),
+                  ],
+                ),
+
+                // const Markdown(data: '## Markdown'),
+                Expanded(child: _buildMarkdown()),
+              ],
             ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.infoCircle,
-                color: Colors.white,
-              ),
-              onPressed: controller.openAbout,
+          ),
+        ),
+        smallScreen: Scaffold(
+          body: Container(
+            child: Column(
+              children: [
+                Expanded(child: _buildMarkdown()),
+              ],
             ),
-          ],
+          ),
         ),
       );
+
+  Widget _buildMarkdown() {
+    return Markdown(
+      data: """
+           ### **Teste**
+       """,
+    );
+  }
 }

@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'config/environment.dart';
 import 'data/repositories/github/github_repository_remote.dart';
+import 'data/repositories/settings/settings_repository_local.dart';
 import 'data/repositories/settings/settings_repository_remote.dart';
 import 'data/repositories/theme/theme_repository_local.dart';
 import 'data/services/storage_service_local.dart';
@@ -31,8 +33,7 @@ class AppModule extends Module {
     Bind((i) => ThemeRepositoryLocal(i()), isSingleton: false),
     Bind((i) => GetThemeImpl(i())),
     Bind.lazySingleton((i) => ThemesStoreImpl(getTheme: i(), setTheme: i())),
-    // Bind((i) => SettingsRepositoryLocal()),
-    Bind((i) => SettingsRepositoryRemote(dio: i())),
+    isProduction ? Bind((i) => SettingsRepositoryRemote(dio: i())) : Bind((i) => SettingsRepositoryLocal()),
     Bind((i) => GetSettingsImpl(i())),
     Bind((i) => SettingsStoreImpl(i())),
     Bind.lazySingleton((i) => GithubRepositoryRemote(dio: i(), getSettings: i())),

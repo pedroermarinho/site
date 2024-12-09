@@ -38,7 +38,7 @@ class _Container4PageState extends State<Container4Page> {
         builder: (settings) => Padding(
           padding: EdgeInsets.all(6),
           child: Container(
-            decoration: ResponsiveWidget.isPequenoScreen(context)
+            decoration: ResponsiveWidget.isSmallScreen(context)
                 ? null
                 : BoxDecoration(
                     color: Theme.of(context).scaffoldBackgroundColor,
@@ -49,7 +49,7 @@ class _Container4PageState extends State<Container4Page> {
                     ],
                   ),
             child: Padding(
-              padding: ResponsiveWidget.isPequenoScreen(context) ? EdgeInsets.all(10) : EdgeInsets.all(30),
+              padding: ResponsiveWidget.isSmallScreen(context) ? EdgeInsets.all(10) : EdgeInsets.all(30),
               child: ResponsiveWidget.listViewOrColumn(
                 context,
                 children: [
@@ -61,7 +61,7 @@ class _Container4PageState extends State<Container4Page> {
                   ),
                   SizedBox(height: 55),
                   ...settings.projects.map((e) => ItemProjectWidget(projects: e)),
-                  ResponsiveWidget.isPequenoScreen(context)
+                  ResponsiveWidget.isSmallScreen(context)
                       ? Center(
                           child: TextButton(
                             onPressed: controller.pushProjetcs,

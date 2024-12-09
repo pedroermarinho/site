@@ -1,3 +1,3 @@
-import '../config/constants.dart';
+import '../config/environment.dart';
 
-String getGithubUrlRepository(String repository) => "${Constants.rawGitHub}/$repository/master/readme.json";
+String getGithubUrlRepository(String repository) => "$rawGitHub/$repository/master/readme.json";

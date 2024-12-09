@@ -15,7 +15,7 @@ class _AboutPageState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: EdgeInsets.all(ResponsiveWidget.isPequenoScreen(context) ? 20 : 70),
+        padding: EdgeInsets.all(ResponsiveWidget.isSmallScreen(context) ? 20 : 70),
         child: Container(
           width: double.infinity,
           height: double.infinity,

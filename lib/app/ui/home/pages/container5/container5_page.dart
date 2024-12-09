@@ -36,7 +36,7 @@ class _Container5PageState extends State<Container5Page> {
         builder: (settings) => Padding(
           padding: EdgeInsets.all(6),
           child: Container(
-            decoration: ResponsiveWidget.isPequenoScreen(context)
+            decoration: ResponsiveWidget.isSmallScreen(context)
                 ? null
                 : BoxDecoration(
                     color: Theme.of(context).scaffoldBackgroundColor,
@@ -47,7 +47,7 @@ class _Container5PageState extends State<Container5Page> {
                     ],
                   ),
             child: Padding(
-              padding: ResponsiveWidget.isPequenoScreen(context) ? EdgeInsets.all(10) : EdgeInsets.all(30),
+              padding: ResponsiveWidget.isSmallScreen(context) ? EdgeInsets.all(10) : EdgeInsets.all(30),
               child: Wrap(
                 direction: Axis.horizontal,
                 crossAxisAlignment: WrapCrossAlignment.center,
@@ -101,7 +101,7 @@ class _Container5PageState extends State<Container5Page> {
                       iconSize: 100,
                     ),
                   ),
-                  ResponsiveWidget.isPequenoScreen(context) ? Container() : LineWidget(color: Colors.transparent)
+                  ResponsiveWidget.isSmallScreen(context) ? Container() : LineWidget(color: Colors.transparent)
                 ],
               ),
             ),

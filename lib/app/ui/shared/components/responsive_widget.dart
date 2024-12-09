@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveWidget extends StatelessWidget {
-  final Widget? pequenoScreen;
-  final Widget? medioScreen;
-  final Widget? grandeScreen;
+  final Widget? smallScreen;
+  final Widget? mediumScreen;
+  final Widget? largeScreen;
 
-  static bool isPequenoScreen(BuildContext context) => MediaQuery.of(context).size.width < 765;
+  static bool isSmallScreen(BuildContext context) => MediaQuery.of(context).size.width < 765;
 
-  static bool isMedioScreen(BuildContext context) => MediaQuery.of(context).size.width < 1000 && MediaQuery.of(context).size.width >= 765;
+  static bool isMediumScreen(BuildContext context) => MediaQuery.of(context).size.width < 1000 && MediaQuery.of(context).size.width >= 765;
 
-  static bool isGrandeScreen(BuildContext context) => MediaQuery.of(context).size.width >= 1000 || isMedioScreen(context);
+  static bool isLargeScreen(BuildContext context) => MediaQuery.of(context).size.width >= 1000 || isMediumScreen(context);
 
   static Widget listViewOrColumn(
     BuildContext context, {
     required List<Widget> children,
   }) =>
-      isPequenoScreen(context)
+      isSmallScreen(context)
           ? ListView(
               children: children,
             )
@@ -25,20 +25,20 @@ class ResponsiveWidget extends StatelessWidget {
             );
 
   const ResponsiveWidget({
-    this.pequenoScreen,
-    this.medioScreen,
-    this.grandeScreen,
+    this.smallScreen,
+    this.mediumScreen,
+    this.largeScreen,
   });
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth >= 1000) {
-            return grandeScreen ?? medioScreen ?? pequenoScreen!;
+            return largeScreen ?? mediumScreen ?? smallScreen!;
           } else if (constraints.maxWidth < 1000 && constraints.maxWidth >= 765) {
-            return medioScreen ?? grandeScreen ?? pequenoScreen!;
+            return mediumScreen ?? largeScreen ?? smallScreen!;
           } else {
-            return pequenoScreen ?? grandeScreen!;
+            return smallScreen ?? largeScreen!;
           }
         },
       );

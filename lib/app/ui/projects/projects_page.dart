@@ -29,7 +29,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
-        grandeScreen: Padding(
+        largeScreen: Padding(
           padding: EdgeInsets.all(70),
           child: Container(
             width: double.infinity,
@@ -66,7 +66,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
             ),
           ),
         ),
-        pequenoScreen: Scaffold(
+        smallScreen: Scaffold(
           body: Container(
             child: Column(
               children: [

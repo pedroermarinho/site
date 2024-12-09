@@ -38,7 +38,7 @@ class _Container1PageState extends State<Container1Page> {
   }
 
   Widget containerCustom(BuildContext context, {required Widget child}) => ResponsiveWidget(
-      grandeScreen: Container(
+      largeScreen: Container(
         constraints: BoxConstraints(
           maxWidth: 430,
           minWidth: 200,
@@ -54,7 +54,7 @@ class _Container1PageState extends State<Container1Page> {
         ),
         child: child,
       ),
-      pequenoScreen: child);
+      smallScreen: child);
 
   @override
   Widget build(BuildContext context) => LoadingSettingsData(
@@ -76,7 +76,7 @@ class _Container1PageState extends State<Container1Page> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ResponsiveWidget.isPequenoScreen(context)
+                    ResponsiveWidget.isSmallScreen(context)
                         ? IconButton(
                             icon: Icon(
                               _themesController.isDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
