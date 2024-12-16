@@ -1,11 +1,10 @@
-import 'package:dartz/dartz.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../data/repositories/github/github_repository.dart';
 import '../entities/github/repo.dart';
-import '../errors/github_errors.dart';
 
 abstract class GetRepo {
-  Future<Either<ErrorGetRepo, List<Repo>>> call();
+  Future<Result<List<Repo>>> call();
 }
 
 class GetRepoImpl implements GetRepo {
@@ -14,8 +13,11 @@ class GetRepoImpl implements GetRepo {
   GetRepoImpl(this.repository);
 
   @override
-  Future<Either<ErrorGetRepo, List<Repo>>> call() async => (await repository.getRepos()).fold(Left.new, (r) {
-        r.sort((a, b) => b.stargazersCount.compareTo(a.stargazersCount));
-        return Right(r);
-      });
+  Future<Result<List<Repo>>> call() async => (await repository.getRepos()).fold(
+        (r) {
+          r.sort((a, b) => b.stargazersCount.compareTo(a.stargazersCount));
+          return Success(r);
+        },
+        Failure.new,
+      );
 }

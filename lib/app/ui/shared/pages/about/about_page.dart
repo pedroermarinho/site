@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../config/assets_path.dart';
 import '../../components/responsive_widget.dart';
-import 'about_viewmodel.dart';
+import '../../view_models/modal_viewmodel.dart';
 
 class AboutPage extends StatefulWidget {
+  final ModalViewModel modalViewModel;
+
+  const AboutPage({required this.modalViewModel, super.key});
+
   @override
   _AboutPageState createState() => _AboutPageState();
 }
 
 class _AboutPageState extends State<AboutPage> {
-  final controller = Modular.get<AboutController>();
-
   @override
   Widget build(BuildContext context) => Padding(
         padding: EdgeInsets.all(ResponsiveWidget.isSmallScreen(context) ? 20 : 70),
@@ -20,7 +21,7 @@ class _AboutPageState extends State<AboutPage> {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.surface,
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,
@@ -34,7 +35,7 @@ class _AboutPageState extends State<AboutPage> {
                 children: [
                   IconButton(
                     icon: Icon(Icons.close),
-                    onPressed: controller.closeAbout,
+                    onPressed: widget.modalViewModel.closeModal,
                   ),
                 ],
               ),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../config/environment.dart';
+import '../../config/providers.dart';
 import '../../ui/shared/components/responsive_widget.dart';
-import '../markdown/markdown_module.dart';
-import '../settings/settings_module.dart';
+import '../markdown/markdown_page.dart';
+import '../settings/settings_page.dart';
+import '../shared/view_models/modal_viewmodel.dart';
 import 'home_viewmodel.dart';
 import 'pages/container1/container1_page.dart';
 import 'pages/container2/container2_page.dart';
@@ -14,25 +15,28 @@ import 'pages/container4/container4_page.dart';
 import 'pages/container5/container5_page.dart';
 
 class HomePage extends StatefulWidget {
+  final HomeViewModel homeViewModel;
+  final ModalViewModel modalViewModel;
+
+  const HomePage({required this.homeViewModel, required this.modalViewModel, super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = Modular.get<HomeController>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(update);
+    widget.modalViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    controller.pageViewController.dispose();
-    controller.removeListener(update);
+    widget.homeViewModel.pageViewController.dispose();
+    widget.modalViewModel.removeListener(update);
     super.dispose();
   }
 
@@ -47,7 +51,10 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(6),
-                    child: Container1Page(),
+                    child: Container1Page(
+                      settingsViewModel: getIt(),
+                      themesViewModel: getIt(),
+                    ),
                   ),
                   SizedBox(
                     width: 5,
@@ -57,44 +64,63 @@ class _HomePageState extends State<HomePage> {
                       child: ListView(
                         // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container2Page(),
-                          Container3Page(),
-                          Container4Page(),
-                          Container5Page(),
+                          Container2Page(
+                            settingsViewModel: getIt(),
+                          ),
+                          Container3Page(
+                            settingsViewModel: getIt(),
+                          ),
+                          Container4Page(
+                            container4ViewModel: getIt(),
+                            settingsViewModel: getIt(),
+                          ),
+                          Container5Page(
+                            settingsViewModel: getIt(),
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-              controller.projects,
-              controller.about,
-              if (!isProduction) controller.markdown,
+              widget.modalViewModel.modal,
               Positioned(
                 top: 20,
                 right: 20,
-                child: SettingsModule(),
+                child: SettingsPage(settingsViewModel: getIt()),
               ),
             ],
           ),
         ),
         smallScreen: Scaffold(
           body: PageView(
-            controller: controller.pageViewController,
+            controller: widget.homeViewModel.pageViewController,
             children: [
-              Container1Page(),
-              Container2Page(),
-              Container3Page(),
-              Container4Page(),
-              MarkdownModule(),
-              Container5Page(),
+              Container1Page(
+                themesViewModel: getIt(),
+                settingsViewModel: getIt(),
+              ),
+              Container2Page(
+                settingsViewModel: getIt(),
+              ),
+              Container3Page(
+                settingsViewModel: getIt(),
+              ),
+              Container4Page(
+                settingsViewModel: getIt(),
+                container4ViewModel: getIt(),
+              ),
+              if (!isProduction) MarkdownPage(modalViewModel: getIt()),
+              Container5Page(
+                settingsViewModel: getIt(),
+              ),
             ],
           ),
           bottomNavigationBar: AnimatedBuilder(
-            animation: controller.pageViewController,
+            animation: widget.homeViewModel.pageViewController,
             builder: (context, snapshot) => BottomNavigationBar(
-              currentIndex: controller.pageViewController.page?.round() ?? 0,
-              onTap: controller.pageViewController.jumpToPage,
+              currentIndex: widget.homeViewModel.pageViewController.page?.round() ?? 0,
+              onTap: widget.homeViewModel.pageViewController.jumpToPage,
               selectedItemColor: Colors.white,
               items: [
                 BottomNavigationBarItem(

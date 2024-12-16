@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../../config/environment.dart';
 import '../../../domain/entities/settings/settings.dart';
@@ -15,17 +15,17 @@ class SettingsRepositoryRemote implements SettingsRepository {
   SettingsRepositoryRemote({required this.dio});
 
   @override
-  Future<Either<SettingsFailure, Settings>> getSettings() async {
+  Future<Result<Settings>> getSettings() async {
     try {
       final response = await dio.get(settingsUrl);
       final data = await json.decode(response.data);
       final settings = Settings.fromJson(data);
-      return Right(settings);
-    } on DioError catch (e) {
+      return Success(settings);
+    } on DioException catch (e) {
       Logger().e(e);
-      return Left(ErrorGetSettings(message: e.message ?? "Erro ao buscar configurações"));
+      return Failure(ErrorGetSettings(message: e.message ?? "Erro ao buscar configurações"));
     } on Exception catch (_) {
-      return Left(ErrorGetSettings(message: "Erro ao carregar as configurações"));
+      return Failure(ErrorGetSettings(message: "Erro ao carregar as configurações"));
     }
   }
 }

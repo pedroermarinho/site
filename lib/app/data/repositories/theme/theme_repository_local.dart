@@ -1,8 +1,7 @@
-import 'package:dartz/dartz.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../../config/constants.dart';
 import '../../../domain/entities/theme/theme_enum.dart';
-import '../../../domain/errors/theme_errors.dart';
 import '../../services/storage_service.dart';
 import 'theme_repository.dart';
 
@@ -12,18 +11,20 @@ class ThemeRepositoryLocal implements ThemeRepository {
   ThemeRepositoryLocal(this.service);
 
   @override
-  Future<Either<ThemeFailure, ThemeEnum>> getTheme() async => (await service.get(Constants.keyTheme)).fold(
-        (l) => Left(ErrorGetTheme(message: l.message)),
+  Future<Result<ThemeEnum>> getTheme() async => (await service.get(Constants.keyTheme)).fold(
         (theme) {
           if (theme == ThemeEnum.darkTheme.toString()) {
-            return Right(ThemeEnum.darkTheme);
+            return Success(ThemeEnum.darkTheme);
           } else {
-            return Right(ThemeEnum.lightTheme);
+            return Success(ThemeEnum.lightTheme);
           }
         },
+        Failure.new,
       );
 
   @override
-  Future<Either<ThemeFailure, Unit>> setTheme(ThemeEnum themeEnum) async =>
-      (await service.put(Constants.keyTheme, themeEnum.toString())).fold((l) => Left(ErrorSetTheme(message: l.message)), Right.new);
+  Future<Result<Unit>> setTheme(ThemeEnum themeEnum) async => (await service.put(Constants.keyTheme, themeEnum.toString())).fold(
+        Success.new,
+        Failure.new,
+      );
 }

@@ -1,11 +1,10 @@
-import 'package:dartz/dartz.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../data/repositories/theme/theme_repository.dart';
 import '../entities/theme/theme_enum.dart';
-import '../errors/theme_errors.dart';
 
 abstract class GetTheme {
-  Future<Either<ThemeFailure, ThemeEnum>> call();
+  Future<Result<ThemeEnum>> call();
 }
 
 class GetThemeImpl implements GetTheme {
@@ -14,5 +13,5 @@ class GetThemeImpl implements GetTheme {
   GetThemeImpl(this.repository);
 
   @override
-  Future<Either<ThemeFailure, ThemeEnum>> call() async => await repository.getTheme();
+  Future<Result<ThemeEnum>> call() async => await repository.getTheme();
 }

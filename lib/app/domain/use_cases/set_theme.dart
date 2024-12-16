@@ -1,11 +1,10 @@
-import 'package:dartz/dartz.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../data/repositories/theme/theme_repository.dart';
 import '../entities/theme/theme_enum.dart';
-import '../errors/theme_errors.dart';
 
 abstract class SetTheme {
-  Future<Either<ThemeFailure, Unit>> call(ThemeEnum themeEnum);
+  Future<Result<Unit>> call(ThemeEnum themeEnum);
 }
 
 class SetThemeImpl implements SetTheme {
@@ -14,5 +13,5 @@ class SetThemeImpl implements SetTheme {
   SetThemeImpl(this.repository);
 
   @override
-  Future<Either<ThemeFailure, Unit>> call(ThemeEnum themeEnum) async => await repository.setTheme(themeEnum);
+  Future<Result<Unit>> call(ThemeEnum themeEnum) async => await repository.setTheme(themeEnum);
 }

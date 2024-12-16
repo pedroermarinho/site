@@ -1,8 +1,7 @@
-import 'package:dartz/dartz.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../../domain/entities/settings/settings.dart';
-import '../../../domain/errors/settings_errors.dart';
 
 abstract class SettingsRepository {
-  Future<Either<SettingsFailure, Settings>> getSettings();
+  Future<Result<Settings>> getSettings();
 }

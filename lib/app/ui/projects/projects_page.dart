@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../ui/shared/components/project_component_widget.dart';
 import '../../ui/shared/components/responsive_widget.dart';
 import 'projects_viewmodel.dart';
 
 class ProjectsPage extends StatefulWidget {
+  final ProjectsViewModel projectsViewModel;
+
+  const ProjectsPage({required this.projectsViewModel, super.key});
+
   @override
   _ProjectsPageState createState() => _ProjectsPageState();
 }
 
 class _ProjectsPageState extends State<ProjectsPage> {
-  final controller = Modular.get<ProjectsController>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(update);
+    widget.projectsViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    controller.removeListener(update);
+    widget.projectsViewModel.removeListener(update);
     super.dispose();
   }
 
@@ -35,7 +36,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: Theme.of(context).textTheme.headlineSmall!.color,
+              color: Theme.of(context).cardColor,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 6.0,
@@ -49,16 +50,16 @@ class _ProjectsPageState extends State<ProjectsPage> {
                   children: [
                     IconButton(
                       icon: Icon(Icons.close),
-                      onPressed: controller.closeProjectsHome,
+                      onPressed: widget.projectsViewModel.closeProjectsHome,
                     ),
                   ],
                 ),
                 Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.only(bottom: 15, top: 6),
-                    itemCount: controller.listProjects.length,
+                    itemCount: widget.projectsViewModel.listProjects.length,
                     itemBuilder: (_, index) => ProjectComponentWidget(
-                      repo: controller.listProjects.elementAt(index),
+                      repo: widget.projectsViewModel.listProjects.elementAt(index),
                     ),
                   ),
                 ),
@@ -75,16 +76,16 @@ class _ProjectsPageState extends State<ProjectsPage> {
                   children: [
                     IconButton(
                       icon: Icon(Icons.close),
-                      onPressed: controller.closeProjects,
+                      onPressed: () => widget.projectsViewModel.closeProjects(context),
                     ),
                   ],
                 ),
                 Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.only(bottom: 15, top: 6),
-                    itemCount: controller.listProjects.length,
+                    itemCount: widget.projectsViewModel.listProjects.length,
                     itemBuilder: (_, index) => ProjectComponentWidget(
-                      repo: controller.listProjects.elementAt(index),
+                      repo: widget.projectsViewModel.listProjects.elementAt(index),
                     ),
                   ),
                 ),

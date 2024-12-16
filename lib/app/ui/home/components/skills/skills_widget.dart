@@ -5,7 +5,7 @@ import '../../../../domain/entities/settings/skills.dart';
 class SkillsWidget extends StatelessWidget {
   final Skills skills;
 
-  const SkillsWidget({Key? key, required this.skills}) : super(key: key);
+  const SkillsWidget({required this.skills, Key? key}) : super(key: key);
 
   Color get _color {
     switch (getCodeSkill(skills.level)) {

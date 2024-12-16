@@ -3,8 +3,8 @@ class Roles {
     required this.role,
     required this.location,
     required this.startDate,
-    this.endDate,
     required this.skills,
+    this.endDate,
   });
 
   late final String role;

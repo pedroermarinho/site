@@ -1,7 +1,18 @@
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter/material.dart';
 
-class SplashScreenController {
-  void pushHome() {
-    Modular.to.pushReplacementNamed('/home');
+import '../../../../config/providers.dart';
+import '../../../home/home_page.dart';
+
+class SplashScreenViewModel {
+  void pushHome(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(
+          homeViewModel: getIt(),
+          modalViewModel: getIt(),
+        ),
+      ),
+    );
   }
 }

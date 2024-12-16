@@ -1,44 +1,30 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../config/providers.dart';
 import '../../ui/shared/pages/about/about_page.dart';
-import '../markdown/markdown_module.dart';
-import '../projects/projects_module.dart';
+import '../markdown/markdown_page.dart';
+import '../projects/projects_page.dart';
+import '../shared/view_models/modal_viewmodel.dart';
 
-class HomeController extends ChangeNotifier {
-  Widget projects = Container();
+class HomeViewModel {
+  final ModalViewModel modalViewModel;
+
+  HomeViewModel({required this.modalViewModel});
 
   void openProjects() {
-    projects = ProjectsModule();
-    notifyListeners();
+    modalViewModel.openModal(ProjectsPage(projectsViewModel: getIt()));
   }
 
-  void closeProjects() {
-    projects = Container();
-    notifyListeners();
+  void closeModal() {
+    modalViewModel.closeModal();
   }
-
-  Widget about = Container();
 
   void openAbout() {
-    about = AboutPage();
-    notifyListeners();
+    modalViewModel.openModal(AboutPage(modalViewModel: getIt()));
   }
-
-  void closeAbout() {
-    about = Container();
-    notifyListeners();
-  }
-
-  Widget markdown = Container();
 
   void openMarkdown() {
-    markdown = MarkdownModule();
-    notifyListeners();
-  }
-
-  void closeMarkdown() {
-    markdown = Container();
-    notifyListeners();
+    modalViewModel.openModal(MarkdownPage(modalViewModel: getIt()));
   }
 
   final pageViewController = PageController();

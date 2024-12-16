@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import '../shared/components/responsive_widget.dart';
-import 'markdown_viewmodel.dart';
+import '../shared/view_models/modal_viewmodel.dart';
 
 class MarkdownPage extends StatefulWidget {
+  final ModalViewModel modalViewModel;
+
+  const MarkdownPage({required this.modalViewModel, super.key});
+
   @override
   _MarkdownPageState createState() => _MarkdownPageState();
 }
 
 class _MarkdownPageState extends State<MarkdownPage> {
-  final controller = Modular.get<MarkdownController>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(update);
+    widget.modalViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    controller.removeListener(update);
+    widget.modalViewModel.removeListener(update);
     super.dispose();
   }
 
@@ -49,7 +50,7 @@ class _MarkdownPageState extends State<MarkdownPage> {
                   children: [
                     IconButton(
                       icon: Icon(Icons.close),
-                      onPressed: controller.closeMarkdown,
+                      onPressed: widget.modalViewModel.closeModal,
                     ),
                   ],
                 ),
@@ -71,11 +72,9 @@ class _MarkdownPageState extends State<MarkdownPage> {
         ),
       );
 
-  Widget _buildMarkdown() {
-    return Markdown(
-      data: """
+  Widget _buildMarkdown() => Markdown(
+        data: """
            ### **Teste**
        """,
-    );
-  }
+      );
 }

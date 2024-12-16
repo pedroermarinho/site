@@ -6,7 +6,7 @@ import '../../../domain/entities/theme/themes.dart';
 import '../../../domain/use_cases/get_theme.dart';
 import '../../../domain/use_cases/set_theme.dart';
 
-abstract class ThemesStore extends ChangeNotifier {
+abstract class ThemesViewModel extends ChangeNotifier {
   ThemeData get themeActual;
 
   void setContext(BuildContext context);
@@ -18,7 +18,7 @@ abstract class ThemesStore extends ChangeNotifier {
   bool get isDark;
 }
 
-class ThemesStoreImpl extends ChangeNotifier implements ThemesStore {
+class ThemesViewModelImpl extends ChangeNotifier implements ThemesViewModel {
   final GetTheme getTheme;
   final SetTheme setTheme;
 
@@ -26,7 +26,7 @@ class ThemesStoreImpl extends ChangeNotifier implements ThemesStore {
 
   BuildContext? _context;
 
-  ThemesStoreImpl({required this.getTheme, required this.setTheme}) {
+  ThemesViewModelImpl({required this.getTheme, required this.setTheme}) {
     recoverTheme();
   }
 
@@ -41,8 +41,8 @@ class ThemesStoreImpl extends ChangeNotifier implements ThemesStore {
     final result = await getTheme();
 
     result.fold(
-      (l) => theme = ThemeEnum.lightTheme,
       (r) => theme = r,
+      (l) => theme = ThemeEnum.lightTheme,
     );
     notifyListeners();
   }
@@ -63,9 +63,16 @@ class ThemesStoreImpl extends ChangeNotifier implements ThemesStore {
     }
     final result = await setTheme(theme);
 
-    result.fold((l) {
-      Asuka.showSnackBar(SnackBar(content: Text(l.message)));
-    }, (r) => Asuka.showSnackBar(SnackBar(content: Text('Tema alterado'))));
+    result.fold(
+      (r) => Asuka.showSnackBar(
+        SnackBar(
+          content: Text('Tema alterado'),
+        ),
+      ),
+      (l) {
+        Asuka.showSnackBar(SnackBar(content: Text(l.toString())));
+      },
+    );
 
     notifyListeners();
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../ui/shared/components/loading_settings_data.dart';
 import '../../../../ui/shared/components/responsive_widget.dart';
@@ -8,30 +7,32 @@ import '../../components/academic_information/academic_information_widget.dart';
 import '../../components/text_icon/text_icon_widget.dart';
 
 class Container3Page extends StatefulWidget {
+  final SettingsViewModel settingsViewModel;
+
+  const Container3Page({required this.settingsViewModel, super.key});
+
   @override
   _Container3PageState createState() => _Container3PageState();
 }
 
 class _Container3PageState extends State<Container3Page> {
-  final _settingsStore = Modular.get<SettingsStore>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
-    _settingsStore.addListener(update);
+    widget.settingsViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    _settingsStore.removeListener(update);
+    widget.settingsViewModel.removeListener(update);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) => LoadingSettingsData(
-        data: _settingsStore.settings,
+        data: widget.settingsViewModel.settings,
         builder: (settings) => Padding(
           padding: EdgeInsets.all(6),
           child: Container(

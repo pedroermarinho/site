@@ -1,10 +1,9 @@
-import 'package:dartz/dartz.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../../domain/entities/theme/theme_enum.dart';
-import '../../../domain/errors/theme_errors.dart';
 
 abstract class ThemeRepository {
-  Future<Either<ThemeFailure, ThemeEnum>> getTheme();
+  Future<Result<ThemeEnum>> getTheme();
 
-  Future<Either<ThemeFailure, Unit>> setTheme(ThemeEnum themeEnum);
+  Future<Result<Unit>> setTheme(ThemeEnum themeEnum);
 }

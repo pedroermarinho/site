@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../domain/entities/settings/skills.dart';
@@ -13,27 +12,29 @@ import '../../components/skills/skills_widget.dart';
 import '../../components/text_icon/text_icon_widget.dart';
 
 class Container1Page extends StatefulWidget {
+  final SettingsViewModel settingsViewModel;
+  final ThemesViewModel themesViewModel;
+
+  const Container1Page({required this.settingsViewModel, required this.themesViewModel, super.key});
+
   @override
   _Container1PageState createState() => _Container1PageState();
 }
 
 class _Container1PageState extends State<Container1Page> {
-  final _settingsStore = Modular.get<SettingsStoreImpl>();
-  final _themesController = Modular.get<ThemesStore>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
-    _themesController.addListener(update);
-    _settingsStore.addListener(update);
+    widget.themesViewModel.addListener(update);
+    widget.settingsViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    _themesController.removeListener(update);
-    _settingsStore.removeListener(update);
+    widget.themesViewModel.removeListener(update);
+    widget.settingsViewModel.removeListener(update);
     super.dispose();
   }
 
@@ -58,7 +59,7 @@ class _Container1PageState extends State<Container1Page> {
 
   @override
   Widget build(BuildContext context) => LoadingSettingsData(
-        data: _settingsStore.settings,
+        data: widget.settingsViewModel.settings,
         builder: (settings) => containerCustom(
           context,
           child: ListView(
@@ -79,10 +80,10 @@ class _Container1PageState extends State<Container1Page> {
                     ResponsiveWidget.isSmallScreen(context)
                         ? IconButton(
                             icon: Icon(
-                              _themesController.isDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
+                              widget.themesViewModel.isDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
                               color: Colors.white,
                             ),
-                            onPressed: _themesController.changeTheme,
+                            onPressed: widget.themesViewModel.changeTheme,
                           )
                         : Container(),
                     Expanded(child: Container()),

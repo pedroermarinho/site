@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../ui/shared/components/loading_settings_data.dart';
@@ -9,30 +8,32 @@ import '../../../shared/view_models/settings_viewmodel.dart';
 import '../../components/line/line_widget.dart';
 
 class Container5Page extends StatefulWidget {
+  final SettingsViewModel settingsViewModel;
+
+  const Container5Page({required this.settingsViewModel, super.key});
+
   @override
   _Container5PageState createState() => _Container5PageState();
 }
 
 class _Container5PageState extends State<Container5Page> {
-  final _settingsStore = Modular.get<SettingsStore>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
-    _settingsStore.addListener(update);
+    widget.settingsViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    _settingsStore.removeListener(update);
+    widget.settingsViewModel.removeListener(update);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) => LoadingSettingsData(
-        data: _settingsStore.settings,
+        data: widget.settingsViewModel.settings,
         builder: (settings) => Padding(
           padding: EdgeInsets.all(6),
           child: Container(

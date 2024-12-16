@@ -3,8 +3,8 @@ class Academic {
     required this.institution,
     required this.course,
     required this.startDate,
-    this.endDate,
     required this.type,
+    this.endDate,
   });
 
   late final String institution;

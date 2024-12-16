@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../config/assets_path.dart';
 import 'splash_screen_viewmodel.dart';
 
 class SplashScreenPage extends StatefulWidget {
+  final SplashScreenViewModel splashScreenViewModel;
+
+  const SplashScreenPage({required this.splashScreenViewModel, super.key});
+
   @override
   _SplashScreenPageState createState() => _SplashScreenPageState();
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
-  final controller = Modular.get<SplashScreenController>();
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then((value) => controller.pushHome());
+    Future.delayed(Duration(seconds: 1)).then((value) => widget.splashScreenViewModel.pushHome(context));
   }
 
   @override

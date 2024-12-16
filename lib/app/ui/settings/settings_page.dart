@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../config/environment.dart';
 import 'settings_viewmodel.dart';
 
 class SettingsPage extends StatefulWidget {
+  final SettingsViewModel settingsViewModel;
+
+  const SettingsPage({required this.settingsViewModel, super.key});
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final controller = Modular.get<SettingsViewModel>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(update);
+    widget.settingsViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    controller.removeListener(update);
+    widget.settingsViewModel.removeListener(update);
     super.dispose();
   }
 
@@ -36,17 +37,17 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             IconButton(
               icon: Icon(
-                controller.isThemeDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
+                widget.settingsViewModel.isThemeDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
                 color: Colors.white,
               ),
-              onPressed: controller.changeTheme,
+              onPressed: widget.settingsViewModel.changeTheme,
             ),
             IconButton(
               icon: Icon(
                 FontAwesomeIcons.github,
                 color: Colors.white,
               ),
-              onPressed: controller.openProjects,
+              onPressed: widget.settingsViewModel.openProjects,
             ),
             if (!isProduction)
               IconButton(
@@ -54,14 +55,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   FontAwesomeIcons.book,
                   color: Colors.white,
                 ),
-                onPressed: controller.openMarkdown,
+                onPressed: widget.settingsViewModel.openMarkdown,
               ),
             IconButton(
               icon: Icon(
-                FontAwesomeIcons.infoCircle,
+                FontAwesomeIcons.circleInfo,
                 color: Colors.white,
               ),
-              onPressed: controller.openAbout,
+              onPressed: widget.settingsViewModel.openAbout,
             ),
           ],
         ),

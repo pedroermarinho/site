@@ -1,11 +1,10 @@
-import 'package:dartz/dartz.dart';
+import 'package:result_dart/result_dart.dart';
 
 import '../../data/repositories/github/github_repository.dart';
 import '../entities/github/user.dart';
-import '../errors/github_errors.dart';
 
 abstract class GetUser {
-  Future<Either<ErrorGetUser, User>> call();
+  Future<Result<User>> call();
 }
 
 class GetUserImpl implements GetUser {
@@ -14,5 +13,5 @@ class GetUserImpl implements GetUser {
   GetUserImpl(this.repository);
 
   @override
-  Future<Either<ErrorGetUser, User>> call() async => await repository.getUser();
+  Future<Result<User>> call() async => await repository.getUser();
 }

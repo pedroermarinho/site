@@ -1,43 +1,46 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
+import 'config/providers.dart';
+import 'ui/home/home_page.dart';
 import 'ui/shared/view_models/themes_viewmodel.dart';
 
 class AppWidget extends StatefulWidget {
+  final ThemesViewModel themes;
+
+  const AppWidget({required this.themes, super.key});
+
   @override
   State<AppWidget> createState() => _AppWidgetState();
 }
 
 class _AppWidgetState extends State<AppWidget> {
-  final themes = Modular.get<ThemesStore>();
-
   void update() => setState(() {});
 
   @override
   void initState() {
     super.initState();
 
-    themes.addListener(update);
+    widget.themes.addListener(update);
   }
 
   @override
   void dispose() {
-    themes.removeListener(update);
+    widget.themes.removeListener(update);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    themes.setContext(context);
-    Modular.setObservers([Asuka.asukaHeroController]);
-
-    return MaterialApp.router(
+    widget.themes.setContext(context);
+    return MaterialApp(
       title: 'Pedro Marinho',
-      theme: themes.themeActual,
+      theme: widget.themes.themeActual,
       builder: Asuka.builder,
-      routerDelegate: Modular.routerDelegate,
-      routeInformationParser: Modular.routeInformationParser,
+      home: HomePage(
+        homeViewModel: getIt(),
+        modalViewModel: getIt(),
+      ),
     );
   }
 }

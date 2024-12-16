@@ -8,7 +8,7 @@ import '../line/line_widget.dart';
 class ItemProjectWidget extends StatelessWidget {
   final Projects projects;
 
-  const ItemProjectWidget({Key? key, required this.projects}) : super(key: key);
+  const ItemProjectWidget({required this.projects, Key? key}) : super(key: key);
 
   _launchURL(String url) async {
     if (!await launchUrl(Uri.parse(url))) {

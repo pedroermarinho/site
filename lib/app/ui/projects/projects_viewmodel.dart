@@ -1,28 +1,27 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../domain/entities/github/repo.dart';
 import '../../domain/use_cases/get_repo.dart';
-import '../home/home_viewmodel.dart';
+import '../shared/view_models/modal_viewmodel.dart';
 
-class ProjectsController extends ChangeNotifier {
-  final _homeController = Modular.get<HomeController>();
-  final _getRepo = Modular.get<GetRepo>();
+class ProjectsViewModel extends ChangeNotifier {
+  final ModalViewModel modalViewModel;
+  final GetRepo getRepo;
 
   List<Repo> listProjects = [];
 
-  ProjectsController() {
+  ProjectsViewModel({required this.modalViewModel, required this.getRepo}) {
     getGithubRepos();
   }
 
   void closeProjectsHome() {
-    _homeController.closeProjects();
+    modalViewModel.closeModal();
     notifyListeners();
   }
 
-  void closeProjects() {
-    Modular.to.pop();
+  void closeProjects(BuildContext context) {
+    Navigator.pop(context);
     notifyListeners();
   }
 
@@ -33,10 +32,10 @@ class ProjectsController extends ChangeNotifier {
   }
 
   Future<void> getGithubRepos() async {
-    final result = await _getRepo();
+    final result = await getRepo();
     result.fold(
-      (l) => AsukaSnackbar.alert(l.message),
       setListProjects,
+      (l) => AsukaSnackbar.alert(l.toString()),
     );
     notifyListeners();
   }
