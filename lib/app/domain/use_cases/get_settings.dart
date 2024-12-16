@@ -4,7 +4,7 @@ import '../../data/repositories/settings/settings_repository.dart';
 import '../entities/settings/settings.dart';
 
 abstract class GetSettings {
-  Future<Result<Settings>> call();
+  AsyncResult<Settings> call();
 }
 
 class GetSettingsImpl implements GetSettings {
@@ -13,5 +13,5 @@ class GetSettingsImpl implements GetSettings {
   GetSettingsImpl(this.repository);
 
   @override
-  Future<Result<Settings>> call() async => await repository.getSettings();
+  AsyncResult<Settings> call() async => await repository.getSettings();
 }

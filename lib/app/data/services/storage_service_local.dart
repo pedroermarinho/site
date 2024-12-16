@@ -6,7 +6,7 @@ import 'storage_service.dart';
 
 class StorageServiceLocal implements StorageService {
   @override
-  Future<Result<Unit>> clear() async {
+  AsyncResult<Unit> clear() async {
     try {
       final prefs = await SharedPreferences.getInstance();
       prefs.clear();
@@ -18,7 +18,7 @@ class StorageServiceLocal implements StorageService {
   }
 
   @override
-  Future<Result<bool>> containsKey(String key) async {
+  AsyncResult<bool> containsKey(String key) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       final result = prefs.containsKey(key);
@@ -31,7 +31,7 @@ class StorageServiceLocal implements StorageService {
   }
 
   @override
-  Future<Result<String>> get(String key) async {
+  AsyncResult<String> get(String key) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       final result = prefs.getString(key);
@@ -46,7 +46,7 @@ class StorageServiceLocal implements StorageService {
   }
 
   @override
-  Future<Result<Unit>> put(String key, dynamic value) async {
+  AsyncResult<Unit> put(String key, dynamic value) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString(key, value);
@@ -58,7 +58,7 @@ class StorageServiceLocal implements StorageService {
   }
 
   @override
-  Future<Result<Unit>> remove(String key) async {
+  AsyncResult<Unit> remove(String key) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       prefs.remove(key);

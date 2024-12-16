@@ -11,7 +11,7 @@ class ThemeRepositoryLocal implements ThemeRepository {
   ThemeRepositoryLocal(this.service);
 
   @override
-  Future<Result<ThemeEnum>> getTheme() async => (await service.get(Constants.keyTheme)).fold(
+  AsyncResult<ThemeEnum> getTheme() async => (await service.get(Constants.keyTheme)).fold(
         (theme) {
           if (theme == ThemeEnum.darkTheme.toString()) {
             return Success(ThemeEnum.darkTheme);
@@ -23,7 +23,7 @@ class ThemeRepositoryLocal implements ThemeRepository {
       );
 
   @override
-  Future<Result<Unit>> setTheme(ThemeEnum themeEnum) async => (await service.put(Constants.keyTheme, themeEnum.toString())).fold(
+  AsyncResult<Unit> setTheme(ThemeEnum themeEnum) async => (await service.put(Constants.keyTheme, themeEnum.toString())).fold(
         Success.new,
         Failure.new,
       );

@@ -1,18 +1,28 @@
 import 'dart:io';
 
+import 'package:result_dart/result_dart.dart';
+
 import 'markdown_repository.dart';
 
 class MarkdownRepositoryLocal implements MarkdownRepository {
   @override
-  Future<String> getMarkdown(String path) {
+  AsyncResult<String> getMarkdown(String path)async {
     final file = File(path);
-    return file.readAsString();
+    if (!file.existsSync()) {
+      return AsyncResult.error('Arquivo não encontrado');
+    }
+    final content = await file.readAsString();
+    return AsyncResult.value(Success(content));
   }
 
   @override
-  Future<List<String>> getMarkdownList() {
+  AsyncResult<List<String>> getMarkdownList() async{
     final directory = Directory('assets/markdown');
+    if (!directory.existsSync()) {
+      return AsyncResult.error('Diretório não encontrado');
+    }
     final files = directory.listSync();
-    return Future.value(files.map((file) => file.path).toList());
+    final data = await Future.value(files.map((file) => file.path).toList());
+    return AsyncResult.value(Success(data));
   }
 }

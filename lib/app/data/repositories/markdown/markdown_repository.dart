@@ -1,5 +1,7 @@
-abstract class MarkdownRepository {
-  Future<String> getMarkdown(String path);
+import 'package:result_dart/result_dart.dart';
 
-  Future<List<String>> getMarkdownList();
+abstract class MarkdownRepository {
+  AsyncResult<String> getMarkdown(String path);
+
+  AsyncResult<List<String>> getMarkdownList();
 }

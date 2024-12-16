@@ -16,7 +16,7 @@ class GithubRepositoryRemote implements GitHubRepository {
   GithubRepositoryRemote({required this.dio, required this.getSettings});
 
   @override
-  Future<Result<List<Repo>>> getRepos() async {
+  AsyncResult<List<Repo>> getRepos() async {
     try {
       final settings = (await getSettings()).getOrThrow();
       if (settings.socialNetworks.github == null) {
@@ -34,7 +34,7 @@ class GithubRepositoryRemote implements GitHubRepository {
   }
 
   @override
-  Future<Result<User>> getUser() async {
+  AsyncResult<User> getUser() async {
     try {
       final settings = (await getSettings()).getOrThrow();
       if (settings.socialNetworks.github == null) {

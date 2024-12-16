@@ -4,7 +4,7 @@ import '../../data/repositories/theme/theme_repository.dart';
 import '../entities/theme/theme_enum.dart';
 
 abstract class GetTheme {
-  Future<Result<ThemeEnum>> call();
+  AsyncResult<ThemeEnum> call();
 }
 
 class GetThemeImpl implements GetTheme {
@@ -13,5 +13,5 @@ class GetThemeImpl implements GetTheme {
   GetThemeImpl(this.repository);
 
   @override
-  Future<Result<ThemeEnum>> call() async => await repository.getTheme();
+  AsyncResult<ThemeEnum> call() async => await repository.getTheme();
 }

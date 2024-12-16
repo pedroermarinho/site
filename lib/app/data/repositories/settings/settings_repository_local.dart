@@ -12,7 +12,7 @@ import 'settings_repository.dart';
 
 class SettingsRepositoryLocal implements SettingsRepository {
   @override
-  Future<Result<Settings>> getSettings() async {
+  AsyncResult<Settings> getSettings() async {
     try {
       final file = File(AssetsPath.settingsJSON);
       final data = await json.decode(file.readAsStringSync());

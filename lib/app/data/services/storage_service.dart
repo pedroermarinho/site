@@ -1,13 +1,13 @@
 import 'package:result_dart/result_dart.dart';
 
 abstract class StorageService {
-  Future<Result<String>> get(String key);
+  AsyncResult<String> get(String key);
 
-  Future<Result<Unit>> put(String key, dynamic value);
+  AsyncResult<Unit> put(String key, dynamic value);
 
-  Future<Result<bool>> containsKey(String key);
+  AsyncResult<bool> containsKey(String key);
 
-  Future<Result<Unit>> clear();
+  AsyncResult<Unit> clear();
 
-  Future<Result<Unit>> remove(String key);
+  AsyncResult<Unit> remove(String key);
 }

@@ -15,7 +15,7 @@ class SettingsRepositoryRemote implements SettingsRepository {
   SettingsRepositoryRemote({required this.dio});
 
   @override
-  Future<Result<Settings>> getSettings() async {
+  AsyncResult<Settings> getSettings() async {
     try {
       final response = await dio.get(settingsUrl);
       final data = await json.decode(response.data);
