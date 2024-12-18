@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../config/providers.dart';
+import '../../domain/view_models/modal_viewmodel.dart';
 import '../../ui/shared/pages/about/about_page.dart';
-import '../markdown/markdown_page.dart';
 import '../projects/projects_page.dart';
-import '../shared/view_models/modal_viewmodel.dart';
 
 class HomeViewModel {
   final ModalViewModel modalViewModel;
@@ -20,11 +19,10 @@ class HomeViewModel {
   }
 
   void openAbout() {
-    modalViewModel.openModal(AboutPage(modalViewModel: getIt()));
-  }
-
-  void openMarkdown() {
-    modalViewModel.openModal(MarkdownPage(modalViewModel: getIt()));
+    modalViewModel.openModal(AboutPage(
+      modalViewModel: getIt(),
+      aboutViewModel: getIt(),
+    ));
   }
 
   final pageViewController = PageController();

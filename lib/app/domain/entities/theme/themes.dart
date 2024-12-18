@@ -14,7 +14,6 @@ ThemeData darkTheme(BuildContext context) => ThemeData(
       cardColor: Color(0xff1f2124),
       canvasColor: Colors.black,
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: Colors.white10,
       textTheme: TextTheme(
         displayLarge: TextStyle(
           fontSize: 30,
@@ -38,11 +37,11 @@ ThemeData darkTheme(BuildContext context) => ThemeData(
         ),
         bodyLarge: TextStyle(
           fontSize: 15,
-          color: Colors.white.withOpacity(0.7),
+          color: Colors.white.withValues(alpha: 0.7),
         ),
         bodyMedium: TextStyle(
           fontSize: 16,
-          color: Colors.black.withOpacity(0.7),
+          color: Colors.black.withValues(alpha: 0.7),
         ),
       ),
       buttonTheme: ButtonThemeData(
@@ -97,11 +96,11 @@ ThemeData lightTheme(BuildContext context) => ThemeData(
         ),
         bodyLarge: TextStyle(
           fontSize: 15,
-          color: Colors.black.withOpacity(0.7),
+          color: Colors.black.withValues(alpha: 0.7),
         ),
         bodyMedium: TextStyle(
           fontSize: 16,
-          color: Colors.black.withOpacity(0.7),
+          color: Colors.black.withValues(alpha: 0.7),
         ),
       ),
       buttonTheme: ButtonThemeData(

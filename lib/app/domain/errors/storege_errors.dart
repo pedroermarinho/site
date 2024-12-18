@@ -1,32 +1,30 @@
-abstract class StorageFailure implements Exception {
-  String get message;
-}
+import 'generic_errors.dart';
 
-class ErrorGetStorage extends StorageFailure {
+class ErrorGetStorage extends GenericFailure {
   final String message;
 
   ErrorGetStorage({required this.message});
 }
 
-class ErrorPutStorage extends StorageFailure {
+class ErrorPutStorage extends GenericFailure {
   final String message;
 
   ErrorPutStorage({required this.message});
 }
 
-class ErrorContainsKeyStorage extends StorageFailure {
+class ErrorContainsKeyStorage extends GenericFailure {
   final String message;
 
   ErrorContainsKeyStorage({required this.message});
 }
 
-class ErrorClearStorage extends StorageFailure {
+class ErrorClearStorage extends GenericFailure {
   final String message;
 
   ErrorClearStorage({required this.message});
 }
 
-class ErrorRemoveStorage extends StorageFailure {
+class ErrorRemoveStorage extends GenericFailure {
   final String message;
 
   ErrorRemoveStorage({required this.message});

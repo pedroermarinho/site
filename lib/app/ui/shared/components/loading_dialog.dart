@@ -13,7 +13,7 @@ class LoadingDialogImpl implements LoadingDialog {
   LoadingDialogImpl() {
     _entry = OverlayEntry(
       builder: (context) => Container(
-        color: Colors.black.withOpacity(.3),
+        color: Colors.black.withValues(alpha: .3),
         alignment: Alignment.center,
         child: CircularProgressIndicator(),
       ),

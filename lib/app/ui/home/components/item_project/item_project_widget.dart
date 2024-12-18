@@ -1,25 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../domain/entities/settings/projects.dart';
+import '../../../../utils/launch_url.dart';
+import '../../../markdown/markdown_page.dart';
 import '../line/line_widget.dart';
+import '../skills/skill_light_widget.dart';
 
 class ItemProjectWidget extends StatelessWidget {
   final Projects projects;
 
   const ItemProjectWidget({required this.projects, Key? key}) : super(key: key);
 
-  _launchURL(String url) async {
-    if (!await launchUrl(Uri.parse(url))) {
-      throw 'Could not launch $url';
-    }
-  }
+  @override
+  Widget build(BuildContext context) => Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  projects.name,
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                _projectType(projects),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 5),
+              child: Text(
+                projects.description,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+            SizedBox(height: 5),
+            Wrap(
+              runSpacing: 5,
+              spacing: 5,
+              children: [
+                ...projects.skills.map(
+                  (skill) => SkillLightWidget(name: skill),
+                )
+              ],
+            ),
+            SizedBox(height: 5),
+            Wrap(
+              direction: Axis.horizontal,
+              children: [
+                Visibility(
+                  visible: projects.markdown != null,
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 155),
+                    child: TextButton(
+                      onPressed: () => _openMD(context, projects.markdown!),
+                      child: Row(
+                        children: [
+                          Icon(FontAwesomeIcons.markdown),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Leia mais sobre"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: projects.links?.site != null,
+                  child: _url("Site", FontAwesomeIcons.link, projects.links?.site),
+                ),
+                Visibility(
+                  visible: projects.links?.snap != null,
+                  child: _url("Snap", FontAwesomeIcons.linux, projects.links?.snap),
+                ),
+                Visibility(
+                  visible: projects.links?.github != null,
+                  child: _url("GitHub", FontAwesomeIcons.github, projects.links?.github),
+                ),
+                Visibility(
+                  visible: projects.links?.pypi != null,
+                  child: _url("PyPi", FontAwesomeIcons.python, projects.links?.pypi),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 15, bottom: 15),
+              child: LineWidget(),
+            ),
+          ],
+        ),
+      );
 
-  Widget url(String title, IconData icon, String? url) => Container(
-        constraints: BoxConstraints(maxWidth: 130),
+  Widget _url(String title, IconData icon, String? url) => Container(
+        constraints: BoxConstraints(maxWidth: 100),
         child: TextButton(
-          onPressed: () => url != null ? _launchURL(url) : null,
+          onPressed: () => launchURL(url),
           child: Row(
             children: [
               Icon(icon),
@@ -32,41 +111,28 @@ class ItemProjectWidget extends StatelessWidget {
         ),
       );
 
-  @override
-  Widget build(BuildContext context) => Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: () => _launchURL(projects.url),
-              child: Text(
-                projects.name,
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-            ),
-            Wrap(
-              direction: Axis.horizontal,
-              children: [
-                Visibility(
-                  visible: projects.snap != null,
-                  child: url("Snap", FontAwesomeIcons.linux, projects.snap),
-                ),
-                Visibility(
-                  visible: projects.github != null,
-                  child: url("GitHub", FontAwesomeIcons.python, projects.github),
-                ),
-                Visibility(
-                  visible: projects.pypi != null,
-                  child: url("PyPi", FontAwesomeIcons.python, projects.pypi),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 15, bottom: 15),
-              child: LineWidget(),
-            ),
-          ],
-        ),
-      );
+  Widget _projectType(Projects project) {
+    switch (project.type) {
+      case ProjectType.personal:
+        return Tooltip(
+          child: Icon(
+            FontAwesomeIcons.user,
+            size: 20,
+          ),
+          message: "Projeto Pessoal",
+        );
+      case ProjectType.professional:
+        return Tooltip(
+          child: Icon(
+            FontAwesomeIcons.briefcase,
+            size: 20,
+          ),
+          message: "Projeto Profissional",
+        );
+    }
+  }
+
+  void _openMD(BuildContext context, String path) {
+    MarkdownPage.openModal(pathMD: path);
+  }
 }

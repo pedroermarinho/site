@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../config/environment.dart';
 import '../../config/providers.dart';
+import '../../domain/view_models/modal_viewmodel.dart';
 import '../../ui/shared/components/responsive_widget.dart';
-import '../markdown/markdown_page.dart';
 import '../settings/settings_page.dart';
-import '../shared/view_models/modal_viewmodel.dart';
 import 'home_viewmodel.dart';
 import 'pages/container1/container1_page.dart';
 import 'pages/container2/container2_page.dart';
@@ -52,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.all(6),
                     child: Container1Page(
-                      settingsViewModel: getIt(),
+                      dataViewModel: getIt(),
                       themesViewModel: getIt(),
                     ),
                   ),
@@ -62,20 +60,19 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: Container(
                       child: ListView(
-                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container2Page(
-                            settingsViewModel: getIt(),
+                            dataViewModel: getIt(),
                           ),
                           Container3Page(
-                            settingsViewModel: getIt(),
+                            dataViewModel: getIt(),
                           ),
                           Container4Page(
                             container4ViewModel: getIt(),
-                            settingsViewModel: getIt(),
+                            dataViewModel: getIt(),
                           ),
                           Container5Page(
-                            settingsViewModel: getIt(),
+                            dataViewModel: getIt(),
                           ),
                         ],
                       ),
@@ -93,27 +90,35 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         smallScreen: Scaffold(
-          body: PageView(
-            controller: widget.homeViewModel.pageViewController,
+          body: Stack(
             children: [
-              Container1Page(
-                themesViewModel: getIt(),
-                settingsViewModel: getIt(),
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: PageView(
+                  controller: widget.homeViewModel.pageViewController,
+                  children: [
+                    Container1Page(
+                      themesViewModel: getIt(),
+                      dataViewModel: getIt(),
+                    ),
+                    Container2Page(
+                      dataViewModel: getIt(),
+                    ),
+                    Container3Page(
+                      dataViewModel: getIt(),
+                    ),
+                    Container4Page(
+                      dataViewModel: getIt(),
+                      container4ViewModel: getIt(),
+                    ),
+                    Container5Page(
+                      dataViewModel: getIt(),
+                    ),
+                  ],
+                ),
               ),
-              Container2Page(
-                settingsViewModel: getIt(),
-              ),
-              Container3Page(
-                settingsViewModel: getIt(),
-              ),
-              Container4Page(
-                settingsViewModel: getIt(),
-                container4ViewModel: getIt(),
-              ),
-              if (!isProduction) MarkdownPage(modalViewModel: getIt()),
-              Container5Page(
-                settingsViewModel: getIt(),
-              ),
+              widget.modalViewModel.modal,
             ],
           ),
           bottomNavigationBar: AnimatedBuilder(
@@ -155,15 +160,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   label: "Projetos",
                 ),
-                if (!isProduction)
-                  BottomNavigationBarItem(
-                    backgroundColor: Colors.black87,
-                    icon: Icon(
-                      FontAwesomeIcons.book,
-                      color: Colors.teal,
-                    ),
-                    label: "Markdown",
-                  ),
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,
                   icon: Icon(

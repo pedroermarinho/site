@@ -29,68 +29,40 @@ class _ProjectsPageState extends State<ProjectsPage> {
   }
 
   @override
-  Widget build(BuildContext context) => ResponsiveWidget(
-        largeScreen: Padding(
-          padding: EdgeInsets.all(70),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 6.0,
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.close),
-                      onPressed: widget.projectsViewModel.closeProjectsHome,
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.only(bottom: 15, top: 6),
-                    itemCount: widget.projectsViewModel.listProjects.length,
-                    itemBuilder: (_, index) => ProjectComponentWidget(
-                      repo: widget.projectsViewModel.listProjects.elementAt(index),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+  Widget build(BuildContext context) => Padding(
+        padding: EdgeInsets.all(ResponsiveWidget.isSmallScreen(context) ? 0 : 70),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 6.0,
+              ),
+            ],
           ),
-        ),
-        smallScreen: Scaffold(
-          body: Container(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.close),
-                      onPressed: () => widget.projectsViewModel.closeProjects(context),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.only(bottom: 15, top: 6),
-                    itemCount: widget.projectsViewModel.listProjects.length,
-                    itemBuilder: (_, index) => ProjectComponentWidget(
-                      repo: widget.projectsViewModel.listProjects.elementAt(index),
-                    ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: widget.projectsViewModel.closeProjects,
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.only(bottom: 15, top: 6),
+                  itemCount: widget.projectsViewModel.listProjects.length,
+                  itemBuilder: (_, index) => ProjectComponentWidget(
+                    repo: widget.projectsViewModel.listProjects.elementAt(index),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );

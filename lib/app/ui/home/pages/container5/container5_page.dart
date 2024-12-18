@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../ui/shared/components/loading_settings_data.dart';
+import '../../../../domain/view_models/data_viewmodel.dart';
 import '../../../../ui/shared/components/responsive_widget.dart';
 import '../../../../utils/launch_url.dart';
-import '../../../shared/view_models/settings_viewmodel.dart';
+import '../../../shared/components/generic_container.dart';
 import '../../components/line/line_widget.dart';
 
 class Container5Page extends StatefulWidget {
-  final SettingsViewModel settingsViewModel;
+  final DataViewModel dataViewModel;
 
-  const Container5Page({required this.settingsViewModel, super.key});
+  const Container5Page({required this.dataViewModel, super.key});
 
   @override
   _Container5PageState createState() => _Container5PageState();
@@ -22,91 +22,90 @@ class _Container5PageState extends State<Container5Page> {
   @override
   void initState() {
     super.initState();
-    widget.settingsViewModel.addListener(update);
+    widget.dataViewModel.addListener(update);
   }
 
   @override
   void dispose() {
-    widget.settingsViewModel.removeListener(update);
+    widget.dataViewModel.removeListener(update);
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) => LoadingSettingsData(
-        data: widget.settingsViewModel.settings,
-        builder: (settings) => Padding(
-          padding: EdgeInsets.all(6),
-          child: Container(
-            decoration: ResponsiveWidget.isSmallScreen(context)
-                ? null
-                : BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 6.0,
-                      ),
-                    ],
-                  ),
-            child: Padding(
-              padding: ResponsiveWidget.isSmallScreen(context) ? EdgeInsets.all(10) : EdgeInsets.all(30),
-              child: Wrap(
-                direction: Axis.horizontal,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                alignment: WrapAlignment.center,
-                children: [
-                  Visibility(
-                    visible: settings.socialNetworks.github != null,
-                    child: IconButton(
-                      icon: Icon(FontAwesomeIcons.squareGithub),
-                      onPressed: () => launchURL('https://github.com/${settings.socialNetworks.github}'),
-                      iconSize: 100,
-                    ),
-                  ),
-                  Visibility(
-                    visible: settings.socialNetworks.instagram != null,
-                    child: IconButton(
-                      icon: Icon(FontAwesomeIcons.squareInstagram),
-                      onPressed: () => launchURL('https://instagram.com/${settings.socialNetworks.instagram}'),
-                      iconSize: 100,
-                    ),
-                  ),
-                  Visibility(
-                    visible: settings.socialNetworks.linkedin != null,
-                    child: IconButton(
-                      icon: Icon(FontAwesomeIcons.linkedin),
-                      onPressed: () => launchURL('https://linkedin.com/in/${settings.socialNetworks.linkedin}'),
-                      iconSize: 100,
-                    ),
-                  ),
-                  Visibility(
-                    visible: settings.socialNetworks.youtube != null,
-                    child: IconButton(
-                      icon: Icon(FontAwesomeIcons.squareYoutube),
-                      onPressed: () => launchURL('https://youtube.com/${settings.socialNetworks.youtube}'),
-                      iconSize: 100,
-                    ),
-                  ),
-                  Visibility(
-                    visible: settings.socialNetworks.twitter != null,
-                    child: IconButton(
-                      icon: Icon(FontAwesomeIcons.squareTwitter),
-                      onPressed: () => launchURL('https://twitter.com/${settings.socialNetworks.twitter}'),
-                      iconSize: 100,
-                    ),
-                  ),
-                  Visibility(
-                    visible: settings.socialNetworks.facebook != null,
-                    child: IconButton(
-                      icon: Icon(FontAwesomeIcons.squareFacebook),
-                      onPressed: () => launchURL('https://facebook.com/${settings.socialNetworks.facebook}'),
-                      iconSize: 100,
-                    ),
-                  ),
-                  ResponsiveWidget.isSmallScreen(context) ? Container() : LineWidget(color: Colors.transparent)
-                ],
+  Widget build(BuildContext context) {
+    final settings = widget.dataViewModel.settings;
+    return GenericContainer(
+      child: Wrap(
+        direction: Axis.horizontal,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        alignment: WrapAlignment.center,
+        children: [
+          Tooltip(
+            message: "Github",
+            child: IconButton(
+              icon: Icon(FontAwesomeIcons.squareGithub),
+              onPressed: () => launchURL('https://github.com/${settings.socialLinks.github}'),
+              iconSize: 100,
+            ),
+          ),
+          Visibility(
+            visible: settings.socialLinks.instagram != null,
+            child: Tooltip(
+              message: "Instagram",
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.squareInstagram),
+                onPressed: () => launchURL('https://instagram.com/${settings.socialLinks.instagram}'),
+                iconSize: 100,
               ),
             ),
           ),
-        ),
-      );
+          Visibility(
+            visible: settings.socialLinks.linkedin != null,
+            child: Tooltip(
+              message: "Linkedin",
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.linkedin),
+                onPressed: () => launchURL('https://linkedin.com/in/${settings.socialLinks.linkedin}'),
+                iconSize: 100,
+              ),
+            ),
+          ),
+          Visibility(
+            visible: settings.socialLinks.youtube != null,
+            child: Tooltip(
+              message: "Youtube",
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.squareYoutube),
+                onPressed: () => launchURL('https://youtube.com/${settings.socialLinks.youtube}'),
+                iconSize: 100,
+              ),
+            ),
+          ),
+          Visibility(
+            visible: settings.socialLinks.twitter != null,
+            child: Tooltip(
+              message: "Twitter",
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.squareTwitter),
+                onPressed: () => launchURL('https://twitter.com/${settings.socialLinks.twitter}'),
+                iconSize: 100,
+              ),
+            ),
+          ),
+          Visibility(
+            visible: settings.socialLinks.facebook != null,
+            child: Tooltip(
+              message: 'Facebook',
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.squareFacebook),
+                onPressed: () => launchURL('https://facebook.com/${settings.socialLinks.facebook}'),
+                iconSize: 100,
+              ),
+            ),
+          ),
+          ResponsiveWidget.isSmallScreen(context) ? Container() : LineWidget(color: Colors.transparent)
+        ],
+      ),
+    );
+  }
 }

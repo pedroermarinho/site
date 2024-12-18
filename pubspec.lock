@@ -86,14 +86,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  build_daemon:
-    dependency: transitive
-    description:
-      name: build_daemon
-      sha256: "79b2aef6ac2ed00046867ed354c88778c9c0f029df8a20fe10b5436826721ef9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.2"
   build_modules:
     dependency: transitive
     description:
@@ -102,38 +94,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.9"
-  build_resolvers:
-    dependency: transitive
-    description:
-      name: build_resolvers
-      sha256: "339086358431fa15d7eca8b6a36e5d783728cf025e559b834f4609a1fcfb7b0a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.2"
-  build_runner:
-    dependency: "direct dev"
-    description:
-      name: build_runner
-      sha256: "028819cfb90051c6b5440c7e574d1896f8037e3c96cf17aaeb054c9311cfbf4d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.13"
-  build_runner_core:
-    dependency: transitive
-    description:
-      name: build_runner_core
-      sha256: f8126682b87a7282a339b871298cc12009cb67109cfa1614d6436fb0289193e0
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.3.2"
   build_web_compilers:
     dependency: "direct dev"
     description:
       name: build_web_compilers
-      sha256: e8d818410cc8b4dc96c4960ce0ab84fe3f2b0ca6576cc130fd7277b56eba9d68
+      sha256: "75a3ce1cd97d2bb13bc0d7321570c390ef795304ca3c6a635716fd9902587a68"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.11"
+    version: "4.1.0"
   built_collection:
     dependency: transitive
     description:
@@ -649,10 +617,10 @@ packages:
     dependency: "direct main"
     description:
       name: result_command
-      sha256: "2c7198bfd42b2ebe7ec744de02150e728284cdeeb7b736c0f69de49f09b7dcaf"
+      sha256: "29a4c3788e4ab7bf6105ae8664c2405fee5efef988a09ffa745aecbc3487931a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   result_dart:
     dependency: "direct main"
     description:
@@ -858,14 +826,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.5"
-  timing:
-    dependency: transitive
-    description:
-      name: timing
-      sha256: "70a3b636575d4163c477e6de42f247a23b315ae20e86442bebe32d3cabf61c32"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   typed_data:
     dependency: transitive
     description:
@@ -1027,5 +987,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.5.3 <3.7.0"
+  dart: ">=3.6.0 <3.7.0"
   flutter: ">=3.24.0"

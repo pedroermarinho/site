@@ -1,7 +1,7 @@
 {
   "name": "Pedro Marinho",
   "email": "pedroermarinho@gmail.com",
-  "role": "Desenvolvedor",
+  "role": "Desenvolvedor de Software",
   "location": "Manaus, Amazonas, Brasil",
   "photo": "https://avatars.githubusercontent.com/u/29618874?v=4",
   "phone": {
@@ -9,7 +9,7 @@
     "areaCode": "97",
     "number": "991389183"
   },
-  "socialNetworks": {
+  "socialLinks": {
     "github": "pedroermarinho",
     "linkedin": "pedroermarinho",
     "twitter": "pedroermarinho",
@@ -46,7 +46,7 @@
       "level": "native"
     }
   ],
-  "jobs": [
+  "workExperience": [
     {
       "companyName": "XMobots",
       "roles": [
@@ -62,7 +62,7 @@
             "Jooq",
             "React.js",
             "TypeScript",
-            "ArcGIS",
+            "ArcGIS.js",
             "GeoServer"
           ]
         }
@@ -151,96 +151,68 @@
       ]
     }
   ],
-  "skills": [
-    {
-      "name": "Liquibase",
-      "level": "intermediary"
+  "skills": {
+    "primary": {
+      "languages": [
+        "Java",
+        "TypeScript",
+        "Dart",
+        "JavaScript"
+      ],
+      "frameworks": [
+        "Spring Boot",
+        "React",
+        "Flutter",
+        "ArcGIS.js",
+        "Ant Design"
+      ],
+      "tools": [
+        "Docker",
+        "Git",
+        "Liquibase"
+      ],
+      "platforms": [
+        "GeoServer",
+        "Keycloak"
+      ],
+      "databases": [
+        "SQL",
+        "Jooq",
+        "PostgreSQL",
+        "MySQL"
+      ],
+      "os": [
+        "Linux"
+      ]
     },
-    {
-      "name": "Jooq",
-      "level": "intermediary"
-    },
-    {
-      "name": "Docker",
-      "level": "intermediary"
-    },
-    {
-      "name": "MQTT",
-      "level": "basic"
-    },
-    {
-      "name": "Keycloak",
-      "level": "basic"
-    },
-    {
-      "name": "GeoServer",
-      "level": "basic"
-    },
-    {
-      "name": "ArcGIS",
-      "level": "basic"
-    },
-    {
-      "name": "TypeScript",
-      "level": "intermediary"
-    },
-    {
-      "name": "Java",
-      "level": "intermediary"
-    },
-    {
-      "name": "Git",
-      "level": "intermediary"
-    },
-    {
-      "name": "SQL",
-      "level": "intermediary"
-    },
-    {
-      "name": "JavaScript",
-      "level": "intermediary"
-    },
-    {
-      "name": "Spring Boot",
-      "level": "intermediary"
-    },
-    {
-      "name": "React",
-      "level": "intermediary"
-    },
-    {
-      "name": "Kotlin",
-      "level": "intermediary"
-    },
-    {
-      "name": "Bash",
-      "level": "intermediary"
-    },
-    {
-      "name": "Ansible",
-      "level": "basic"
-    },
-    {
-      "name": "Python",
-      "level": "basic"
-    },
-    {
-      "name": "Flutter",
-      "level": "intermediary"
-    },
-    {
-      "name": "Dart",
-      "level": "intermediary"
-    },
-    {
-      "name": "Windows",
-      "level": "basic"
-    },
-    {
-      "name": "Linux",
-      "level": "intermediary"
+    "secondary": {
+      "languages": [
+        "Python",
+        "Kotlin",
+        "Bash"
+      ],
+      "frameworks": [
+        "Vue.js",
+        "Angular",
+        "Android Native",
+        "SingleSPA"
+      ],
+      "tools": [
+        "MQTT",
+        "Ansible"
+      ],
+      "databases": [
+        "Flyway"
+      ],
+      "platforms": [
+        "Mosquitto",
+        "RabbitMQ"
+      ],
+      "os": [
+        "Windows"
+      ]
     }
-  ],
+  },
   "links": [
     {
       "name": "Currículo Lattes",
@@ -255,24 +227,40 @@
     {
       "name": "PhotoGIMP",
       "description": "PhotoGIMP é um editor de imagens baseado no GIMP, com o objetivo de facilitar a edição de imagens para iniciantes.",
-      "url": "https://pedroermarinho.github.io/photogimp/",
-      "github": "https://github.com/pedroermarinho/photogimp",
-      "snap": "https://snapcraft.io/photogimp"
+      "type": "personal",
+      "status": "archived",
+      "skills": ["GIMP", "Bash", "Snapcraft"],
+      "markdown": "assets/md/photo_gimp.md",
+      "links": {
+        "site": "https://pedroermarinho.github.io/photogimp/",
+        "github": "https://github.com/pedroermarinho/photogimp",
+        "snap": "https://snapcraft.io/photogimp"
+      }
     },
     {
       "name": "VisualG Snap",
       "description": "Snap do VisualG, um software para ensino de lógica de programação empacotado para em Snap.",
-      "url": "https://pedroermarinho.github.io/visualg/",
-      "github": "https://github.com/pedroermarinho/visualg",
-      "snap": "https://snapcraft.io/visualg"
+      "type": "personal",
+      "status": "archived",
+      "skills": ["Snapcraft", "Bash","Wine"],
+      "links": {
+        "site": "https://pedroermarinho.github.io/visualg/",
+        "github": "https://github.com/pedroermarinho/visualg",
+        "snap": "https://snapcraft.io/visualg"
+      }
     },
     {
       "name": "Markdown Readme Generator",
       "description": "Gerador de README.md para projetos no GitHub.",
-      "url": "https://snapcraft.io/mrgenerator-cli",
-      "github": "https://github.com/pedroermarinho/markdown-readme-generator",
-      "snap": "https://snapcraft.io/mrgenerator-cli",
-      "pypi": "https://pypi.org/project/markdown-readme-generator/"
+      "type": "professional",
+      "status": "paused",
+      "skills": ["Python", "CLI", "Pip", "Snapcraft","Jinja2"],
+      "links": {
+        "site": "https://snapcraft.io/mrgenerator-cli",
+        "github": "https://github.com/pedroermarinho/markdown-readme-generator",
+        "snap": "https://snapcraft.io/mrgenerator-cli",
+        "pypi": "https://pypi.org/project/markdown-readme-generator/"
+      }
     }
   ]
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../domain/entities/settings/jobs.dart';
+import '../../../../domain/entities/settings/work_experience.dart';
 import '../line/line_widget.dart';
+import '../skills/skill_light_widget.dart';
 
 class JobsInformationWidget extends StatelessWidget {
-  final Jobs jobs;
+  final WorkExperience workExperience;
 
-  const JobsInformationWidget({required this.jobs});
+  const JobsInformationWidget({required this.workExperience});
 
   Widget current() => Container(
         padding: EdgeInsets.only(top: 1, bottom: 2, left: 5, right: 5),
@@ -24,10 +25,10 @@ class JobsInformationWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              jobs.companyName,
+              workExperience.companyName,
               style: Theme.of(context).textTheme.displayMedium,
             ),
-            ...jobs.roles.map(
+            ...workExperience.roles.map(
               (role) => Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
                 child: Column(
@@ -76,21 +77,7 @@ class JobsInformationWidget extends StatelessWidget {
                       spacing: 5,
                       children: [
                         ...role.skills.map(
-                          (skill) => Container(
-                            constraints: BoxConstraints(minWidth: 20),
-                            child: Text(
-                              skill,
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 12,
-                              ),
-                            ),
-                            padding: EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
-                            decoration: BoxDecoration(
-                              color: Colors.greenAccent,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
+                          (skill) => SkillLightWidget(name: skill),
                         )
                       ],
                     )

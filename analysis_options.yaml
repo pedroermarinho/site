@@ -1,6 +1,8 @@
 include: package:effective_dart/analysis_options.yaml
 
 analyzer:
+  errors:
+    avoid_catches_without_on_clauses: ignore
   exclude:
     - "**/*.g.dart"
     - "**/*.mocks.dart"

@@ -1,14 +1,12 @@
-abstract class ThemeFailure implements Exception {
-  String get message;
-}
+import 'generic_errors.dart';
 
-class ErrorGetTheme extends ThemeFailure {
+class ErrorGetTheme extends GenericFailure {
   final String message;
 
   ErrorGetTheme({required this.message});
 }
 
-class ErrorSetTheme extends ThemeFailure {
+class ErrorSetTheme extends GenericFailure {
   final String message;
 
   ErrorSetTheme({required this.message});

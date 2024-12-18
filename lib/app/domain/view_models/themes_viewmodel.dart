@@ -1,10 +1,12 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
-import '../../../domain/entities/theme/theme_enum.dart';
-import '../../../domain/entities/theme/themes.dart';
-import '../../../domain/use_cases/get_theme.dart';
-import '../../../domain/use_cases/set_theme.dart';
+import '../entities/theme/theme_enum.dart';
+import '../entities/theme/themes.dart';
+import '../errors/generic_errors.dart';
+import '../use_cases/get_theme.dart';
+import '../use_cases/set_theme.dart';
 
 abstract class ThemesViewModel extends ChangeNotifier {
   ThemeData get themeActual;
@@ -16,6 +18,22 @@ abstract class ThemesViewModel extends ChangeNotifier {
   Future changeTheme();
 
   bool get isDark;
+
+  static MarkdownStyleSheet markdownStyleSheet(BuildContext context) {
+    final theme = Theme.of(context);
+    return MarkdownStyleSheet(
+      h1: theme.textTheme.headlineLarge?.copyWith(color: theme.colorScheme.onSurface),
+      h2: theme.textTheme.headlineMedium?.copyWith(color: theme.colorScheme.onSurface),
+      h3: theme.textTheme.headlineSmall?.copyWith(color: theme.colorScheme.onSurface),
+      p: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurface),
+      a: theme.textTheme.bodyMedium?.copyWith(
+        color: theme.colorScheme.primary,
+        decoration: TextDecoration.underline,
+      ),
+      blockSpacing: 8.0,
+      listBullet: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurface),
+    );
+  }
 }
 
 class ThemesViewModelImpl extends ChangeNotifier implements ThemesViewModel {
@@ -41,8 +59,8 @@ class ThemesViewModelImpl extends ChangeNotifier implements ThemesViewModel {
     final result = await getTheme();
 
     result.fold(
-      (r) => theme = r,
-      (l) => theme = ThemeEnum.lightTheme,
+      (s) => theme = s,
+      (e) => theme = ThemeEnum.lightTheme,
     );
     notifyListeners();
   }
@@ -64,16 +82,21 @@ class ThemesViewModelImpl extends ChangeNotifier implements ThemesViewModel {
     final result = await setTheme(theme);
 
     result.fold(
-      (r) => Asuka.showSnackBar(
+      (s) => Asuka.showSnackBar(
         SnackBar(
           content: Text('Tema alterado'),
         ),
       ),
-      (l) {
-        Asuka.showSnackBar(SnackBar(content: Text(l.toString())));
-      },
+      _errorTheme,
     );
-
     notifyListeners();
+  }
+
+  void _errorTheme(Exception e) {
+    if (e is GenericFailure) {
+      AsukaSnackbar.alert(e.message).show();
+    } else {
+      AsukaSnackbar.alert("Erro ao recuperar tema").show();
+    }
   }
 }

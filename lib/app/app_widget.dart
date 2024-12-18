@@ -2,8 +2,8 @@ import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 
 import 'config/providers.dart';
-import 'ui/home/home_page.dart';
-import 'ui/shared/view_models/themes_viewmodel.dart';
+import 'domain/view_models/themes_viewmodel.dart';
+import 'ui/shared/pages/splash_screen/splash_screen_page.dart';
 
 class AppWidget extends StatefulWidget {
   final ThemesViewModel themes;
@@ -37,10 +37,7 @@ class _AppWidgetState extends State<AppWidget> {
       title: 'Pedro Marinho',
       theme: widget.themes.themeActual,
       builder: Asuka.builder,
-      home: HomePage(
-        homeViewModel: getIt(),
-        modalViewModel: getIt(),
-      ),
+      home: SplashScreenPage(splashScreenViewModel: getIt()),
     );
   }
 }

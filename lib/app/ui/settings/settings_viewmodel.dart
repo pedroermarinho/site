@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../domain/view_models/themes_viewmodel.dart';
 import '../home/home_viewmodel.dart';
-import '../shared/view_models/themes_viewmodel.dart';
 
 class SettingsViewModel extends ChangeNotifier {
   final ThemesViewModel themesController;
@@ -23,11 +23,6 @@ class SettingsViewModel extends ChangeNotifier {
 
   void openAbout() {
     homeViewModel.openAbout();
-    notifyListeners();
-  }
-
-  void openMarkdown() {
-    homeViewModel.openMarkdown();
     notifyListeners();
   }
 }

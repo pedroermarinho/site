@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../config/environment.dart';
 import 'settings_viewmodel.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -49,14 +48,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               onPressed: widget.settingsViewModel.openProjects,
             ),
-            if (!isProduction)
-              IconButton(
-                icon: Icon(
-                  FontAwesomeIcons.book,
-                  color: Colors.white,
-                ),
-                onPressed: widget.settingsViewModel.openMarkdown,
-              ),
             IconButton(
               icon: Icon(
                 FontAwesomeIcons.circleInfo,

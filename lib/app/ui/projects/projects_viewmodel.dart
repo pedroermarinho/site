@@ -2,8 +2,9 @@ import 'package:asuka/asuka.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../domain/entities/github/repo.dart';
+import '../../domain/errors/generic_errors.dart';
 import '../../domain/use_cases/get_repo.dart';
-import '../shared/view_models/modal_viewmodel.dart';
+import '../../domain/view_models/modal_viewmodel.dart';
 
 class ProjectsViewModel extends ChangeNotifier {
   final ModalViewModel modalViewModel;
@@ -15,13 +16,8 @@ class ProjectsViewModel extends ChangeNotifier {
     getGithubRepos();
   }
 
-  void closeProjectsHome() {
+  void closeProjects() {
     modalViewModel.closeModal();
-    notifyListeners();
-  }
-
-  void closeProjects(BuildContext context) {
-    Navigator.pop(context);
     notifyListeners();
   }
 
@@ -35,8 +31,16 @@ class ProjectsViewModel extends ChangeNotifier {
     final result = await getRepo();
     result.fold(
       setListProjects,
-      (l) => AsukaSnackbar.alert(l.toString()),
+      _errorGithubRepos,
     );
     notifyListeners();
+  }
+
+  void _errorGithubRepos(Exception e) {
+    if (e is GenericFailure) {
+      AsukaSnackbar.alert(e.message).show();
+    } else {
+      AsukaSnackbar.alert("Erro ao recuperar repositórios").show();
+    }
   }
 }

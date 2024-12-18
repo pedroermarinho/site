@@ -13,7 +13,7 @@ class SuccessDialogImpl implements SuccessDialog {
   SuccessDialogImpl() {
     _entry = OverlayEntry(
       builder: (context) => Container(
-        color: Colors.white.withOpacity(.9),
+        color: Colors.white.withValues(alpha: .9),
         alignment: Alignment.center,
         child: Center(
           child: Icon(
