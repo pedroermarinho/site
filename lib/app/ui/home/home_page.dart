@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Container5Page(
                             dataViewModel: getIt(),
+                            viewModel: getIt(),
                           ),
                         ],
                       ),
@@ -114,6 +115,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Container5Page(
                       dataViewModel: getIt(),
+                      viewModel: getIt(),
                     ),
                   ],
                 ),

@@ -44,15 +44,16 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final markdownStyle = ThemesViewModel.markdownStyleSheet(context);
+    final isSmallScreen = ResponsiveWidget.isSmallScreen(context);
     return Padding(
-      padding: EdgeInsets.all(ResponsiveWidget.isSmallScreen(context) ? 20 : 70),
+      padding: EdgeInsets.all(isSmallScreen ? 0 : 70),
       child: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
           boxShadow: [BoxShadow(blurRadius: 6.0)],
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: isSmallScreen ? null : BorderRadius.circular(10),
         ),
         child: Column(
           children: [
