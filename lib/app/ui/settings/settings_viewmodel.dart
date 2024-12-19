@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../domain/use_cases/build_pdf.dart';
 import '../../domain/view_models/themes_viewmodel.dart';
+import '../../utils/download_pdf.dart';
 import '../home/home_viewmodel.dart';
 
 class SettingsViewModel extends ChangeNotifier {
@@ -29,9 +30,9 @@ class SettingsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void downloadPdf() async {
+  void downloadPdfFile() async {
     final pdf = await buildPdf();
-    final output = File("curriculo_pedro_marinho.pdf");
-    await output.writeAsBytes(await pdf.save());
+    final pdfBytes = await pdf.save();
+    await downloadPdf(pdfBytes, "curriculo_pedro_marinho.pdf");
   }
 }

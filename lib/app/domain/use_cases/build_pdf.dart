@@ -132,7 +132,7 @@ class BuildPdf {
                       ),
                       pw.Expanded(
                         child: pw.Padding(
-                          padding: const pw.EdgeInsets.only(left: 10),
+                          padding: const pw.EdgeInsets.only(left: 10, right: 10),
                           child: pw.Column(
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             children: [
@@ -157,7 +157,7 @@ class BuildPdf {
                     ],
                   ),
                 ),
-              ])),
+              ],),),
     );
 
     return pdf;
@@ -264,7 +264,7 @@ class BuildPdf {
                   ),
                 ),
                 pw.SizedBox(height: 5),
-              ]),
+              ],),
             ),
           ],
         ),
@@ -287,7 +287,7 @@ class BuildPdf {
                   ),
                   pw.SizedBox(height: 1),
                   pw.Padding(
-                    padding: pw.EdgeInsets.only(left: 5),
+                    padding: pw.EdgeInsets.only(left: 10),
                     child: pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       mainAxisAlignment: pw.MainAxisAlignment.start,

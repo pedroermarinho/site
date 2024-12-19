@@ -58,10 +58,10 @@ class _SettingsPageState extends State<SettingsPage> {
               message: "Baixar currículo em PDF",
               child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.filePdf,
+                  FontAwesomeIcons.solidFilePdf,
                   color: Colors.white,
                 ),
-                onPressed: widget.settingsViewModel.downloadPdf,
+                onPressed: widget.settingsViewModel.downloadPdfFile,
               ),
             ),
             Tooltip(
