@@ -37,7 +37,7 @@ class BuildCommandWidget<T extends Object> extends StatelessWidget {
       );
 
   Widget _buildError([Exception? e]) {
-    var message = "Erro ao carregar informações";
+    var message = "Erro ao carregar as informações";
     if (e is GenericFailure) {
       message += ": ${e.message}";
     }

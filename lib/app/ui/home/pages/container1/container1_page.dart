@@ -267,11 +267,7 @@ class _Container1PageState extends State<Container1Page> {
     );
   }
 
-  List<Widget> _buildOrganizedSkills(Skills? skills) {
-    if (skills == null) {
-      return [];
-    }
-
+  List<Widget> _buildOrganizedSkills(Skills skills) {
     final skillCategories = [
       {"title": "Linguagens", "primary": skills.primary.languages, "secondary": skills.secondary.languages},
       {"title": "Frameworks", "primary": skills.primary.frameworks, "secondary": skills.secondary.frameworks},

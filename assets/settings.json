@@ -1,9 +1,12 @@
 {
   "name": "Pedro Marinho",
+  "fullName": "Pedro Eduardo Rodrigues Marinho",
+  "birthDate": "02/01/2000",
   "email": "pedroermarinho@gmail.com",
-  "role": "Desenvolvedor de Software",
+  "role": "Desenvolvedor Full Stack Java | React",
   "location": "Manaus, Amazonas, Brasil",
   "photo": "https://avatars.githubusercontent.com/u/29618874?v=4",
+  "summary": "Tenho experiência como desenvolvedor mobile e fullstack, trabalhando com diversas linguagens, incluindo Java, Kotlin, Dart e TypeScript, assim como frameworks como Spring Boot, Flutter, React e Vue.js. Também tenho conhecimentos em práticas DevOps,utilizando ferramentas como Docker, GitHub Actions e CI/CD. Minha especialidade e foco principal estão no backend, onde concentro minha atuação em Java e Spring Boot.",
   "phone": {
     "countryCode": "55",
     "areaCode": "97",
@@ -49,6 +52,7 @@
   "workExperience": [
     {
       "companyName": "XMobots",
+      "details": [],
       "roles": [
         {
           "role": "Desenvolvedor Software Jr",
@@ -70,6 +74,16 @@
     },
     {
       "companyName": "Instituto Creathus",
+      "details": [
+        "Desenvolvimento de interfaces em Angular, Vue.js e React.",
+        "Gerenciamento de bancos de dados utilizando Liquibase.",
+        "Implementação de containers com Docker para ambientes desenvolvimento e teste.",
+        "Integração de sistemas através do protocolo MQTT.",
+        "Utilização Java, Kotlin e Spring Boot para construção de API Rest.",
+        "Desenvolvimento de aplicativos móveis usando Flutter.",
+        "Desenvolvimento com JPA e JOOQ para a manipulação de dados.",
+        "Utilização de princípios de SOLID, Clean Code e Clean Architecture para criar soluções mais organizadas, exíveis e de fácil manutenção."
+      ],
       "roles": [
         {
           "role": "Desenvolvedor Software Jr I",
@@ -135,6 +149,10 @@
     },
     {
       "companyName": "Lepidus Tecnologia",
+      "details": [
+        "Desenvolvimento e aprendizado em tecnologias como Bash, Ansible,Docker e Git.",
+        "Contribuição para projetos de código aberto."
+        ],
       "roles": [
         {
           "role": "Estagiário em Desenvolvimento",
@@ -172,7 +190,6 @@
         "Liquibase"
       ],
       "platforms": [
-        "GeoServer",
         "Keycloak"
       ],
       "databases": [
@@ -205,6 +222,7 @@
         "Flyway"
       ],
       "platforms": [
+        "GeoServer",
         "Mosquitto",
         "RabbitMQ"
       ],

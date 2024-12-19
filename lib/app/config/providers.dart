@@ -12,6 +12,7 @@ import '../data/repositories/theme/theme_repository.dart';
 import '../data/repositories/theme/theme_repository_local.dart';
 import '../data/services/storage_service.dart';
 import '../data/services/storage_service_local.dart';
+import '../domain/use_cases/build_pdf.dart';
 import '../domain/use_cases/get_markdown.dart';
 import '../domain/use_cases/get_repo.dart';
 import '../domain/use_cases/get_settings.dart';
@@ -60,6 +61,7 @@ void setupProviders() {
   getIt.registerLazySingleton<MarkdownRepository>(MarkdownRepositoryLocal.new);
   getIt.registerLazySingleton<GetMarkdown>(() => GetMarkdownImpl(repository: getIt()));
   getIt.registerLazySingleton<AboutViewModel>(() => AboutViewModel(getMarkdown: getIt()));
+  getIt.registerLazySingleton(() => BuildPdf(dataViewModel: getIt()));
   homeProviders();
   projectsProviders();
   settingsProviders();

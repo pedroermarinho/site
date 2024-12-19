@@ -6,14 +6,7 @@ class SkillsWidget extends StatelessWidget {
 
   const SkillsWidget({required this.name, required this.isPrimary, Key? key}) : super(key: key);
 
-  Color get _color {
-    switch (isPrimary) {
-      case false:
-        return Colors.greenAccent;
-      case true:
-        return Colors.lightGreen;
-    }
-  }
+  Color get _color => isPrimary ? Colors.lightGreen : Colors.greenAccent;
 
   @override
   Widget build(BuildContext context) => Container(

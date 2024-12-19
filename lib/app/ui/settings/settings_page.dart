@@ -34,26 +34,45 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              icon: Icon(
-                widget.settingsViewModel.isThemeDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
-                color: Colors.white,
+            Tooltip(
+              message: "Alterar Tema",
+              child: IconButton(
+                icon: Icon(
+                  widget.settingsViewModel.isThemeDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
+                  color: Colors.white,
+                ),
+                onPressed: widget.settingsViewModel.changeTheme,
               ),
-              onPressed: widget.settingsViewModel.changeTheme,
             ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.github,
-                color: Colors.white,
+            Tooltip(
+              message: "Projetos do Github",
+              child: IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.github,
+                  color: Colors.white,
+                ),
+                onPressed: widget.settingsViewModel.openProjects,
               ),
-              onPressed: widget.settingsViewModel.openProjects,
             ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.circleInfo,
-                color: Colors.white,
+            Tooltip(
+              message: "Baixar currículo em PDF",
+              child: IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.filePdf,
+                  color: Colors.white,
+                ),
+                onPressed: widget.settingsViewModel.downloadPdf,
               ),
-              onPressed: widget.settingsViewModel.openAbout,
+            ),
+            Tooltip(
+              message: "Sobre",
+              child: IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.circleInfo,
+                  color: Colors.white,
+                ),
+                onPressed: widget.settingsViewModel.openAbout,
+              ),
             ),
           ],
         ),

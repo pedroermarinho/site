@@ -5,5 +5,6 @@ void settingsProviders() {
   getIt.registerLazySingleton(() => SettingsViewModel(
         homeViewModel: getIt(),
         themesController: getIt(),
+        buildPdf: getIt(),
       ));
 }
