@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/entities/github/repo.dart';
 import '../../../utils/launch_url.dart';
+import '../../home/components/skills/skill_light_widget.dart';
 
 class ProjectComponentWidget extends StatelessWidget {
   final Repo repo;
@@ -101,14 +102,26 @@ class ProjectComponentWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  repo.description ?? '',
-                  textScaler: TextScaler.linear(1.2),
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
+                if (repo.description != null) ...[
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    repo.description ?? '',
+                    textScaler: TextScaler.linear(1.2),
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+                if (repo.topics.isNotEmpty) ...[
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Wrap(
+                    spacing: 5.0,
+                    runSpacing: 5.0,
+                    children: repo.topics.map((e) => SkillLightWidget(name: e)).toList(),
+                  ),
+                ],
                 SizedBox(
                   height: 10.0,
                 ),

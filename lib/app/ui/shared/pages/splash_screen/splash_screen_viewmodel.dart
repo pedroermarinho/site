@@ -5,7 +5,6 @@ import 'package:result_command/result_command.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../../config/providers.dart';
-import '../../../../data/repositories/settings/settings_repository_local.dart';
 import '../../../../domain/entities/settings/settings.dart';
 import '../../../../domain/errors/generic_errors.dart';
 import '../../../../domain/use_cases/get_settings.dart';
@@ -22,14 +21,7 @@ class SplashScreenViewModel extends ChangeNotifier {
     required this.getSettings,
     required this.dataViewModel,
   }) {
-    getSettingsCommand = Command0<Settings>(() async {
-      final result = await getSettings();
-      if (result.isError()) {
-        final recover = await _recover();
-        return result.recover((e) => recover);
-      }
-      return result;
-    });
+    getSettingsCommand = Command0<Settings>(() async => await getSettings());
     getSettingsCommand.execute();
   }
 
@@ -45,8 +37,6 @@ class SplashScreenViewModel extends ChangeNotifier {
       }
     });
   }
-
-  Future<ResultDart<Settings, Exception>> _recover() async => await getSettings(SettingsRepositoryLocal());
 
   void _pushHome(BuildContext context) {
     Navigator.pushReplacement(

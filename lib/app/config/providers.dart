@@ -49,7 +49,7 @@ void setupProviders() {
   } else {
     getIt.registerLazySingleton<SettingsRepository>(SettingsRepositoryLocal.new);
   }
-  getIt.registerLazySingleton<GetSettings>(() => GetSettingsImpl(getIt()));
+  getIt.registerLazySingleton<GetSettings>(() => GetSettingsImpl(dio: getIt()));
   getIt.registerLazySingleton<GitHubRepository>(() => GithubRepositoryRemote(dio: getIt()));
   getIt.registerLazySingleton<GetRepo>(() => GetRepoImpl(getIt()));
   getIt.registerLazySingleton<GetUser>(() => GetUserImpl(getIt()));

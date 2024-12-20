@@ -14,9 +14,36 @@ class GetRepoImpl implements GetRepo {
 
   @override
   AsyncResult<List<Repo>> call() async => (await repository.getRepos()).fold(
-        (r) {
-          r.sort((a, b) => b.stargazersCount.compareTo(a.stargazersCount));
-          return Success(r);
+        (repos) {
+          repos.sort((a, b) {
+            final starComparison = b.stargazersCount.compareTo(a.stargazersCount);
+            if (starComparison != 0) {
+              return starComparison;
+            }
+
+            final forkComparison = (!b.fork ? 1 : 0).compareTo(!a.fork ? 1 : 0);
+
+            if (forkComparison != 0) {
+              return forkComparison;
+            }
+
+            final descriptionComparison = (b.description != null ? 1 : 0)
+                .compareTo(a.description != null ? 1 : 0);
+
+            if (descriptionComparison != 0) {
+              return descriptionComparison;
+            }
+
+            final topicComparison = (b.topics.isNotEmpty ? 1 : 0)
+                .compareTo(a.topics.isNotEmpty ? 1 : 0);
+
+            if (topicComparison != 0) {
+              return topicComparison;
+            }
+
+            return a.name.compareTo(b.name);
+          });
+          return Success(repos);
         },
         Failure.new,
       );

@@ -142,8 +142,9 @@ class _HomePageState extends State<HomePage> {
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,
                   icon: Icon(
-                    Icons.person,
+                    FontAwesomeIcons.userLarge,
                     color: Colors.teal,
+                    size: 22,
                   ),
                   label: "Perfil",
                 ),
@@ -152,22 +153,25 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.userAstronaut,
                     color: Colors.teal,
+                    size: 22,
                   ),
                   label: "Resumo",
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,
                   icon: Icon(
-                    Icons.business,
+                    FontAwesomeIcons.buildingUser,
                     color: Colors.teal,
+                    size: 22,
                   ),
                   label: "Emprego",
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,
                   icon: Icon(
-                    Icons.school,
+                    FontAwesomeIcons.graduationCap,
                     color: Colors.teal,
+                    size: 22,
                   ),
                   label: "Educação",
                 ),
@@ -176,6 +180,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.github,
                     color: Colors.teal,
+                    size: 22,
                   ),
                   label: "Projetos",
                 ),
@@ -184,6 +189,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.linkedinIn,
                     color: Colors.teal,
+                    size: 22,
                   ),
                   label: "Redes",
                 ),
