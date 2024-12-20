@@ -6,19 +6,19 @@ import '../../../../ui/shared/components/responsive_widget.dart';
 import '../../../shared/components/generic_container.dart';
 import '../../components/item_project/item_project_widget.dart';
 import '../../components/text_icon/text_icon_widget.dart';
-import 'container4_viewmodel.dart';
+import 'personal_project_viewmodel.dart';
 
-class Container4Page extends StatefulWidget {
-  final Container4ViewModel container4ViewModel;
+class PersonalProjectPage extends StatefulWidget {
+  final PersonalProjectViewModel personalProjectViewModel;
   final DataViewModel dataViewModel;
 
-  const Container4Page({required this.container4ViewModel, required this.dataViewModel, super.key});
+  const PersonalProjectPage({required this.personalProjectViewModel, required this.dataViewModel, super.key});
 
   @override
-  _Container4PageState createState() => _Container4PageState();
+  _PersonalProjectPageState createState() => _PersonalProjectPageState();
 }
 
-class _Container4PageState extends State<Container4Page> {
+class _PersonalProjectPageState extends State<PersonalProjectPage> {
   void update() => setState(() {});
 
   @override
@@ -46,12 +46,12 @@ class _Container4PageState extends State<Container4Page> {
             sizeIcon: 40,
             style: Theme.of(context).textTheme.displayLarge,
           ),
-          SizedBox(height: 55),
+          SizedBox(height: 20),
           ...settings.projects.map((e) => ItemProjectWidget(projects: e)),
           ResponsiveWidget.isSmallScreen(context)
               ? Center(
                   child: TextButton(
-                    onPressed: widget.container4ViewModel.pushProjects,
+                    onPressed: widget.personalProjectViewModel.pushProjects,
                     child: Text("Mais Projetos"),
                   ),
                 )

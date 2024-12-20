@@ -9,18 +9,20 @@ import '../../components/line/line_widget.dart';
 import '../../components/link/link_widget.dart';
 import '../../components/skills/skills_widget.dart';
 import '../../components/text_icon/text_icon_widget.dart';
+import 'personal_information_viewmodel.dart';
 
-class Container1Page extends StatefulWidget {
+class PersonalInformationPage extends StatefulWidget {
   final DataViewModel dataViewModel;
   final ThemesViewModel themesViewModel;
+  final PersonalInformationViewModel personalInformationViewModel;
 
-  const Container1Page({required this.dataViewModel, required this.themesViewModel, super.key});
+  const PersonalInformationPage({required this.dataViewModel, required this.themesViewModel, required this.personalInformationViewModel, super.key});
 
   @override
-  _Container1PageState createState() => _Container1PageState();
+  _PersonalInformationPageState createState() => _PersonalInformationPageState();
 }
 
-class _Container1PageState extends State<Container1Page> {
+class _PersonalInformationPageState extends State<PersonalInformationPage> {
   void update() => setState(() {});
 
   @override
@@ -76,15 +78,7 @@ class _Container1PageState extends State<Container1Page> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ResponsiveWidget.isSmallScreen(context)
-                    ? IconButton(
-                        icon: Icon(
-                          widget.themesViewModel.isDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
-                          color: Colors.white,
-                        ),
-                        onPressed: widget.themesViewModel.changeTheme,
-                      )
-                    : Container(),
+                ResponsiveWidget.isSmallScreen(context) ? _settingsIcons() : Container(),
                 Expanded(child: Container()),
                 Container(
                   child: Text(
@@ -266,6 +260,32 @@ class _Container1PageState extends State<Container1Page> {
       ),
     );
   }
+
+  Widget _settingsIcons() => Container(
+        margin: EdgeInsets.only(top: 10, left: 10),
+        width: 80,
+        decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(30)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: Icon(
+                widget.themesViewModel.isDark ? FontAwesomeIcons.solidSun : FontAwesomeIcons.solidMoon,
+                color: Colors.white,
+              ),
+              onPressed: widget.themesViewModel.changeTheme,
+            ),
+            IconButton(
+              icon: Icon(
+                FontAwesomeIcons.solidFilePdf,
+                color: Colors.white,
+              ),
+              onPressed: widget.personalInformationViewModel.downloadPdfFile,
+            )
+          ],
+        ),
+      );
 
   List<Widget> _buildOrganizedSkills(Skills skills) {
     final skillCategories = [

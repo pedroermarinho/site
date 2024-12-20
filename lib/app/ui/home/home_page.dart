@@ -6,11 +6,12 @@ import '../../domain/view_models/modal_viewmodel.dart';
 import '../../ui/shared/components/responsive_widget.dart';
 import '../settings/settings_page.dart';
 import 'home_viewmodel.dart';
-import 'pages/container1/container1_page.dart';
-import 'pages/container2/container2_page.dart';
-import 'pages/container3/container3_page.dart';
-import 'pages/container4/container4_page.dart';
-import 'pages/container5/container5_page.dart';
+import 'pages/academic/academic_page.dart';
+import 'pages/personal_information/personal_information_page.dart';
+import 'pages/personal_project/personal_project_page.dart';
+import 'pages/personal_summary/personal_summary_page.dart';
+import 'pages/social_links/social_links_page.dart';
+import 'pages/work_experience/work_experience_page.dart';
 
 class HomePage extends StatefulWidget {
   final HomeViewModel homeViewModel;
@@ -49,9 +50,10 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(6),
-                    child: Container1Page(
+                    child: PersonalInformationPage(
                       dataViewModel: getIt(),
                       themesViewModel: getIt(),
+                      personalInformationViewModel: getIt(),
                     ),
                   ),
                   SizedBox(
@@ -61,19 +63,22 @@ class _HomePageState extends State<HomePage> {
                     child: Container(
                       child: ListView(
                         children: [
-                          Container2Page(
+                          PersonalSummaryPage(
                             dataViewModel: getIt(),
                           ),
-                          Container3Page(
+                          WorkExperiencePage(
                             dataViewModel: getIt(),
                           ),
-                          Container4Page(
-                            container4ViewModel: getIt(),
+                          AcademicPage(
                             dataViewModel: getIt(),
                           ),
-                          Container5Page(
+                          PersonalProjectPage(
+                            personalProjectViewModel: getIt(),
                             dataViewModel: getIt(),
-                            viewModel: getIt(),
+                          ),
+                          SocialLinksPage(
+                            dataViewModel: getIt(),
+                            socialLinksViewModel: getIt(),
                           ),
                         ],
                       ),
@@ -99,23 +104,27 @@ class _HomePageState extends State<HomePage> {
                 child: PageView(
                   controller: widget.homeViewModel.pageViewController,
                   children: [
-                    Container1Page(
+                    PersonalInformationPage(
                       themesViewModel: getIt(),
                       dataViewModel: getIt(),
+                      personalInformationViewModel: getIt(),
                     ),
-                    Container2Page(
+                    PersonalSummaryPage(
                       dataViewModel: getIt(),
                     ),
-                    Container3Page(
+                    WorkExperiencePage(
                       dataViewModel: getIt(),
                     ),
-                    Container4Page(
+                    AcademicPage(
                       dataViewModel: getIt(),
-                      container4ViewModel: getIt(),
                     ),
-                    Container5Page(
+                    PersonalProjectPage(
                       dataViewModel: getIt(),
-                      viewModel: getIt(),
+                      personalProjectViewModel: getIt(),
+                    ),
+                    SocialLinksPage(
+                      dataViewModel: getIt(),
+                      socialLinksViewModel: getIt(),
                     ),
                   ],
                 ),
@@ -137,6 +146,14 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.teal,
                   ),
                   label: "Perfil",
+                ),
+                BottomNavigationBarItem(
+                  backgroundColor: Colors.black87,
+                  icon: Icon(
+                    FontAwesomeIcons.userAstronaut,
+                    color: Colors.teal,
+                  ),
+                  label: "Resumo",
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Colors.black87,

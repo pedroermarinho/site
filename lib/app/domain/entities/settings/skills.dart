@@ -16,6 +16,21 @@ class Skills {
         'primary': primary.toJson(),
         'secondary': secondary.toJson(),
       };
+
+  List<String> get allSkills => [
+        ...primary.languages,
+        ...primary.frameworks,
+        ...primary.tools,
+        ...primary.platforms,
+        ...primary.databases,
+        ...primary.os,
+        ...secondary.languages,
+        ...secondary.frameworks,
+        ...secondary.tools,
+        ...secondary.platforms,
+        ...secondary.databases,
+        ...secondary.os,
+      ];
 }
 
 class SkillCategory {

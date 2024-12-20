@@ -6,19 +6,19 @@ import '../../../../ui/shared/components/responsive_widget.dart';
 import '../../../../utils/launch_url.dart';
 import '../../../shared/components/generic_container.dart';
 import '../../components/line/line_widget.dart';
-import 'container5_viewmodel.dart';
+import 'social_links_viewmodel.dart';
 
-class Container5Page extends StatefulWidget {
+class SocialLinksPage extends StatefulWidget {
   final DataViewModel dataViewModel;
-  final Container5ViewModel viewModel;
+  final SocialLinksViewModel socialLinksViewModel;
 
-  const Container5Page({required this.dataViewModel, required this.viewModel, super.key});
+  const SocialLinksPage({required this.dataViewModel, required this.socialLinksViewModel, super.key});
 
   @override
-  _Container5PageState createState() => _Container5PageState();
+  _SocialLinksPageState createState() => _SocialLinksPageState();
 }
 
-class _Container5PageState extends State<Container5Page> {
+class _SocialLinksPageState extends State<SocialLinksPage> {
   void update() => setState(() {});
 
   @override
@@ -115,7 +115,7 @@ class _Container5PageState extends State<Container5Page> {
             child: Padding(
               padding: EdgeInsets.only(bottom: 20),
               child: TextButton(
-                onPressed: widget.viewModel.openAbout,
+                onPressed: widget.socialLinksViewModel.openAbout,
                 child: Text(
                   "Saiba mais sobre esse aplicativo",
                 ),

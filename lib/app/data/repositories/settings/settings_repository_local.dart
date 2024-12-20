@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:result_dart/result_dart.dart';
 
@@ -14,9 +14,9 @@ class SettingsRepositoryLocal implements SettingsRepository {
   @override
   AsyncResult<Settings> getSettings() async {
     try {
-      final file = File(AssetsPath.settingsJSON);
-      final data = await json.decode(file.readAsStringSync());
-      final settings = parseJson(data, Settings.fromJson);
+      final data = await rootBundle.loadString(AssetsPath.settingsJSON);
+      final jsonData = await json.decode(data);
+      final settings = parseJson(jsonData, Settings.fromJson);
       return Success(settings);
     } on FormatException catch (e) {
       Logger().e(e);

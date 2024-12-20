@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../domain/view_models/data_viewmodel.dart';
 import '../../../../ui/shared/components/responsive_widget.dart';
 import '../../../shared/components/generic_container.dart';
-import '../../components/jobs_information/jobs_information_widget.dart';
 import '../../components/text_icon/text_icon_widget.dart';
 
-class Container2Page extends StatefulWidget {
+class PersonalSummaryPage extends StatefulWidget {
   final DataViewModel dataViewModel;
 
-  const Container2Page({required this.dataViewModel, super.key});
+  const PersonalSummaryPage({required this.dataViewModel, super.key});
 
   @override
-  _Container2PageState createState() => _Container2PageState();
+  _PersonalSummaryPageState createState() => _PersonalSummaryPageState();
 }
 
-class _Container2PageState extends State<Container2Page> {
+class _PersonalSummaryPageState extends State<PersonalSummaryPage> {
   void update() => setState(() {});
 
   @override
@@ -38,13 +38,16 @@ class _Container2PageState extends State<Container2Page> {
         context,
         children: [
           TextIconWidget(
-            text: "Experiência de Trabalho",
-            icon: Icons.business,
+            text: "Resumo",
+            icon: FontAwesomeIcons.userAstronaut,
             sizeIcon: 40,
             style: Theme.of(context).textTheme.displayLarge,
           ),
-          SizedBox(height: 55),
-          ...settings.workExperience.map((workExperience) => JobsInformationWidget(workExperience: workExperience)),
+          SizedBox(height: 20),
+          Text(
+            settings.summary,
+            style: Theme.of(context).textTheme.bodyLarge,
+          )
         ],
       ),
     );

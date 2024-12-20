@@ -86,6 +86,25 @@ class JobsInformationWidget extends StatelessWidget {
               ),
             ),
             Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Resumo",
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  ...workExperience.details.map(
+                    (detail) => Text(
+                      "  - $detail",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
               padding: EdgeInsets.only(top: 15, bottom: 15),
               child: LineWidget(),
             ),

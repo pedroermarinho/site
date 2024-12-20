@@ -8,6 +8,7 @@ import 'package:printing/printing.dart';
 import '../entities/settings/academic.dart';
 import '../entities/settings/settings.dart';
 import '../entities/settings/skills.dart';
+import '../entities/settings/social_links.dart';
 import '../entities/settings/work_experience.dart';
 import '../view_models/data_viewmodel.dart';
 
@@ -18,153 +19,104 @@ class BuildPdf {
 
   Future<pw.Document> call() async {
     final data = dataViewModel.settings;
-    final pdf = pw.Document();
+    final pdf = pw.Document(
+      title: "Currículo de ${data.fullName} - ${data.role}",
+      author: data.fullName,
+      subject: "Currículo Profissional",
+      keywords: [
+        "Currículo",
+        "Profissional",
+        data.name,
+        data.role,
+        ...data.skills.allSkills,
+      ].join(", "),
+      creator: data.name,
+      producer: "Dart & Flutter",
+    );
 
     final image = pw.MemoryImage(await loadNetworkImage(data.photo));
 
     pdf.addPage(
       pw.Page(
-          pageFormat: PdfPageFormat.a4,
-          margin: const pw.EdgeInsets.all(0),
-          theme: pw.ThemeData.withFont(
-            base: await PdfGoogleFonts.openSansRegular(),
-            bold: await PdfGoogleFonts.openSansBold(),
-            icons: await PdfGoogleFonts.materialIcons(), // this line
-          ),
-          build: (context) => pw.Column(children: [
-                _header(
-                  data: data,
-                  image: image,
-                ),
-                pw.Expanded(
-                  child: pw.Row(
-                    crossAxisAlignment: pw.CrossAxisAlignment.start,
-                    children: [
-                      pw.Container(
-                        width: 190,
-                        padding: const pw.EdgeInsets.only(
-                          top: 10,
-                          left: 10,
-                          right: 3,
-                        ),
-                        decoration: pw.BoxDecoration(
-                          color: PdfColor.fromInt(0xffede6e0),
-                        ),
-                        child: pw.Expanded(
-                          child: pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: [
-                              _sectionTitle(
-                                "Informações Pessoais",
-                              ),
-                              pw.SizedBox(height: 8),
-                              pw.Row(
-                                children: [
-                                  pw.Icon(pw.IconData(0xe0be), size: 12),
-                                  pw.SizedBox(width: 5),
-                                  pw.Text(
-                                    data.email,
-                                    style: pw.TextStyle(
-                                      color: PdfColor.fromInt(0xff58585c),
-                                      fontSize: 9,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              pw.SizedBox(height: 5),
-                              pw.Row(
-                                children: [
-                                  pw.Icon(pw.IconData(0xe0cd), size: 12),
-                                  pw.SizedBox(width: 5),
-                                  pw.Text(
-                                    "+${data.phone.countryCode} (${data.phone.areaCode}) ${data.phone.number}",
-                                    style: pw.TextStyle(
-                                      color: PdfColor.fromInt(0xff58585c),
-                                      fontSize: 9,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              pw.SizedBox(height: 5),
-                              pw.Row(
-                                children: [
-                                  pw.Icon(pw.IconData(0xe0c8), size: 12),
-                                  pw.SizedBox(width: 5),
-                                  pw.Text(
-                                    data.location,
-                                    style: pw.TextStyle(
-                                      color: PdfColors.grey800,
-                                      fontSize: 9,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              pw.SizedBox(height: 5),
-
-                              pw.Row(
-                                children: [
-                                  pw.Icon(pw.IconData(0xe916), size: 12),
-                                  pw.SizedBox(width: 5),
-                                  pw.Text(
-                                    data.birthDate,
-                                    style: pw.TextStyle(
-                                      color: PdfColor.fromInt(0xff58585c),
-                                      fontSize: 9,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              pw.SizedBox(height: 10),
-                              _sectionTitle("Educação"),
-                              _listItem(data.academic),
-
-                              _sectionTitle("Habilidades"),
-                              _buildOrganizedSkills(data.skills),
-                              pw.SizedBox(height: 10),
-                              // Links
-                              _sectionTitle("Links"),
-                              if (data.socialLinks.linkedin != null) _link("LinkedIn", "https://www.linkedin.com/in/${data.socialLinks.linkedin}/"),
-                              _link("GitHub", "https://github.com/${data.socialLinks.github}"),
-                              _link("Portfólio", "https://pedroermarinho.github.io/"),
-                            ],
+        pageFormat: PdfPageFormat.a4,
+        margin: const pw.EdgeInsets.all(0),
+        theme: pw.ThemeData.withFont(
+          base: await PdfGoogleFonts.openSansRegular(),
+          bold: await PdfGoogleFonts.openSansBold(),
+          icons: await PdfGoogleFonts.materialIcons(), // this line
+        ),
+        build: (context) => pw.Column(
+          children: [
+            _header(data: data, image: image),
+            pw.Expanded(
+              child: pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Container(
+                    width: 190,
+                    padding: const pw.EdgeInsets.only(
+                      top: 10,
+                      left: 10,
+                      right: 3,
+                    ),
+                    decoration: pw.BoxDecoration(
+                      color: PdfColor.fromInt(0xffede6e0),
+                    ),
+                    child: pw.Expanded(
+                      child: pw.Column(
+                        crossAxisAlignment: pw.CrossAxisAlignment.start,
+                        children: [
+                          _sectionTitle(
+                            "Informações Pessoais",
                           ),
-                        ),
+                          pw.SizedBox(height: 8),
+                          _personalInformation(data),
+                          pw.SizedBox(height: 10),
+                          _sectionTitle("Educação"),
+                          _listItem(data.academic),
+                          _sectionTitle("Habilidades"),
+                          _buildOrganizedSkills(data.skills),
+                          pw.SizedBox(height: 10),
+                          _sectionTitle("Links"),
+                          _socialLinks(data.socialLinks),
+                        ],
                       ),
-                      pw.Expanded(
-                        child: pw.Padding(
-                          padding: const pw.EdgeInsets.only(left: 10, right: 10),
-                          child: pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: [
-                              _sectionTitle("Resumo"),
-                              pw.Divider(),
-                              pw.Text(
-                                data.summary,
-                                style: pw.TextStyle(
-                                  fontSize: 11,
-                                  color: PdfColors.grey900,
-                                ),
-                              ),
-                              pw.SizedBox(height: 10),
-                              _sectionTitle("Experiência Profissional"),
-                              pw.Divider(),
-                              _workExperienceItem(data.workExperience),
-                              pw.SizedBox(height: 10),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ],),),
+                  pw.Expanded(
+                    child: pw.Padding(
+                      padding: const pw.EdgeInsets.only(left: 10, right: 10),
+                      child: pw.Column(
+                        crossAxisAlignment: pw.CrossAxisAlignment.start,
+                        children: [
+                          _sectionTitle("Resumo"),
+                          pw.Divider(),
+                          pw.Text(
+                            data.summary,
+                            style: pw.TextStyle(
+                              fontSize: 9,
+                              color: PdfColors.grey900,
+                            ),
+                          ),
+                          _sectionTitle("Experiência Profissional"),
+                          pw.Divider(),
+                          _workExperienceItem(data.workExperience),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
-
     return pdf;
   }
 
   pw.Widget _header({required Settings data, required pw.MemoryImage image}) => pw.Container(
-        height: 120,
+        height: 90,
         decoration: pw.BoxDecoration(
           color: PdfColor.fromInt(0xff36373e),
         ),
@@ -176,11 +128,14 @@ class BuildPdf {
                 width: 200,
                 child: pw.Center(
                   child: pw.Container(
-                    width: 80,
-                    height: 80,
+                    width: 75,
+                    height: 75,
                     decoration: pw.BoxDecoration(
                       shape: pw.BoxShape.circle,
-                      image: pw.DecorationImage(image: image, fit: pw.BoxFit.cover),
+                      image: pw.DecorationImage(
+                        image: image,
+                        fit: pw.BoxFit.cover,
+                      ),
                     ),
                   ),
                 )),
@@ -191,7 +146,7 @@ class BuildPdf {
                 pw.Text(
                   data.fullName,
                   style: pw.TextStyle(
-                    fontSize: 24,
+                    fontSize: 22,
                     color: PdfColors.white,
                   ),
                 ),
@@ -208,6 +163,72 @@ class BuildPdf {
           ],
         ),
       );
+
+  pw.Widget _personalInformation(Settings data) =>
+      pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, mainAxisAlignment: pw.MainAxisAlignment.start, children: [
+        pw.Row(
+          children: [
+            pw.Icon(pw.IconData(0xe0be), size: 12),
+            pw.SizedBox(width: 5),
+            pw.Text(
+              data.email,
+              style: pw.TextStyle(
+                color: PdfColor.fromInt(0xff58585c),
+                fontSize: 9,
+              ),
+            ),
+          ],
+        ),
+        pw.SizedBox(height: 5),
+        pw.Row(
+          children: [
+            pw.Icon(pw.IconData(0xe0cd), size: 12),
+            pw.SizedBox(width: 5),
+            pw.Text(
+              "+${data.phone.countryCode} (${data.phone.areaCode}) ${data.phone.number}",
+              style: pw.TextStyle(
+                color: PdfColor.fromInt(0xff58585c),
+                fontSize: 9,
+              ),
+            ),
+          ],
+        ),
+        pw.SizedBox(height: 5),
+        pw.Row(
+          children: [
+            pw.Icon(pw.IconData(0xe0c8), size: 12),
+            pw.SizedBox(width: 5),
+            pw.Text(
+              data.location,
+              style: pw.TextStyle(
+                color: PdfColors.grey800,
+                fontSize: 9,
+              ),
+            ),
+          ],
+        ),
+        pw.SizedBox(height: 5),
+        pw.Row(
+          children: [
+            pw.Icon(pw.IconData(0xe916), size: 12),
+            pw.SizedBox(width: 5),
+            pw.Text(
+              data.birthDate,
+              style: pw.TextStyle(
+                color: PdfColor.fromInt(0xff58585c),
+                fontSize: 9,
+              ),
+            ),
+          ],
+        ),
+      ]);
+
+  pw.Widget _socialLinks(SocialLinks links) =>
+      pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
+        if (links.linkedin != null) _link("LinkedIn", "https://www.linkedin.com/in/${links.linkedin}/"),
+        _link("GitHub", "https://github.com/${links.github}"),
+        _link("Portfólio", "https://${links.github}.github.io/"),
+      ]);
 
   pw.Widget _sectionTitle(String title) => pw.Padding(
         padding: const pw.EdgeInsets.only(
@@ -230,41 +251,44 @@ class BuildPdf {
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
             ...academics.map(
-              (academic) => pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-                pw.Text(
-                  academic.course,
-                  style: pw.TextStyle(
-                    fontWeight: pw.FontWeight.bold,
-                    fontSize: 11,
-                    color: PdfColors.grey800,
+              (academic) => pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Text(
+                    academic.course,
+                    style: pw.TextStyle(
+                      fontWeight: pw.FontWeight.bold,
+                      fontSize: 11,
+                      color: PdfColors.grey800,
+                    ),
                   ),
-                ),
-                pw.SizedBox(height: 1),
-                pw.Text(
-                  academic.institution,
-                  style: pw.TextStyle(
-                    fontSize: 10,
-                    color: PdfColors.grey800,
+                  pw.SizedBox(height: 1),
+                  pw.Text(
+                    academic.institution,
+                    style: pw.TextStyle(
+                      fontSize: 10,
+                      color: PdfColors.grey800,
+                    ),
                   ),
-                ),
-                pw.SizedBox(height: 1),
-                pw.Text(
-                  academic.type,
-                  style: const pw.TextStyle(
-                    fontSize: 9,
-                    color: PdfColors.grey800,
+                  pw.SizedBox(height: 1),
+                  pw.Text(
+                    academic.type,
+                    style: const pw.TextStyle(
+                      fontSize: 9,
+                      color: PdfColors.grey800,
+                    ),
                   ),
-                ),
-                pw.SizedBox(height: 1),
-                pw.Text(
-                  "${academic.startDate} - ${academic.endDate}",
-                  style: const pw.TextStyle(
-                    fontSize: 9,
-                    color: PdfColors.grey800,
+                  pw.SizedBox(height: 1),
+                  pw.Text(
+                    "${academic.startDate} - ${academic.endDate}",
+                    style: const pw.TextStyle(
+                      fontSize: 9,
+                      color: PdfColors.grey800,
+                    ),
                   ),
-                ),
-                pw.SizedBox(height: 5),
-              ],),
+                  pw.SizedBox(height: 5),
+                ],
+              ),
             ),
           ],
         ),
