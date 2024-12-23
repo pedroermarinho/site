@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../ui/shared/components/project_component_widget.dart';
 import '../../ui/shared/components/responsive_widget.dart';
+import 'components/project_component_widget.dart';
 import 'projects_viewmodel.dart';
 
 class ProjectsPage extends StatefulWidget {

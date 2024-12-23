@@ -253,6 +253,10 @@
     {
       "name": "PhotoGIMP agora está disponível em Snap",
       "url": "https://diolinux.com.br/noticias/photogimp-snapcraft-snap-ubuntu-gimp-photoshop-editor-imagem-linux.html"
+    },
+    {
+      "name": "MIST COMPUTING: A SOLUTION TO WATER WASTE IN INDUSTRY",
+      "url": "https://www.researchgate.net/publication/365830011_MIST_COMPUTING_A_SOLUTION_TO_WATER_WASTE_IN_INDUSTRY"
     }
   ],
   "projects": [
@@ -262,7 +266,6 @@
       "type": "personal",
       "status": "archived",
       "skills": ["GIMP", "Bash", "Snapcraft"],
-      "markdown": "assets/md/photo_gimp.md",
       "links": {
         "site": "https://pedroermarinho.github.io/photogimp/",
         "github": "https://github.com/pedroermarinho/photogimp",
@@ -273,7 +276,7 @@
       "name": "VisualG Snap",
       "description": "Snap do VisualG, um software para ensino de lógica de programação empacotado para em Snap.",
       "type": "personal",
-      "status": "archived",
+      "status": "completed",
       "skills": ["Snapcraft", "Bash","Wine"],
       "links": {
         "site": "https://pedroermarinho.github.io/visualg/",
@@ -284,7 +287,7 @@
     {
       "name": "Markdown Readme Generator",
       "description": "Gerador de README.md para projetos no GitHub.",
-      "type": "professional",
+      "type": "personal",
       "status": "paused",
       "skills": ["Python", "CLI", "Pip", "Snapcraft","Jinja2"],
       "links": {
@@ -292,6 +295,66 @@
         "github": "https://github.com/pedroermarinho/markdown-readme-generator",
         "snap": "https://snapcraft.io/mrgenerator-cli",
         "pypi": "https://pypi.org/project/markdown-readme-generator/"
+      }
+    },
+    {
+      "name": "Linux Game Tweaks",
+      "description": "Linux Game Tweaks é um aplicativo voltado para oferecer ajustes e facilitar o gerenciamento de jogos no Linux. Ele serve como uma central de controle para jogos, permitindo configurar, monitorar e integrar várias ferramentas e sistemas utilizados no ambiente Linux para jogos.",
+      "type": "personal",
+      "status": "in_progress",
+      "skills": ["Flutter", "Dart", "Linux", "Steam"],
+      "links": {
+        "github": "https://github.com/pedroermarinho/linux_game_tweaks"
+      }
+    },
+    {
+      "name": "Smart Farm",
+      "description": "O projeto SmartFarm integrou sensores IoT para monitoramento e coleta de dados climáticos e pedológicos. Utilizando Docker Compose, ele unifica serviços como middleware, API, firmware e web, criando uma solução eficiente para agricultura de precisão. O projeto busca oferecer suporte à gestão agrícola inteligente, melhorando produtividade e eficiência no uso de recursos.",
+      "type": "personal",
+      "status": "completed",
+      "markdown": "assets/md/smart_farm/smart_farm.md",
+      "skills": ["IoT", "Docker", "Java", "Spring Boot", "React", "C", "MQTT", "Arduino", "PostgreSQL","Mosquitto"],
+      "links": {
+        "github": "https://github.com/pedroermarinho/SmartFarm-DOCKER"
+      }
+    },
+    {
+      "name": "Water Containment",
+      "description": "WaterContainment é um sistema baseado em computação em névoa e IOT detectar e conter vazamentos hídricos em ambientes industriais. Utilizando sensores IoT e integração via Docker Compose, o projeto fornece uma solução eficiente para monitoramento hídrico e redução de desperdícios.",
+      "type": "personal",
+      "status": "completed",
+      "markdown": "assets/md/water_containment/water_containment.md",
+      "skills": [
+        "IoT",
+        "Docker",
+        "Java",
+        "Spring Boot",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "MQTT",
+        "Mosquitto"
+      ],
+      "links": {
+        "github": "https://github.com/pedroermarinho/WaterContainment-DOCKER",
+        "site": "https://www.researchgate.net/publication/365830011_MIST_COMPUTING_A_SOLUTION_TO_WATER_WASTE_IN_INDUSTRY"
+      }
+    },
+    {
+      "name": "Site",
+      "description": "Código-fonte do meu site pessoal e portfólio interativo desenvolvido em Flutter. Este projeto é uma demonstração prática de habilidades em Flutter Web e PWA, apresentando minha trajetória profissional e projetos de forma interativa.",
+      "type": "personal",
+      "status": "in_progress",
+      "skills": [
+        "Flutter",
+        "Dart",
+        "Flutter Web",
+        "Progressive Web App (PWA)",
+        "Frontend"
+      ],
+      "links": {
+        "homepage": "https://pedroermarinho.github.io/site/",
+        "github": "https://github.com/pedroermarinho"
       }
     }
   ]

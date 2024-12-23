@@ -28,6 +28,10 @@ class ItemProjectWidget extends StatelessWidget {
                   width: 10,
                 ),
                 _projectType(projects),
+                SizedBox(
+                  width: 5,
+                ),
+                _status(projects.status),
               ],
             ),
             Padding(
@@ -128,6 +132,43 @@ class ItemProjectWidget extends StatelessWidget {
             size: 20,
           ),
           message: "Projeto Profissional",
+        );
+    }
+  }
+
+  Widget _status(ProjectStatus status){
+    switch(status){
+      case ProjectStatus.inProgress:
+        return Tooltip(
+          message: "O projeto se encontra em andamento e recebe atualizações",
+          child: Icon(
+            FontAwesomeIcons.gears,
+            size: 20,
+          ),
+        );
+      case ProjectStatus.completed:
+        return Tooltip(
+          message: "O projeto se encontra finalizado e não recebe atualizações",
+          child: Icon(
+            FontAwesomeIcons.check,
+            size: 20,
+          ),
+        );
+      case ProjectStatus.paused:
+        return Tooltip(
+          message: "O projeto se encontra pausado e não recebe atualizações",
+          child: Icon(
+            FontAwesomeIcons.pause,
+            size: 20,
+          ),
+        );
+      case ProjectStatus.archived:
+        return Tooltip(
+          message: "O projeto não foi finalizado e não recebe atualizações",
+          child: Icon(
+            FontAwesomeIcons.boxArchive,
+            size: 20,
+          ),
         );
     }
   }
