@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/github/repo.dart';
-import '../../../domain/entities/settings/projects.dart';
 import '../../../utils/launch_url.dart';
 import '../../home/components/skills/skill_light_widget.dart';
 

@@ -263,10 +263,10 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
 
   Widget _settingsIcons() => Container(
         margin: EdgeInsets.only(top: 10, left: 10),
-        width: 80,
+        width: 100,
         decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(30)),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             IconButton(
